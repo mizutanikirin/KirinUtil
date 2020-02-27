@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+  
+  <!-- kinectの範囲指定 -->
+  <!-- kinectからの距離範囲(近い方) -->
+  <!-- 単位:m [float] -->
+  <minUserDistance>0.5</minUserDistance>
+
+  <!-- kinectからの距離範囲(遠い方) -->
+  <!-- 単位:m [float] -->
+  <maxUserDistance>5</maxUserDistance>
+
+  <!-- kinectからの横方向の範囲 -->
+  <!-- 単位:m [float] -->
+  <maxLeftRightDistance>5</maxLeftRightDistance>
+  
+</setting>
+
+
+
