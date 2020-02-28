@@ -15,7 +15,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 ※Utilを追加していないと他のKirinUtilのCompomentが使えない場合があります。
 
 ## 機能一覧
-- <b>Util</b>  
+- <b>[Util](https://github.com/mizutanikirin/KirinUtil/wiki/Util)</b>  
   計算を簡略化や位置の変更などする関数が使えます。  
 - <b>KRNMedia</b>  
   
