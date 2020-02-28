@@ -15,66 +15,72 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 ※Utilを追加していないと他のKirinUtilのCompomentが使えない場合があります。
 
 ## 機能一覧
+### Util
 - <b>[Util](https://github.com/mizutanikirin/KirinUtil/wiki/Util)</b>  
   計算を簡略化や位置の変更などする関数が使えます。  
-- <b>KRNMedia</b>  
   
-- <b>KRNFile</b>  
+- <b>[KRNFile](https://github.com/mizutanikirin/KirinUtil/wiki/KRNFile)</b>  
   
-- <b>SoundManager</b>  
-  外部のwavファイルを簡単に読み込み、再生ができるCompomentです。  
-- <b>BillBoard</b>  
-  
-- <b>CountDown</b>  
-  
-- <b>Log</b>  
+- <b>[Log](https://github.com/mizutanikirin/KirinUtil/wiki/Log)</b>  
   EditorのConsoleに表示される内容をNGUIのtextに表示可能、htmlとして保存することができます。  
-- <b>PlayerPrefs2</b>  
+
+- <b>[PrintManager](https://github.com/mizutanikirin/KirinUtil/wiki/PrintManager)</b>  
   
-- <b>PrintManager</b>  
+- <b>[ProcessManager](https://github.com/mizutanikirin/KirinUtil/wiki/ProcessManager)</b>  
   
-- <b>ProcessManager</b>  
+- <b>[Timer](https://github.com/mizutanikirin/KirinUtil/wiki/Timer)</b>  
   
-- <b>StartMultiDisplay</b>  
+- <b>[PlayerPrefs2](https://github.com/mizutanikirin/KirinUtil/wiki/PlayerPrefs2)</b>  
   
-- <b>Timer</b>  
+- <b>[BillBoard](https://github.com/mizutanikirin/KirinUtil/wiki/BillBoard)</b>  
   
-- <b>WindowInit</b>  
+- <b>[StartMultiDisplay](https://github.com/mizutanikirin/KirinUtil/wiki/StartMultiDisplay)</b>  
   
-- <b>BalloonMessageManager</b>  
+- <b>[WindowInit](https://github.com/mizutanikirin/KirinUtil/wiki/WindowInit)</b>  
   
-- <b>DialogManager</b>  
+- <b>[StopTween](https://github.com/mizutanikirin/KirinUtil/wiki/StopTween)</b>
+### Media
+- <b>[KRNMedia](https://github.com/mizutanikirin/KirinUtil/wiki/KRNMedia)</b>  
   
-- <b>SetDropDownScrollPosition</b>  
+- <b>[ImageManager](https://github.com/mizutanikirin/KirinUtil/wiki/ImageManager)</b>  
   
-- <b>SlideManager</b>  
+- <b>[MovieManager](https://github.com/mizutanikirin/KirinUtil/wiki/MovieManager)</b>  
   
-- <b>SliderToText</b>  
+- <b>[SoundManager](https://github.com/mizutanikirin/KirinUtil/wiki/SoundManager)</b>  
+  外部のwavファイルを簡単に読み込み、再生ができるCompomentです。  
   
-- <b>TextToSlider</b>  
+- <b>[CaptureManager](https://github.com/mizutanikirin/KirinUtil/wiki/CaptureManager)</b>  
+
+### Network
+- <b>[NetManager](https://github.com/mizutanikirin/KirinUtil/wiki/NetManager)</b>  
   
-- <b>ToggleBtn</b>  
+- <b>[HttpConnect](https://github.com/mizutanikirin/KirinUtil/wiki/HttpConnect)</b>  
   
-- <b>UILine</b>  
+- <b>[UDPReceiveManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPReceiveManager)</b>  
   
-- <b>XmlUI</b>  
+- <b>[UDPSendManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPSendManager)</b>  
   
-- <b>HttpConnect</b>  
+- <b>[QRManager](https://github.com/mizutanikirin/KirinUtil/wiki/QRManager)</b>  
   
-- <b>NetManager</b>  
+- <b>[SoundRecorder](https://github.com/mizutanikirin/KirinUtil/wiki/SoundRecorder)</b>  
   
-- <b>UDPReceiveManager</b>  
+### UI
+- <b>[CountDown](https://github.com/mizutanikirin/KirinUtil/wiki/CountDown)</b>  
   
-- <b>UDPSendManager</b>  
+- <b>[BalloonMessageManager](https://github.com/mizutanikirin/KirinUtil/wiki/BalloonMessageManager)</b>  
   
-- <b>CaptureManager</b>  
+- <b>[DialogManager](https://github.com/mizutanikirin/KirinUtil/wiki/DialogManager)</b>  
   
-- <b>ImageManager</b>  
+- <b>[SlideManager](https://github.com/mizutanikirin/KirinUtil/wiki/SlideManager)</b>  
   
-- <b>MovieManager</b>  
+- <b>[XmlUI](https://github.com/mizutanikirin/KirinUtil/wiki/XmlUI)</b>  
   
-- <b>QRManager</b>  
+- <b>[UILine](https://github.com/mizutanikirin/KirinUtil/wiki/UILine)</b>  
   
-- <b>SoundRecorder</b>  
+- <b>[SetDropDownScrollPosition](https://github.com/mizutanikirin/KirinUtil/wiki/SetDropDownScrollPosition)</b>  
+
+- <b>[SliderToText](https://github.com/mizutanikirin/KirinUtil/wiki/SliderToText)</b>  
+
+- <b>[TextToSlider](https://github.com/mizutanikirin/KirinUtil/wiki/TextToSlider)</b>  
   
-- <b>StopTween
+- <b>[ToggleBtn](https://github.com/mizutanikirin/KirinUtil/wiki/ToggleBtn)</b>
