@@ -15,36 +15,68 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 ※Utilを追加していないと他のKirinUtilのCompomentが使えない場合があります。
 
 ## 機能一覧
-- Util
+- <b>Util</b>
   計算を簡略化や位置の変更などする関数が使えます。
-- KRNMedia
-- KRNFile
-- BillBoard
-- CountDown
-- Log
-- PlayerPrefs2
-- PrintManager
-- ProcessManager
-- StartMultiDisplay
-- Timer
-- WindowInit
-- BalloonMessageManager
-- DialogManager
-- SetDropDownScrollPosition
-- SlideManager
-- SliderToText
-- TextToSlider
-- ToggleBtn
-- UILine
-- XmlUI
-- HttpConnect
-- NetManager
-- UDPReceiveManager
-- UDPSendManager
-- CaptureManager
-- ImageManager
-- MovieManager
-- QRManager
-- SoundManager
-- SoundRecorder
-- StopTween
+<br>
+- <b>KRNMedia</b>
+<br>
+- <b>KRNFile</b>
+<br>
+- <b>SoundManager</b>
+  外部のwavファイルを簡単に読み込み、再生ができるCompomentです。<br>
+- <b>BillBoard</b>
+<br>
+- <b>CountDown</b>
+<br>
+- <b>Log</b>
+  EditorのConsoleに表示される内容をNGUIのtextに表示可能、htmlとして保存することができます。
+<br>
+- <b>PlayerPrefs2</b>
+<br>
+- <b>PrintManager</b>
+<br>
+- <b>ProcessManager</b>
+<br>
+- <b>StartMultiDisplay</b>
+<br>
+- <b>Timer</b>
+<br>
+- <b>WindowInit</b>
+<br>
+- <b>BalloonMessageManager</b>
+<br>
+- <b>DialogManager</b>
+<br>
+- <b>SetDropDownScrollPosition</b>
+<br>
+- <b>SlideManager</b>
+<br>
+- <b>SliderToText</b>
+<br>
+- <b>TextToSlider</b>
+<br>
+- <b>ToggleBtn</b>
+<br>
+- <b>UILine</b>
+<br>
+- <b>XmlUI</b>
+<br>
+- <b>HttpConnect</b>
+<br>
+- <b>NetManager</b>
+<br>
+- <b>UDPReceiveManager</b>
+<br>
+- <b>UDPSendManager</b>
+<br>
+- <b>CaptureManager</b>
+<br>
+- <b>ImageManager</b>
+<br>
+- <b>MovieManager</b>
+<br>
+- <b>QRManager</b>
+<br>
+- <b>SoundRecorder</b>
+<br>
+- <b>StopTween
