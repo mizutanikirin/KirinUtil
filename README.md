@@ -26,6 +26,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   EditorのConsoleに表示される内容をNGUIのtextに表示可能、htmlとして保存することができます。  
 
 - <b>[PrintManager](https://github.com/mizutanikirin/KirinUtil/wiki/PrintManager)</b>  
+  PrintManagerでは印刷関連の関数を使うことができます。  
   
 - <b>[ProcessManager](https://github.com/mizutanikirin/KirinUtil/wiki/ProcessManager)</b>  
   

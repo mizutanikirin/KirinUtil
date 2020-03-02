@@ -9,27 +9,17 @@ using System.Drawing.Printing;
 namespace KirinUtil {
     public class PrintManager:MonoBehaviour {
 
-        public float saveWaitTime = 2.0f;
+        [Header("[CaptureAndPrint Setting]")]
+        public float saveCaptureImageWaitMaxTime = 5.0f;
+        public string rootPath = "/../../AppData/";
         public string printFilePath = "tmp.png";
         private PrintDocument pd;
 
-        /*// Use this for initialization
-        void Start () {
-            CaptureAndPrint();
-        }
-
-        // Update is called once per frame
-        void Update () {
-
-        }*/
 
         public void CaptureAndPrint(bool originAtMargins, bool onLandscape) {
+            if (printFilePath == "") return;
 
-            string rootDir = "/";
-            if (Application.platform == RuntimePlatform.WindowsEditor) {
-                rootDir = "/../";
-            }
-            string realPath = Application.dataPath + rootDir + printFilePath;
+            string realPath = Application.dataPath + rootPath + printFilePath;
             string capturePath = printFilePath;
             printFilePath = realPath;
 
@@ -46,11 +36,11 @@ namespace KirinUtil {
         private IEnumerator WaitSave(bool originAtMargins, bool onLandscape) {
 
             float latency = 0;
-            while (latency < saveWaitTime) {
+            while (latency < saveCaptureImageWaitMaxTime) {
 
-                //ファイルが存在していればループ終了
+                // ファイルが存在していればループ終了
                 if (File.Exists(printFilePath)) {
-                    PrintImage(null, originAtMargins, onLandscape);
+                    PrintImage(originAtMargins, onLandscape, null);
                     break;
                 }
                 latency += Time.deltaTime;
@@ -58,17 +48,16 @@ namespace KirinUtil {
             }
 
             //待機時間が上限に達していたら警告表示(おそらくスクショが保存出来ていない時)
-            if (latency >= saveWaitTime) {
+            if (latency >= saveCaptureImageWaitMaxTime) {
                 Debug.LogWarning("print error: not found file");
             }
         }
 
         // 撮影画像を印刷する
-        public void PrintImage(string filePath, bool originAtMargins, bool onLandscape) {
+        public void PrintImage(bool originAtMargins, bool onLandscape, string filePath) {
+            if (filePath == "") return;
 
-            if (filePath != null) {
-                printFilePath = filePath;
-            }
+            printFilePath = filePath;
 
             //PrintDocumentオブジェクトの作成
             pd = new PrintDocument();
@@ -112,7 +101,7 @@ namespace KirinUtil {
         }
 
 
-        public void DrawAspectFillImage(PrintPageEventArgs e, Image image) {
+        private void DrawAspectFillImage(PrintPageEventArgs e, Image image) {
             System.Drawing.Graphics graphics = e.Graphics;
 
             if (image == null)
