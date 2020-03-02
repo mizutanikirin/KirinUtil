@@ -244,11 +244,7 @@ MonoBehaviour:
     mute: 0
     volume: 1
     loop: 0
-  bgmSound:
-  - id: bgm1
-    fileName: bgm.wav
-    mute: 0
-    volume: 0.5
+  bgmSound: []
   LoadedEvent:
     m_PersistentCalls:
       m_Calls:

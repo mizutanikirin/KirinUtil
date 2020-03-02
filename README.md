@@ -20,6 +20,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   計算を簡略化や位置の変更などする関数が使えます。  
   
 - <b>[KRNFile](https://github.com/mizutanikirin/KirinUtil/wiki/KRNFile)</b>  
+  KRNFileにはファイルを扱うときに簡略化できる関数を用意しています。  
   
 - <b>[Log](https://github.com/mizutanikirin/KirinUtil/wiki/Log)</b>  
   EditorのConsoleに表示される内容をNGUIのtextに表示可能、htmlとして保存することができます。  

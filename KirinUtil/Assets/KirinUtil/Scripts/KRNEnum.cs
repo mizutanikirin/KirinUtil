@@ -2,6 +2,10 @@
 namespace KirinUtil {
     public enum ImageFormat { PNG, JPG };
 
+    public enum SpecialFolder {
+        MyDocuments, Desktop, ProgramFiles, Startup, System
+    };
+
     public enum KinectJoint {
         SpineBase = 0,
         SpineMid = 1,

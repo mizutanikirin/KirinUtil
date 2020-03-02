@@ -8,9 +8,6 @@ using UnityEngine;
 namespace KirinUtil {
     public class KRNFile:MonoBehaviour {
 
-        public enum SpecialFolder {
-            MyDocuments, Desktop, ProgramFiles, Startup, System
-        };
 
         //----------------------------------
         //  OpenTextFile
@@ -38,14 +35,14 @@ namespace KirinUtil {
         //----------------------------------
         //  WriteTextFile
         //----------------------------------
-        public void WriteTextFile(string _filePath, string _contents, bool overWrite, string encode = "UTF-8") {
+        public void WriteTextFile(string _filePath, string _contents, bool addWrite, string encode = "UTF-8") {
             print("WriteTextFile: " + _filePath);
 
             StreamWriter sw;
             Encoding encoding = Encoding.GetEncoding(encode);
 
             try {
-                sw = new StreamWriter(_filePath, overWrite, encoding);
+                sw = new StreamWriter(_filePath, addWrite, encoding);
                 sw.Write(_contents);
                 sw.Close();
             } catch (Exception e) {
@@ -57,60 +54,53 @@ namespace KirinUtil {
         //----------------------------------
         //  AllDelFile
         //----------------------------------
-        // http://kan-kikuchi.hatenablog.com/entry/DirectoryProcessor
-        public void AllDelFile(string targetDirectoryPath) {
-            if (!Directory.Exists(targetDirectoryPath)) {
-                return;
-            }
+        // 参考: http://kan-kikuchi.hatenablog.com/entry/DirectoryProcessor
+        public void AllDelFile(string dirPath) {
+            if (!Directory.Exists(dirPath)) return;
 
             //ディレクトリ以外の全ファイルを削除
-            string[] filePaths = Directory.GetFiles(targetDirectoryPath);
+            string[] filePaths = Directory.GetFiles(dirPath);
             foreach (string filePath in filePaths) {
                 File.SetAttributes(filePath, FileAttributes.Normal);
                 File.Delete(filePath);
             }
 
             //ディレクトリの中のディレクトリも再帰的に削除
-            string[] directoryPaths = Directory.GetDirectories(targetDirectoryPath);
+            string[] directoryPaths = Directory.GetDirectories(dirPath);
             foreach (string directoryPath in directoryPaths) {
                 AllDelFile(directoryPath);
             }
-
-            //中が空になったらディレクトリ自身も削除
-            //Directory.Delete(targetDirectoryPath, false);
         }
 
         //----------------------------------
         //  GetAllFilePath
         //----------------------------------
         #region GetAllFilePath
-        public List<string> GetAllFilePath(string targetDirectoryPath) {
+        public List<string> GetAllFilePath(string dirPath) {
             List<string> returnfilePath = new List<string>();
 
-            returnfilePath = GetAllFilePaths(targetDirectoryPath, returnfilePath);
+            returnfilePath = GetAllFilePaths(dirPath, returnfilePath);
 
             return returnfilePath;
         }
 
-        public List<string> GetAllFilePaths(string targetDirectoryPath, List<string> nowList) {
+        private List<string> GetAllFilePaths(string dirPath, List<string> nowList) {
             List<string> returnfilePath = new List<string>();
 
             for (int i = 0; i < nowList.Count; i++) {
                 returnfilePath.Add(nowList[i]);
             }
 
-            if (!Directory.Exists(targetDirectoryPath)) {
-                return returnfilePath;
-            }
+            if (!Directory.Exists(dirPath)) return returnfilePath;
 
             // ディレクトリ以外の全ファイルを削除
-            string[] filePaths = Directory.GetFiles(targetDirectoryPath);
+            string[] filePaths = Directory.GetFiles(dirPath);
             foreach (string filePath in filePaths) {
                 returnfilePath.Add(filePath);
             }
 
             //ディレクトリの中のディレクトリも再帰的に削除
-            string[] directoryPaths = Directory.GetDirectories(targetDirectoryPath);
+            string[] directoryPaths = Directory.GetDirectories(dirPath);
             foreach (string directoryPath in directoryPaths) {
                 returnfilePath = GetAllFilePaths(directoryPath, returnfilePath);
             }
@@ -123,6 +113,7 @@ namespace KirinUtil {
         //----------------------------------
         //  get now time file name
         //----------------------------------
+        #region GetNowFileName
         public string GetNowFileName(string extention) {
             string fileName = "";
 
@@ -142,6 +133,7 @@ namespace KirinUtil {
 
             return fileName;
         }
+        #endregion
 
 
         //----------------------------------
@@ -204,7 +196,6 @@ namespace KirinUtil {
 		}
 
 		public int CountChar(string s, char c) {
-			//MonoBehaviour.print((s.Length.ToString() + " " + s.Replace(c.ToString(), string.Empty).Length));
 			return s.Length - s.Replace(c.ToString(), string.Empty).Length;
 		}
     }

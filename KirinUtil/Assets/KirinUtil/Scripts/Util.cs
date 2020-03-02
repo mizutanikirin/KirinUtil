@@ -506,7 +506,7 @@ namespace KirinUtil {
         public static float To360Angle(float angle) {
             float fixAngle = angle;
 
-            if (angle > 0) {
+            if (angle < 0) {
                 while (fixAngle < 0) {
                     fixAngle += 360;
                 }
@@ -519,34 +519,11 @@ namespace KirinUtil {
             return fixAngle;
         }
 
-        //----------------------------------
-        //  0～180, 0～-180度にする
-        //----------------------------------
-        public static float To180Angle(float angle) {
-            float fixAngle = angle;
-
-            if (angle > 180) {
-                fixAngle = -( 360 - angle );
-            }
-
-            return fixAngle;
-        }
-
-        //----------------------------------
-        //  Quaternion変換
-        //----------------------------------
-        public static Vector3 QuaternionToVector3(Quaternion qua) {
-            return qua.eulerAngles;
-        }
-
-        public static Quaternion Vector3ToQuaternion(Vector3 angle) {
-            Quaternion qua = Quaternion.Euler(angle);
-            return qua;
-        }
 
         //----------------------------------
         //  Radian
         //----------------------------------
+        #region Radian
         public static float Deg2Rad(float degAngle) {
             return Mathf.Deg2Rad * degAngle;
         }
@@ -554,7 +531,7 @@ namespace KirinUtil {
         public static float Rad2Deg(float radian) {
             return Mathf.Rad2Deg * radian;
         }
-
+        #endregion
 
 
         //----------------------------------
@@ -562,10 +539,10 @@ namespace KirinUtil {
         //----------------------------------
         // 指定した桁数にする。
         // AddZero(1, 2) = 01
-        public static string AddZero(int _num, int _keta) {
+        public static string AddZero(int num, int digits) {
             string returnSt = "";
-            int numKeta = _num.ToString().Length;
-            int addZero = _keta - numKeta;
+            int numKeta = num.ToString().Length;
+            int addZero = digits - numKeta;
 
             if (addZero < 0)
                 addZero = 0;
@@ -574,7 +551,7 @@ namespace KirinUtil {
                 returnSt += "0";
             }
 
-            returnSt += _num;
+            returnSt += num;
 
             return returnSt;
         }
@@ -614,6 +591,7 @@ namespace KirinUtil {
         // PointRound(小数点の数字, 小数点何位を四捨五入するか)
         public static float PointRound(float num, int pointNum) {
             if (num.ToString().IndexOf(".") == -1) return num;
+            if (pointNum <= 0) return num;
 
             float point = 0;
 
@@ -624,7 +602,7 @@ namespace KirinUtil {
                 scaleDown *= 0.1f;
             }
 
-            point = Mathf.RoundToInt(num * scaleUp);
+            point = RoundToInt(num * scaleUp);
             point = point * scaleDown;
 
             if (point.ToString().IndexOf(".") != -1) {
@@ -685,14 +663,15 @@ namespace KirinUtil {
         //----------------------------------
         //  特定文字のカウント
         //----------------------------------
-        public static int CountOf(string targetMessage, params string[] strArray) {
+        public static int CountOf(string message, string[] strArray) {
             int count = 0;
 
             foreach (string str in strArray) {
-                int index = targetMessage.IndexOf(str, 0);
+
+                int index = str.IndexOf(message, 0);
                 while (index != -1) {
                     count++;
-                    index = targetMessage.IndexOf(str, index + str.Length);
+                    index = str.IndexOf(message, index + str.Length);
                 }
             }
 
@@ -702,7 +681,7 @@ namespace KirinUtil {
         //----------------------------------
         //  UIScene
         //----------------------------------
-        #region UIScene
+        /*#region UIScene
         private static List<GameObject> sceneUI;
         private static int sceneNum;
 
@@ -743,13 +722,13 @@ namespace KirinUtil {
             media.FadeInUI(sceneUI[numNext], 0.5f, 0);
         }
 
-        #endregion
+        #endregion*/
 
 
         //----------------------------------
-        //  world座標をUI座標に変換
+        //  world座標をCanvas座標に変換
         //----------------------------------
-        #region world座標をUI座標に変換
+        #region world座標をCanvas座標に変換
         public static Vector2 GetUIPos(Camera uiCamera, Camera worldCamera, Canvas canvas, GameObject targetObj) {
 
             var uiPos = Vector2.zero;
@@ -779,9 +758,9 @@ namespace KirinUtil {
 
 
         //----------------------------------
-        //  UI座標をworld座標に変換
+        //  Canvas座標をworld座標に変換
         //----------------------------------
-        #region UI座標をworld座標に変換
+        #region Canvas座標をworld座標に変換
         // mouse
         public static Vector2 GetWorldMousePos(Camera camera, float z) {
 
@@ -860,14 +839,14 @@ namespace KirinUtil {
         //  改行処理
         //----------------------------------
         // <br>をEnvironment.NewLineにする
-        public static string GetLineText(string xmlSt) {
+        public static string GetLineText(string str) {
 
             string lineSt = "";
 
-            print("GetLineText: " + xmlSt.IndexOf("<br>"));
-            if (xmlSt.IndexOf("<br>") != -1) {
+            print("GetLineText: " + str.IndexOf("<br>"));
+            if (str.IndexOf("<br>") != -1) {
                 string[] del = { "<br>" };
-                string[] st = xmlSt.Split(del, StringSplitOptions.None);
+                string[] st = str.Split(del, StringSplitOptions.None);
 
                 for (int i = 0; i < st.Length; i++) {
                     if (i != st.Length - 1) lineSt += st[i] + Environment.NewLine;
@@ -876,7 +855,7 @@ namespace KirinUtil {
 
                 print(lineSt);
             } else {
-                lineSt = xmlSt;
+                lineSt = str;
             }
 
 
@@ -889,12 +868,12 @@ namespace KirinUtil {
         //----------------------------------
         #region デバッグ用StopWatch
         private static System.Diagnostics.Stopwatch stopwatch;
-        public static void StopWatchStart() {
+        public static void DebugWatchStart() {
             stopwatch = new System.Diagnostics.Stopwatch();
             stopwatch.Start();
         }
 
-        public static void StopWatchStop(Text debugText = null) {
+        public static void DebugWatchStop(Text debugText = null) {
             stopwatch.Stop();
 
             string message = stopwatch.ElapsedMilliseconds + "ms";
@@ -1204,7 +1183,7 @@ namespace KirinUtil {
         //  区切り文字の処理
         //----------------------------------
         #region 指定した区切り文字で区切りListで値を返す
-        public static List<string> GetSeparatedStringList(string str, string separate) {
+        public static List<string> GetSplitStringList(string str, string separate) {
             List<string> dataList = new List<string>();
 
             string[] dataArray = str.Split(separate[0]);
@@ -1213,7 +1192,7 @@ namespace KirinUtil {
             return dataList;
         }
 
-        public static List<int> GetSeparatedIntList(string str, string separate) {
+        public static List<int> GetSplitIntList(string str, string separate) {
             List<int> dataList = new List<int>();
 
             string[] dataArray = str.Split(separate[0]);
@@ -1224,7 +1203,7 @@ namespace KirinUtil {
             return dataList;
         }
 
-        public static List<float> GetSeparatedFloatList(string str, string separate) {
+        public static List<float> GetSplitFloatList(string str, string separate) {
             List<float> dataList = new List<float>();
 
             string[] dataArray = str.Split(separate[0]);
@@ -1243,18 +1222,7 @@ namespace KirinUtil {
             for (int i = 0; i < dataList.Count-1; i++) {
                 data += dataList[i] + separate;
             }
-            data += data[dataList.Count - 1];
-
-            return data;
-        }
-
-        public static string GetSeparatedString(List<float> dataList, string separate) {
-            string data = "";
-
-            for (int i = 0; i < dataList.Count - 1; i++) {
-                data += dataList[i] + separate;
-            }
-            data += data[dataList.Count - 1];
+            data += dataList[dataList.Count - 1];
 
             return data;
         }
@@ -1265,7 +1233,18 @@ namespace KirinUtil {
             for (int i = 0; i < dataList.Count - 1; i++) {
                 data += dataList[i] + separate;
             }
-            data += data[dataList.Count - 1];
+            data += dataList[dataList.Count - 1];
+
+            return data;
+        }
+
+        public static string GetSeparatedString(List<float> dataList, string separate) {
+            string data = "";
+
+            for (int i = 0; i < dataList.Count - 1; i++) {
+                data += dataList[i] + separate;
+            }
+            data += dataList[dataList.Count - 1];
 
             return data;
         }
@@ -1273,7 +1252,7 @@ namespace KirinUtil {
 
         //----------------------------------
         //  オブジェクトのListを小さい順番
-        // で返す。(id、数値)みたいな
+        // で返す。(id、数値)
         //----------------------------------
         #region GetOrderList
         public static List<OrderData> GetOrderList(List<string> idList, List<float> valueList, Direction direction) {
@@ -1294,7 +1273,7 @@ namespace KirinUtil {
         #endregion
 
         //----------------------------------
-        //  本当の四捨五入
+        //  四捨五入
         //----------------------------------
         #region 四捨五入
         public static float Round(float value) {
@@ -1358,6 +1337,20 @@ namespace KirinUtil {
             }
         }
 
+        public static void EquidistantX(List<GameObject> objList, float startX, float endX) {
+
+            float areaWidth = Mathf.Abs(endX - startX);
+            float oneWidth = areaWidth / (float)(objList.Count + 1);
+
+            for (int i = 0; i < objList.Count; i++) {
+                objList[i].transform.localPosition = new Vector3(
+                    startX + oneWidth * (i + 1),
+                    objList[i].transform.localPosition.y,
+                    0
+                );
+            }
+        }
+
         public static void EquidistantY(List<GameObject> objList, float startY, float endY, float posX) {
 
             float areaHeight = Mathf.Abs(endY - startY);
@@ -1366,6 +1359,20 @@ namespace KirinUtil {
             for (int i = 0; i < objList.Count; i++) {
                 objList[i].transform.localPosition = new Vector3(
                     posX,
+                    startY + oneHeight * (i + 1),
+                    0
+                );
+            }
+        }
+
+        public static void EquidistantY(List<GameObject> objList, float startY, float endY) {
+
+            float areaHeight = Mathf.Abs(endY - startY);
+            float oneHeight = areaHeight / (float)(objList.Count + 1);
+
+            for (int i = 0; i < objList.Count; i++) {
+                objList[i].transform.localPosition = new Vector3(
+                    objList[i].transform.localPosition.x,
                     startY + oneHeight * (i + 1),
                     0
                 );
