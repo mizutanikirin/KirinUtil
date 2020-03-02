@@ -29,6 +29,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   PrintManagerでは印刷関連の関数を使うことができます。  
   
 - <b>[ProcessManager](https://github.com/mizutanikirin/KirinUtil/wiki/ProcessManager)</b>  
+  ProcessManagerでは外部アプリを実行/終了制御ができる関数を集めたComponentです。  
   
 - <b>[Timer](https://github.com/mizutanikirin/KirinUtil/wiki/Timer)</b>  
   
