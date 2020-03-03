@@ -31,6 +31,7 @@ public class SampleManager : MonoBehaviour {
     public string settingDataDir = "Setting/";
     public string appXmlFileName = "app_setting.xml";
 
+
     // Use this for initialization
     void Start() {
 
