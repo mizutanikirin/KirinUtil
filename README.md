@@ -32,6 +32,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   ProcessManagerでは外部アプリを実行/終了制御ができる関数を集めたComponentです。  
   
 - <b>[Timer](https://github.com/mizutanikirin/KirinUtil/wiki/Timer)</b>  
+  Timerはいわゆるタイマーの機能を持っているComponentです。  
   
 - <b>[PlayerPrefs2](https://github.com/mizutanikirin/KirinUtil/wiki/PlayerPrefs2)</b>  
   
