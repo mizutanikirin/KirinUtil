@@ -35,8 +35,10 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   Timerはいわゆるタイマーの機能を持っているComponentです。  
   
 - <b>[PlayerPrefs2](https://github.com/mizutanikirin/KirinUtil/wiki/PlayerPrefs2)</b>  
+  PlayerPrefs2はPlayerPrefsを拡張したスクリプトです。  
   
 - <b>[BillBoard](https://github.com/mizutanikirin/KirinUtil/wiki/BillBoard)</b>  
+  GameObjectが常に指定したカメラの方向を向きます。  
   
 - <b>[StartMultiDisplay](https://github.com/mizutanikirin/KirinUtil/wiki/StartMultiDisplay)</b>  
   
