@@ -41,10 +41,13 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   GameObjectが常に指定したカメラの方向を向きます。  
   
 - <b>[StartMultiDisplay](https://github.com/mizutanikirin/KirinUtil/wiki/StartMultiDisplay)</b>  
+  アプリが複数ディスプレイで表示できるようにします。
   
-- <b>[WindowInit](https://github.com/mizutanikirin/KirinUtil/wiki/WindowInit)</b>  
+- <b>[WindowSize](https://github.com/mizutanikirin/KirinUtil/wiki/WindowSize)</b>  
+  アプリのウィンドウを指定した位置、大きさにします。また最小化、最小化前のウィンドウ表示に戻すことができます。  
   
-- <b>[StopTween](https://github.com/mizutanikirin/KirinUtil/wiki/StopTween)</b>
+- <b>[StopTween](https://github.com/mizutanikirin/KirinUtil/wiki/StopTween)</b>  
+  GameObjectがOnDisable()、OnDestroy()したときにiTweenを止めます。
 ### Media
 - <b>[KRNMedia](https://github.com/mizutanikirin/KirinUtil/wiki/KRNMedia)</b>  
   
