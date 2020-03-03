@@ -60,6 +60,12 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   
 - <b>[CaptureManager](https://github.com/mizutanikirin/KirinUtil/wiki/CaptureManager)</b>  
   カメラに映っている映像をキャプチャして画像保存/Texture2Dを返します。
+  
+- <b>[QRManager](https://github.com/mizutanikirin/KirinUtil/wiki/QRManager)</b>  
+  QRコードの生成/読み取りができます。  
+  
+- <b>[SoundRecorder](https://github.com/mizutanikirin/KirinUtil/wiki/SoundRecorder)</b>  
+
 ### Network
 - <b>[NetManager](https://github.com/mizutanikirin/KirinUtil/wiki/NetManager)</b>  
   
@@ -68,10 +74,6 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 - <b>[UDPReceiveManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPReceiveManager)</b>  
   
 - <b>[UDPSendManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPSendManager)</b>  
-  
-- <b>[QRManager](https://github.com/mizutanikirin/KirinUtil/wiki/QRManager)</b>  
-  
-- <b>[SoundRecorder](https://github.com/mizutanikirin/KirinUtil/wiki/SoundRecorder)</b>  
   
 ### UI
 - <b>[CountDown](https://github.com/mizutanikirin/KirinUtil/wiki/CountDown)</b>  
