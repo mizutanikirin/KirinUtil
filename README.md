@@ -89,8 +89,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   
 - <b>[SetDropDownScrollPosition](https://github.com/mizutanikirin/KirinUtil/wiki/SetDropDownScrollPosition)</b>  
 
-- <b>[SliderToText](https://github.com/mizutanikirin/KirinUtil/wiki/SliderToText)</b>  
-
-- <b>[TextToSlider](https://github.com/mizutanikirin/KirinUtil/wiki/TextToSlider)</b>  
+- <b>[InputSlider](https://github.com/mizutanikirin/KirinUtil/wiki/InputSlider)</b>  
+  InputFieldを持ったSliderを簡単に導入できます。
   
 - <b>[ToggleBtn](https://github.com/mizutanikirin/KirinUtil/wiki/ToggleBtn)</b>
