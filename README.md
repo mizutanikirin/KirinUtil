@@ -23,7 +23,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   KRNFileにはファイルを扱うときに簡略化できる関数を用意しています。  
   
 - <b>[Log](https://github.com/mizutanikirin/KirinUtil/wiki/Log)</b>  
-  EditorのConsoleに表示される内容をNGUIのtextに表示可能、htmlとして保存することができます。  
+  EditorのConsoleに表示される内容をuGUIのtextに表示可能、htmlとして保存することができます。  
 
 - <b>[PrintManager](https://github.com/mizutanikirin/KirinUtil/wiki/PrintManager)</b>  
   PrintManagerでは印刷関連の関数を使うことができます。  
@@ -64,8 +64,6 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 - <b>[QRManager](https://github.com/mizutanikirin/KirinUtil/wiki/QRManager)</b>  
   QRコードの生成/読み取りができます。  
   
-- <b>[SoundRecorder](https://github.com/mizutanikirin/KirinUtil/wiki/SoundRecorder)</b>  
-
 ### Network
 - <b>[NetManager](https://github.com/mizutanikirin/KirinUtil/wiki/NetManager)</b>  
   
@@ -87,6 +85,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 - <b>[XmlUI](https://github.com/mizutanikirin/KirinUtil/wiki/XmlUI)</b>  
   
 - <b>[UILine](https://github.com/mizutanikirin/KirinUtil/wiki/UILine)</b>  
+  uGUIのImageでラインを引きます。
   
 - <b>[SetDropDownScrollPosition](https://github.com/mizutanikirin/KirinUtil/wiki/SetDropDownScrollPosition)</b>  
 

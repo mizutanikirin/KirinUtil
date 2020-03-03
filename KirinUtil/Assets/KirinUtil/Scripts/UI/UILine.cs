@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 
 namespace KirinUtil {
+
+    [RequireComponent(typeof(Image))]
     public class UILine : MonoBehaviour {
         //----------------------------------
         //  線を引く(gui)
