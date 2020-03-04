@@ -111,9 +111,9 @@ public class SampleManager : MonoBehaviour {
         slide.Play("slide1");
 
         // dialog
-        //dialog.Popup("toast", Vector2.zero, "というわけです。", DialogManager.ButtonType.None);
-        //dialog.Popup("okDialog", Vector2.zero, "わかりましたか？", DialogManager.ButtonType.OK);
-        dialog.Popup("yesNoDialog", Vector2.zero, "どします？", DialogManager.ButtonType.YesNo);
+        //dialog.Popup("toast", Vector2.zero, "abcd", DialogManager.ButtonType.None);
+        //dialog.Popup("okDialog", Vector2.zero, "abcd", DialogManager.ButtonType.OK);
+        dialog.Popup("yesNoDialog", Vector2.zero, "abcd", DialogManager.ButtonType.YesNo);
         
         StartCoroutine(DebugWatch());
     }

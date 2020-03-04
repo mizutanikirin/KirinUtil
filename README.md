@@ -81,6 +81,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   uGUIで吹き出しメッセージを作ることができます。  
   
 - <b>[DialogManager](https://github.com/mizutanikirin/KirinUtil/wiki/DialogManager)</b>  
+  uGUIでダイアログを作ることができます。  
   
 - <b>[SlideManager](https://github.com/mizutanikirin/KirinUtil/wiki/SlideManager)</b>  
   
