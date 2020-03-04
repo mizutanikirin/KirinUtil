@@ -182,6 +182,13 @@ namespace KirinUtil {
             else SlideTimerInit();
         }
 
+        public void Stop() {
+            SlideStopMovie();
+
+            slideObjList = new List<GameObject>();
+            isSlidePlay = false;
+        }
+
         private int GetSlideListNum(string id) {
             int listNum = -1;
             for (int i = 0; i < slideList.Count; i++) {
@@ -192,13 +199,6 @@ namespace KirinUtil {
             }
 
             return listNum;
-        }
-
-        public void StopSlide() {
-            SlideStopMovie();
-
-            slideObjList = new List<GameObject>();
-            isSlidePlay = false;
         }
 
         private void SlideTimerInit() {
@@ -234,7 +234,7 @@ namespace KirinUtil {
             slideNum++;
             if (slideObjList.Count <= slideNum) {
                 // すべての再生が終わったら実行する
-                StopSlide();
+                Stop();
                 slideEndEvent.Invoke(idList[playingSlideId]);
             } else {
                 ChangeNextSlide();
