@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class SampleManager : MonoBehaviour {
 
     public CountDown countDown;
-    private Timer timer;
     public Text countDownText;
     public SlideManager slide;
     public DialogManager dialog;
@@ -30,7 +29,6 @@ public class SampleManager : MonoBehaviour {
     public string rootDataDir = "/../../AppData/";
     public string settingDataDir = "Setting/";
     public string appXmlFileName = "app_setting.xml";
-
 
     // Use this for initialization
     void Start() {
@@ -124,6 +122,15 @@ public class SampleManager : MonoBehaviour {
         Util.DebugWatchStart();
         yield return new WaitForSeconds(1.0f);
         Util.DebugWatchStop();
+    }
+
+    // toggleButton
+    public void ToggleOn() {
+        print("ToggleOn");
+    }
+
+    public void ToggleOff() {
+        print("ToggleOff");
     }
 
     // dialog
