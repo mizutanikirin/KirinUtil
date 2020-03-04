@@ -86,8 +86,6 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 - <b>[SlideManager](https://github.com/mizutanikirin/KirinUtil/wiki/SlideManager)</b>  
   uGUIで画像/動画のスライドを簡単に作ることができます。  
   
-- <b>[XmlUI](https://github.com/mizutanikirin/KirinUtil/wiki/XmlUI)</b>  
-  
 - <b>[UILine](https://github.com/mizutanikirin/KirinUtil/wiki/UILine)</b>  
   uGUIのImageでラインを引きます。
   
