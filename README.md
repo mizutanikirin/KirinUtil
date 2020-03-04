@@ -75,6 +75,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   
 ### UI
 - <b>[CountDown](https://github.com/mizutanikirin/KirinUtil/wiki/CountDown)</b>  
+  カウントダウンを簡単に実装できます。  
   
 - <b>[BalloonMessageManager](https://github.com/mizutanikirin/KirinUtil/wiki/BalloonMessageManager)</b>  
   

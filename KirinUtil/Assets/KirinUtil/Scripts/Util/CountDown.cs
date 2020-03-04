@@ -6,7 +6,6 @@ using UnityEngine.UI;
 namespace KirinUtil {
     public class CountDown : MonoBehaviour {
 
-
         private bool timerFin;
         private float timerTime;
         private int limitTime;
