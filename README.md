@@ -92,4 +92,5 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 - <b>[InputSlider](https://github.com/mizutanikirin/KirinUtil/wiki/InputSlider)</b>  
   InputFieldを持ったSliderを簡単に導入できます。
   
-- <b>[ToggleBtn](https://github.com/mizutanikirin/KirinUtil/wiki/ToggleBtn)</b>
+- <b>[ToggleButton](https://github.com/mizutanikirin/KirinUtil/wiki/ToggleButton)</b>
+  ButtonをToggleのようにOn/Offを切り替えられるようになります。
