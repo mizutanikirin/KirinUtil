@@ -84,10 +84,11 @@ namespace KirinUtil {
         //----------------------------------
         //  CloneGameObject
         //----------------------------------
-        // 指定した親GameObjectにPrefabをコピーする
+        // 指定した親GameObjectに指定したGameObjectをコピーする
         public void CloneGameObject(GameObject obj, GameObject parentObj) {
             GameObject clone = GameObject.Instantiate(obj) as GameObject;
             clone.transform.SetParent(parentObj.transform, false);
+            clone.name = obj.name;
 
             clone.transform.localPosition = obj.transform.localPosition;
             clone.transform.localScale = obj.transform.localScale;
@@ -122,7 +123,7 @@ namespace KirinUtil {
         }
 
         // 子要素を取得してリストに追加
-        public void GetChildren(GameObject obj, ref List<GameObject> allChildren) {
+        private void GetChildren(GameObject obj, ref List<GameObject> allChildren) {
             Transform children = obj.GetComponentInChildren<Transform>();
             // 子要素がいなければ終了
             if (children.childCount == 0) {
@@ -143,7 +144,7 @@ namespace KirinUtil {
         }
 
         // 子要素を取得してリストに追加
-        public void GetChildren(GameObject obj, string name, ref List<GameObject> allChildren) {
+        private void GetChildren(GameObject obj, string name, ref List<GameObject> allChildren) {
             Transform children = obj.GetComponentInChildren<Transform>();
             // 子要素がいなければ終了
             if (children.childCount == 0) {
@@ -509,22 +510,6 @@ namespace KirinUtil {
         //----------------------------------
         //  簡単な動き
         //----------------------------------
-        public void MoveObj(AnimationType type, GameObject obj, float value, float time, float delay, int times = -1, bool islocal = true, bool returnInitPos = false) {
-
-            if (type == AnimationType.Horizon)
-                MoveHorizon(obj, value, time, delay, times, islocal, returnInitPos);
-            else if (type == AnimationType.Vertical)
-                MoveVertical(obj, value, time, delay, times, islocal, returnInitPos);
-            else if (type == AnimationType.Random)
-                MoveRandom(obj, value, time, delay, times, islocal, returnInitPos);
-            else if (type == AnimationType.Shuffle)
-                MoveShuffle(obj, value, time, delay, islocal, returnInitPos);
-            else if (type == AnimationType.Rotate)
-                MoveRotate(obj, value, time, delay, times, returnInitPos);
-            else if (type == AnimationType.Scale)
-                MoveScale(obj, value, time, delay, times, returnInitPos);
-
-        }
 
         #region MoveHorizon
         public void MoveHorizon(GameObject obj, float moveValue, float moveTime, float delay, int times = -1, bool islocal = true, bool returnInitPos = false) {

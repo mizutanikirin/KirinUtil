@@ -39,13 +39,13 @@ public class SampleManager : MonoBehaviour {
 
         Util.BasicSetting(false);
 
-        Util.media.FadeOutUI(fadeObj, 5.0f, 0.0f);
+        //Util.media.FadeOutUI(fadeObj, 5.0f, 0.0f);
         /*util.media.FadeOutGui(fade2Obj, 2.0f, 5.0f);
 
         util.media.ChangeTextureBright(brightObj, 2.5f);
         util.media.image.LoadUIImages();
         util.media.movie.LoadUIMovies();*/
-
+        Util.media.MoveHorizon(fadeObj, 20, 0.5f, 0, 5, true, true);
         Util.sound.LoadSounds();
 
         //ReadJsonSample();

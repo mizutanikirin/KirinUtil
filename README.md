@@ -53,6 +53,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   GameObjectがOnDisable()、OnDestroy()したときにiTweenを止めます。
 ### Media
 - <b>[KRNMedia](https://github.com/mizutanikirin/KirinUtil/wiki/KRNMedia)</b>  
+  GameObjectの作成、フェードなどGameObjectに関する関数を主にまとめたComponentです。  
   
 - <b>[ImageManager](https://github.com/mizutanikirin/KirinUtil/wiki/ImageManager)</b>  
   

@@ -42,10 +42,6 @@ namespace KirinUtil {
         FadeIn, FadeOut
     }
 
-    public enum AnimationType {
-        Horizon, Vertical, Random, Shuffle, Rotate, Scale
-    }
-
     public enum Month {
         January = 1,
         February = 2,
