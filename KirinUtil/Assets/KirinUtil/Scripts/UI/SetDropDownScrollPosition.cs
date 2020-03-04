@@ -13,7 +13,7 @@ namespace KirinUtil {
         private ScrollRect sr;
 
         public void Start() {
-            sr = this.gameObject.GetComponent<ScrollRect>();
+            sr = gameObject.GetComponent<ScrollRect>();
 
             GameObject parentObj = gameObject.transform.parent.gameObject;
             Dropdown dropdown = parentObj.GetComponent<Dropdown>();

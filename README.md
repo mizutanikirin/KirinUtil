@@ -88,9 +88,10 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   uGUIのImageでラインを引きます。
   
 - <b>[SetDropDownScrollPosition](https://github.com/mizutanikirin/KirinUtil/wiki/SetDropDownScrollPosition)</b>  
+  デフォのDropDownだとDropDownを開くときスクロールの初期位置が一番上になっていますが、SetDropDownScrollPositionを使うと選択した位置にスクロールして表示されます。  
 
 - <b>[InputSlider](https://github.com/mizutanikirin/KirinUtil/wiki/InputSlider)</b>  
   InputFieldを持ったSliderを簡単に導入できます。
   
-- <b>[ToggleButton](https://github.com/mizutanikirin/KirinUtil/wiki/ToggleButton)</b>
+- <b>[ToggleButton](https://github.com/mizutanikirin/KirinUtil/wiki/ToggleButton)</b>  
   ButtonをToggleのようにOn/Offを切り替えられるようになります。
