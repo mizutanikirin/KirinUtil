@@ -34,6 +34,9 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 - <b>[Timer](https://github.com/mizutanikirin/KirinUtil/wiki/Timer)</b>  
   Timerはいわゆるタイマーの機能を持っているComponentです。  
   
+- <b>[CountDown](https://github.com/mizutanikirin/KirinUtil/wiki/CountDown)</b>  
+  カウントダウンを簡単に実装できます。  
+  
 - <b>[PlayerPrefs2](https://github.com/mizutanikirin/KirinUtil/wiki/PlayerPrefs2)</b>  
   PlayerPrefs2はPlayerPrefsを拡張したスクリプトです。  
   
@@ -74,10 +77,8 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 - <b>[UDPSendManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPSendManager)</b>  
   
 ### UI
-- <b>[CountDown](https://github.com/mizutanikirin/KirinUtil/wiki/CountDown)</b>  
-  カウントダウンを簡単に実装できます。  
-  
 - <b>[BalloonMessageManager](https://github.com/mizutanikirin/KirinUtil/wiki/BalloonMessageManager)</b>  
+  uGUIで吹き出しメッセージを作ることができます。  
   
 - <b>[DialogManager](https://github.com/mizutanikirin/KirinUtil/wiki/DialogManager)</b>  
   

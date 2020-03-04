@@ -10,6 +10,7 @@ namespace KirinUtil {
     public class BalloonMessageManager : MonoBehaviour {
 
         public GameObject balloonPrefab;
+        public Vector2 balloonMargin;
 
         [System.SerializableAttribute]
         public class InfoList {
@@ -149,7 +150,7 @@ namespace KirinUtil {
                 thisObjList.Add(thisObj);
 
                 // 大きさ調整
-                Vector2 bgSize = new Vector2(thisText.preferredWidth + 60 * 2, thisText.preferredHeight + 60 * 2);
+                Vector2 bgSize = new Vector2(thisText.preferredWidth + balloonMargin.x, thisText.preferredHeight + balloonMargin.y);
                 thiBgObj.GetComponent<RectTransform>().sizeDelta = bgSize;
 
 
@@ -166,28 +167,28 @@ namespace KirinUtil {
                     if (type == 0) Util.LocalPosX(tailObjList[0], -thisText.preferredWidth * 0.5f);
                     else if (type == 2) Util.LocalPosX(tailObjList[0], thisText.preferredWidth * 0.5f);
 
-                    Util.LocalPosY(tailObjList[0], bgSize.y * 0.5f + tailObjList[0].GetComponent<RectTransform>().sizeDelta.y * 0.5f - 8f);  // - 8fはドロップシャドウの幅
+                    Util.LocalPosY(tailObjList[0], bgSize.y * 0.5f + tailObjList[0].GetComponent<RectTransform>().sizeDelta.y * 0.5f);  // - 8fはドロップシャドウの幅
                 } else if (type == 3 || type == 4 || type == 5) {
                     // 右
                     tailObjList[1].SetActive(true);
                     if (type == 3) Util.LocalPosY(tailObjList[1], thisText.preferredHeight * 0.5f);
                     else if (type == 5) Util.LocalPosY(tailObjList[1], -thisText.preferredHeight * 0.5f);
 
-                    Util.LocalPosX(tailObjList[1], bgSize.x * 0.5f + tailObjList[1].GetComponent<RectTransform>().sizeDelta.x * 0.5f - 20f);
+                    Util.LocalPosX(tailObjList[1], bgSize.x * 0.5f + tailObjList[1].GetComponent<RectTransform>().sizeDelta.x * 0.5f);
                 } else if (type == 6 || type == 7 || type == 8) {
                     // 下
                     tailObjList[2].SetActive(true);
                     if (type == 6) Util.LocalPosX(tailObjList[2], thisText.preferredWidth * 0.5f);
                     else if (type == 8) Util.LocalPosX(tailObjList[2], -thisText.preferredWidth * 0.5f);
 
-                    Util.LocalPosY(tailObjList[2], -bgSize.y * 0.5f - tailObjList[2].GetComponent<RectTransform>().sizeDelta.y * 0.5f + 22f);
+                    Util.LocalPosY(tailObjList[2], -bgSize.y * 0.5f - tailObjList[2].GetComponent<RectTransform>().sizeDelta.y * 0.5f);
                 } else if (type == 9 || type == 10 || type == 11) {
                     // 左
                     tailObjList[3].SetActive(true);
                     if (type == 9) Util.LocalPosY(tailObjList[3], -thisText.preferredHeight * 0.5f);
                     else if (type == 11) Util.LocalPosY(tailObjList[3], thisText.preferredHeight * 0.5f);
 
-                    Util.LocalPosX(tailObjList[3], -bgSize.x * 0.5f - tailObjList[3].GetComponent<RectTransform>().sizeDelta.x * 0.5f + 15f);
+                    Util.LocalPosX(tailObjList[3], -bgSize.x * 0.5f - tailObjList[3].GetComponent<RectTransform>().sizeDelta.x * 0.5f);
                 }
             }
 
@@ -203,7 +204,6 @@ namespace KirinUtil {
             flashingMessageCoroutine.Add(thisCoroutine1);
             soundFileList.Add(thisSoundFileList);
 
-            print("CreateCreateCreateCreateCreateCreate");
         }
 
         //----------------------------------
@@ -231,6 +231,16 @@ namespace KirinUtil {
             for (int i = 0; i < balloonObjList[id].Count; i++) {
                 balloonObjList[id][i].SetActive(false);
             }
+        }
+
+        public void Play(int id, int balloonNum) {
+            if (isPlayList[id]) return;
+            PlayOneBalloon(id, balloonNum);
+        }
+
+        public void Stop(int id, int balloonNum) {
+            if (isPlayList[id]) return;
+            StopOneBalloon(id, balloonNum);
         }
 
         // Update is called once per frame
@@ -287,14 +297,14 @@ namespace KirinUtil {
         }
 
         //----------------------------------
-        //  本来のmessage
+        //  message
         //----------------------------------
         #region message1
-        public void MessageDisplay(GameObject obj, string direction, int idListNum, int balloonNum, float time = -1) {
+        private void MessageDisplay(GameObject obj, string direction, int idListNum, int balloonNum, float time = -1) {
             messageDisplayCoroutine[idListNum][balloonNum] = StartCoroutine(MessageDisplayWait(obj, direction, time, idListNum, balloonNum));
         }
 
-        public void StopMessage(int idListNum) {
+        private void StopMessage(int idListNum) {
             //print(idListNum + ": " + messageDisplayCoroutine.Count);
 
             for (int i = 0; i < messageDisplayCoroutine[idListNum].Count; i++) {
@@ -326,7 +336,7 @@ namespace KirinUtil {
 
             Util.media.UIDisplay(obj, FadeType.FadeIn, direct0);
 
-            yield return new WaitForSeconds(2.0f); // TODO: 必要ないかも？
+            //yield return new WaitForSeconds(2.0f); // TODO: 必要ないかも？
 
             if (time != -1) {
                 yield return new WaitForSeconds(time);
@@ -339,21 +349,7 @@ namespace KirinUtil {
         //----------------------------------
         //  function
         //----------------------------------
-
-        /*private int GetIdListNum(int id) {
-            int listNum = -1;
-
-            for (int i = 0; i < idList.Count; i++) {
-                if (idList[i] == id) {
-                    listNum = i;
-                    break;
-                }
-            }
-
-            return listNum;
-        }*/
-
-        private List<string> GetInfoValue(string infoStr) {
+        /*private List<string> GetInfoValue(string infoStr) {
             List<string> infoValue = new List<string>();
 
             string[] infoAry = infoStr.Split(","[0]);
@@ -362,6 +358,6 @@ namespace KirinUtil {
             }
 
             return infoValue;
-        }
+        }*/
     }
 }
