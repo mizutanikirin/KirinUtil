@@ -62,7 +62,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   外部動画の読み込み、動画の再生/停止などの関数をまとめたManagerです。
   
 - <b>[SoundManager](https://github.com/mizutanikirin/KirinUtil/wiki/SoundManager)</b>  
-  外部のwavファイルを簡単に読み込み、再生ができるCompomentです。  
+  外部のwavファイルを簡単に読み込み、再生などコントロールができるManagerです。
   
 - <b>[CaptureManager](https://github.com/mizutanikirin/KirinUtil/wiki/CaptureManager)</b>  
   カメラに映っている映像をキャプチャして画像保存/Texture2Dを返します。

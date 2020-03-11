@@ -59,12 +59,17 @@ namespace KirinUtil {
             temporaryCachePath,
             streamingAssetsPath
         }
+        [Separator("Common")]
         [SerializeField] RootPath rootPath;
 
         public string soundPath = "/../../AppData/Data/Sounds/";
+        [SerializeField]
+        private UnityEngine.Events.UnityEvent LoadedEvent = new UnityEngine.Events.UnityEvent();
 
+        [Separator("SE")]
         // 音量
         public SESound[] seSound;
+        [Separator("BGM")]
         public BGMSound[] bgmSound;
 
         private AudioSource BGMsource;
@@ -79,8 +84,6 @@ namespace KirinUtil {
         private int loadedNum = 0;
         private int oneShotSoundCount;
 
-        [SerializeField]
-        private UnityEngine.Events.UnityEvent LoadedEvent = new UnityEngine.Events.UnityEvent();
 
         //----------------------------------
         //  init
@@ -121,7 +124,7 @@ namespace KirinUtil {
             //LoadSounds();
         }
 
-        public void SEInit() {
+        private void SEInit() {
             SEsources = new AudioSource[seSound.Length];
             for (int i = 0; i < SEsources.Length; i++) {
                 SEsources[i] = gameObject.AddComponent<AudioSource>();
@@ -153,7 +156,7 @@ namespace KirinUtil {
         #region Load Sound file
         public void LoadSounds() {
 
-            string rootDataPath = "";
+            string rootDataPath;
             if (rootPath == RootPath.dataPath) {
                 rootDataPath = Application.dataPath;
             } else if (rootPath == RootPath.persistentDataPath) {
