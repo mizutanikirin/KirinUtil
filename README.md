@@ -59,6 +59,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   外部Textureの読み込み＋Image,RawImageへの割当の自動化、シーケンス画像の再生など画像に関する関数をまとめたManagerです。
   
 - <b>[MovieManager](https://github.com/mizutanikirin/KirinUtil/wiki/MovieManager)</b>  
+  外部動画の読み込み、動画の再生/停止などの関数をまとめたManagerです。
   
 - <b>[SoundManager](https://github.com/mizutanikirin/KirinUtil/wiki/SoundManager)</b>  
   外部のwavファイルを簡単に読み込み、再生ができるCompomentです。  

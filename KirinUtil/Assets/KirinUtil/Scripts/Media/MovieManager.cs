@@ -35,7 +35,7 @@ namespace KirinUtil {
         [SerializeField] RootPath rootPath;
         public string movieDirPath = "/../../AppData/Data/Movies/";
         public UIMovies[] uiMovies;
-        [SerializeField] public List<MediaPlayer> mediaPlayer = new List<MediaPlayer>();
+        [NonSerialized] public List<MediaPlayer> mediaPlayer = new List<MediaPlayer>();
         private string rootDataPath;
 
         [SerializeField]
