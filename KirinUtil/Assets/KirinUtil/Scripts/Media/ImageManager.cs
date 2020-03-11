@@ -19,7 +19,7 @@ namespace KirinUtil {
             streamingAssetsPath
         }
 
-        [Header("[Common]")]
+        [Separator("Common")]
         [SerializeField] RootPath rootPath;
         public string imageDirPath = "/../../AppData/Data/Images/";
         #endregion
@@ -41,7 +41,7 @@ namespace KirinUtil {
             }
         }
 
-        [Header("[Image]")]
+        [Separator("UI Image")]
         public bool awakeLoad;
         [Tooltip("TextureをImageに割り当てる場合はこちらにファイル名とImageを登録する")]
         public Images[] images;
@@ -56,12 +56,12 @@ namespace KirinUtil {
         //  only texture
         //----------------------------------
         #region only texture
-        [Header("[Texture]")]
+        [Separator("Only Texture")]
         public bool awakeLoadTexture;
         [Tooltip("Texture読み込みのみの場合こちらにファイル名を登録する")]
         public string[] textureFileNames;
-        [Tooltip("透過させるかどうか")]
-        public bool alphaIsTransparency;
+        //[Tooltip("透過させるかどうか")]
+        //public bool alphaIsTransparency;
         [NonSerialized] public List<Texture2D> textures;
         private string rootDataPath;
         #endregion
@@ -93,7 +93,7 @@ namespace KirinUtil {
             }
         }
 
-        [Header("[Play Image]")]
+        [Separator("PlayImage")]
         public bool awakeLoadPlayImage;
         [Tooltip("シーケンス再生画像の登録")]
         public PlayImages[] playImages;
@@ -113,6 +113,7 @@ namespace KirinUtil {
         //----------------------------------
         //  Init / Event
         //----------------------------------
+        #region Init / Event
         void OnEnable() {
             LoadedImageEvent.AddListener(Loaded);
             playImageEndEvent.AddListener(PlayEnded);
@@ -150,6 +151,7 @@ namespace KirinUtil {
             if (awakeLoadTexture) LoadTexture2DList();
             if (awakeLoadPlayImage) LoadPlayImages();
         }
+        #endregion
 
 
         //----------------------------------
@@ -197,7 +199,7 @@ namespace KirinUtil {
         //----------------------------------
         //  LoadTexture2DList
         //----------------------------------
-        public List<Texture2D> LoadTexture2DList() {
+        public void LoadTexture2DList() {
 
             print("LoadTexture2DList");
 
@@ -206,12 +208,10 @@ namespace KirinUtil {
             for (int i = 0; i < textureFileNames.Length; i++) {
                 if (textureFileNames[i] != "") {
                     Texture2D texture = LoadTexture2D(rootDataPath + imageDirPath + textureFileNames[i]);
-                    texture.alphaIsTransparency = alphaIsTransparency;
+                    //texture.alphaIsTransparency = alphaIsTransparency;
                     textures.Add(texture);
                 }
             }
-
-            return textures;
         }
 
 
@@ -468,7 +468,7 @@ namespace KirinUtil {
         //----------------------------------
         //  LoadAlphaMaskImage
         //----------------------------------
-        #region LoadAlphaMaskImage
+        /*#region LoadAlphaMaskImage
         public void LoadAlphaMaskImage(string fileName, GameObject maskObj) {
             Texture2D texture = LoadTexture2D(Application.dataPath + imageDirPath + fileName);
 
@@ -479,6 +479,6 @@ namespace KirinUtil {
             );
             UnloadTexture(texture);
         }
-        #endregion
+        #endregion*/
     }
 }

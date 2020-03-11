@@ -118,6 +118,10 @@ public class SampleManager : MonoBehaviour {
         StartCoroutine(DebugWatch());
     }
 
+    public void EndPlayImage(int num) {
+        print("EndPlayImage");
+    }
+
     private IEnumerator DebugWatch() {
         Util.DebugWatchStart();
         yield return new WaitForSeconds(1.0f);

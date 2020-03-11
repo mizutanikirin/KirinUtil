@@ -85,10 +85,11 @@ namespace KirinUtil {
         //  CloneGameObject
         //----------------------------------
         // 指定した親GameObjectに指定したGameObjectをコピーする
-        public void CloneGameObject(GameObject obj, GameObject parentObj) {
+        public void CloneGameObject(GameObject obj, GameObject parentObj, string name = "") {
             GameObject clone = GameObject.Instantiate(obj) as GameObject;
             clone.transform.SetParent(parentObj.transform, false);
-            clone.name = obj.name;
+            if (name == "") clone.name = obj.name;
+            else clone.name = name;
 
             clone.transform.localPosition = obj.transform.localPosition;
             clone.transform.localScale = obj.transform.localScale;

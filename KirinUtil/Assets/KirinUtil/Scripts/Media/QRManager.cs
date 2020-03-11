@@ -27,7 +27,7 @@ namespace KirinUtil {
             int width = texture.width;
             int height = texture.height;
 
-            Result result = reader.Decode(color, width, height);
+            ZXing.Result result = reader.Decode(color, width, height);
             if (result != null) {
                 response = result.Text;
             } else {

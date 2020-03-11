@@ -56,6 +56,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   GameObjectの作成、フェードなどGameObjectに関する関数を主にまとめたComponentです。  
   
 - <b>[ImageManager](https://github.com/mizutanikirin/KirinUtil/wiki/ImageManager)</b>  
+  外部Textureの読み込み＋Image,RawImageへの割当の自動化、シーケンス画像の再生など画像に関する関数をまとめたManagerです。
   
 - <b>[MovieManager](https://github.com/mizutanikirin/KirinUtil/wiki/MovieManager)</b>  
   
