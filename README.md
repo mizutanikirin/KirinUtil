@@ -72,6 +72,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   
 ### Network
 - <b>[NetManager](https://github.com/mizutanikirin/KirinUtil/wiki/NetManager)</b>  
+  単純化したOSCの送信/受信やローカルIPアドレス取得などネットワーク系のManagerです。  
   
 - <b>[HttpConnect](https://github.com/mizutanikirin/KirinUtil/wiki/HttpConnect)</b>  
   

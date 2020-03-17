@@ -238,13 +238,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rootPath: 0
   soundPath: /../../AppData/Data/Sounds/
-  seSound:
-  - id: sample
-    fileName: se.wav
-    mute: 0
-    volume: 1
-    loop: 0
-  bgmSound: []
   LoadedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -259,6 +252,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  seSound:
+  - id: sample
+    fileName: se.wav
+    mute: 0
+    volume: 1
+    loop: 0
+  bgmSound: []
 --- !u!1 &201770777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1019,6 @@ MonoBehaviour:
     visible: 1
     loop: 1
     volume: 0
-  mediaPlayer: []
   LoadedUIMovieEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1036,7 +1035,18 @@ MonoBehaviour:
         m_CallState: 2
   movieFinishEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 201770778}
+        m_MethodName: FinishMovie
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &612964273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,6 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7f3851a84acdd42871a2934d1e94d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  receiveOn: 1
   oscReceiveEvent:
     m_PersistentCalls:
       m_Calls:

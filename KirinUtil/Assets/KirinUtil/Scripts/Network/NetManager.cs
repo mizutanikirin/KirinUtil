@@ -37,6 +37,7 @@ namespace KirinUtil {
         private Dictionary<string, ServerLog> servers = null;
         private bool isRun = false;
         private int oscReceiveLogCount = 0;
+        public bool receiveOn;
 
         #endregion
 
@@ -59,8 +60,8 @@ namespace KirinUtil {
         #endregion
 
         #region start / stop
-        public void OSCStart(string _targetAddr, int _inComingPort, int _outGoingPort) {
-            OSCHandler.Instance.Init(_targetAddr, _outGoingPort, _inComingPort);
+        public void OSCStart(string ipAddress, int inComingPort, int outGoingPort) {
+            OSCHandler.Instance.Init(ipAddress, outGoingPort, inComingPort);
             servers = new Dictionary<string, ServerLog>();
             isRun = true;
         }
@@ -72,15 +73,15 @@ namespace KirinUtil {
         #endregion
 
         #region update(send)
-        public void OSCSendUpdate(string _sendId, string _sendMessage) {
+        public void OSCSend(string address, string message) {
             // データ送信部
-            OSCHandler.Instance.SendMessageToClient("SomeOscClient", _sendId, _sendMessage);
+            OSCHandler.Instance.SendMessageToClient("OscClient", address, message);
         }
         #endregion
 
         #region update(receive)
         private void Update() {
-            if (isRun) OSCReceiveUpdate();
+            if (receiveOn && isRun) OSCReceiveUpdate();
         }
 
         private List<OSCData> OSCReceiveUpdate() {

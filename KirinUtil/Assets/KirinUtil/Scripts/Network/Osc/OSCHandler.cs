@@ -105,11 +105,11 @@ public class OSCHandler : MonoBehaviour
 	{
 		//Initialize OSC clients (transmitters)
 		// Sender
-        CreateClient("SomeOscClient", IPAddress.Parse(targetAddr), inComingPort);
+        CreateClient("OscClient", IPAddress.Parse(targetAddr), inComingPort);
 		
 		//Initialize OSC servers (listeners)
 		// Receiver
-        CreateServer("SomeOscClient", outGoingPort);  
+        CreateServer("OscClient", outGoingPort);  
 	}
 	
 	#region Properties
