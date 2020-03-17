@@ -15,6 +15,7 @@ Unity: 2019.2.19f1
 6. 印刷をするPrintManagerでは`System.Drawing.dll`を使用しています。PrintManagerを使う場合は`Assets/KirinUtil/Plugins`に`System.Drawing.dll`を入れてください。印刷機能を使わない場合PrintManager.csを消してください。
 7. UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。そうするとUtil、KRNMedia、KRNFileが追加されます。
 
+KirinUtilで使用できる機能は「機能一覧」を御覧ください。  
 使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
 ![Util](https://user-images.githubusercontent.com/4795806/76829918-93dee500-6867-11ea-9d56-862b18cbe658.png)
 
