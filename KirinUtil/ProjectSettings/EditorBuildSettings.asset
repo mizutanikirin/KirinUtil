@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/KirinUtil/Scenes/KirinUtil.unity
+    path: Assets/KirinUtil/Demo/Demo.unity
     guid: 4f9374d804dd9cf4a915c36e05779878
   m_configObjects: {}
