@@ -196,6 +196,25 @@ public class KRNUtilEditor : Editor {
 
                 GUILayout.BeginHorizontal();
                 {
+                    if (GUILayout.Button("UDPSendManager", GUILayout.Width(150))) {
+                        GameObject thisObj = ExistComponent("udpManager");
+                        if (thisObj.GetComponent<UDPSendManager>() == null) {
+                            Debug.Log("Added UDPSendManager");
+                            thisObj.AddComponent<UDPSendManager>();
+                        }
+                    }
+                    if (GUILayout.Button("UDPReceiveManager", GUILayout.Width(150))) {
+                        GameObject thisObj = ExistComponent("udpManager");
+                        if (thisObj.GetComponent<UDPReceiveManager>() == null) {
+                            Debug.Log("Added UDPReceiveManager");
+                            thisObj.AddComponent<UDPReceiveManager>();
+                        }
+                    }
+                }
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                {
                     if (GUILayout.Button("ProcessManager", GUILayout.Width(150))) {
                         GameObject thisObj = ExistComponent("processManager");
                         if (thisObj.GetComponent<ProcessManager>() == null) {

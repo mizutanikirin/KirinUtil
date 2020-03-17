@@ -133,7 +133,7 @@ namespace KirinUtil {
                             GameObject movieObj = Util.media.CreateUIObj(movieUIPrefab, slideList[i].parentObj, "movieObj" + j, Vector3.zero, Vector3.zero, Vector3.one);
                             Array.Resize(ref Util.movie.uiMovies, Util.movie.uiMovies.Length + 1);
                             Util.movie.uiMovies[Util.movie.uiMovies.Length - 1] = new MovieManager.UIMovies();
-                            Util.movie.uiMovies[Util.movie.uiMovies.Length - 1].fileName = "../" + slideList[i].folderPath + slideList[i].fileName[j];
+                            Util.movie.uiMovies[Util.movie.uiMovies.Length - 1].fileName = ".." + slideList[i].folderPath + slideList[i].fileName[j];
                             Util.movie.uiMovies[Util.movie.uiMovies.Length - 1].visible = true;
                             Util.movie.uiMovies[Util.movie.uiMovies.Length - 1].loop = false;
                             Util.movie.uiMovies[Util.movie.uiMovies.Length - 1].obj = movieObj;

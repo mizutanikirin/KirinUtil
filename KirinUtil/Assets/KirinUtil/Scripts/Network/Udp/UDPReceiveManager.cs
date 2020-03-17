@@ -8,108 +8,111 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UDPReceiveManager : MonoBehaviour {
+namespace KirinUtil {
 
-    private UdpClient client;
+    public class UDPReceiveManager : MonoBehaviour {
 
-    public int port;
-    private bool isRun;
+        private UdpClient client;
 
-    private string receiveMessage = "";
-    private bool received = false;
-    private Thread receiveThread;
+        public int port;
+        private bool isRun;
 
-    [Serializable]
-    public class UDPReceivedEvent : UnityEngine.Events.UnityEvent<string> { }
+        private string receiveMessage = "";
+        private bool received = false;
+        private Thread receiveThread;
 
-    [SerializeField]
-    private UDPReceivedEvent uDPReceivedEvent = new UDPReceivedEvent();
+        [Serializable]
+        public class UDPReceivedEvent : UnityEngine.Events.UnityEvent<string> { }
 
-    //----------------------------------
-    //  init
-    //----------------------------------
-    void OnEnable() {
-        uDPReceivedEvent.AddListener(Received);
-    }
-    void Received(string message) {
-        print("Received message: " + message);
-    }
+        [SerializeField]
+        private UDPReceivedEvent uDPReceivedEvent = new UDPReceivedEvent();
 
-    // Use this for initialization
-    void Start () {
-        UDPStart();
-    }
+        //----------------------------------
+        //  init
+        //----------------------------------
+        void OnEnable() {
+            uDPReceivedEvent.AddListener(Received);
+        }
+        void Received(string message) {
+            print("Received message: " + message);
+        }
 
-    public void UDPStart() {
-        print("UDPReceiveManager UDPStart : " + port);
+        // Use this for initialization
+        void Start() {
+            UDPStart();
+        }
 
-        receiveMessage = "";
-        isRun = true;
-        received = false;
-        receiveThread = new Thread(new ThreadStart(ReceiveData));
-        receiveThread.IsBackground = true;
-        receiveThread.Start();
-    }
+        public void UDPStart() {
+            print("UDPReceiveManager UDPStart : " + port);
 
-    //----------------------------------
-    //  Receive
-    //----------------------------------
-    // Update is called once per frame
-    void Update () {
-        if (isRun) {
-            if (received) {
-                uDPReceivedEvent.Invoke(receiveMessage);
-            }
+            receiveMessage = "";
+            isRun = true;
             received = false;
+            receiveThread = new Thread(new ThreadStart(ReceiveData));
+            receiveThread.IsBackground = true;
+            receiveThread.Start();
         }
-    }
 
-    private void ReceiveData() {
-
-        if (client == null) client = new UdpClient(port);
-        while (true) {
-
-            if (!isRun) break;
-
-            try {
-                IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
-
-                byte[] data = client.Receive(ref anyIP);
-                string text = Encoding.UTF8.GetString(data);
-
-                //receiveMessage = text;
-                SetMessage(text);
-                print("UDP Received: " + text);
-
-            } catch (SocketException err) {
-                CloseUDP();
-                print(err.ToString());
+        //----------------------------------
+        //  Receive
+        //----------------------------------
+        // Update is called once per frame
+        void Update() {
+            if (isRun) {
+                if (received) {
+                    uDPReceivedEvent.Invoke(receiveMessage);
+                }
+                received = false;
             }
-
         }
-    }
 
-    private void SetMessage(string message) {
-        receiveMessage = message;
-        received = true;
-    }
+        private void ReceiveData() {
+
+            if (client == null) client = new UdpClient(port);
+            while (true) {
+
+                if (!isRun) break;
+
+                try {
+                    IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+
+                    byte[] data = client.Receive(ref anyIP);
+                    string text = Encoding.UTF8.GetString(data);
+
+                    //receiveMessage = text;
+                    SetMessage(text);
+                    print("UDP Received: " + text);
+
+                } catch (SocketException err) {
+                    CloseUDP();
+                    print(err.ToString());
+                }
+
+            }
+        }
+
+        private void SetMessage(string message) {
+            receiveMessage = message;
+            received = true;
+        }
 
 
-    //----------------------------------
-    //  Exit
-    //----------------------------------
-    void OnDisable() {
-        uDPReceivedEvent.RemoveListener(Received);
-    }
+        //----------------------------------
+        //  Exit
+        //----------------------------------
+        void OnDisable() {
+            uDPReceivedEvent.RemoveListener(Received);
+        }
 
-    void OnApplicationQuit() {
-        print("OnApplicationQuit");
-        CloseUDP();
-    }
+        void OnApplicationQuit() {
+            print("OnApplicationQuit");
+            CloseUDP();
+        }
 
-    public void CloseUDP() {
-        receiveMessage = "";
-        client.Close();
-        isRun = false;
+        public void CloseUDP() {
+            receiveMessage = "";
+            client.Close();
+            isRun = false;
+        }
     }
 }

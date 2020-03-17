@@ -10,7 +10,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 そうするとUtil、KRNMedia、KRNFileが追加されます。
 
 よく使うCompomentは以下のようにUtilのボタンから追加することができます。
-![Util](https://user-images.githubusercontent.com/4795806/75427623-318e7500-598a-11ea-85cb-0bd23ecf1ca0.png)
+![Util](https://user-images.githubusercontent.com/4795806/76829918-93dee500-6867-11ea-9d56-862b18cbe658.png)
 
 ※Utilを追加していないと他のKirinUtilのCompomentが使えない場合があります。
 
@@ -77,9 +77,11 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
 - <b>[HttpConnect](https://github.com/mizutanikirin/KirinUtil/wiki/HttpConnect)</b>  
   UnityWebRequestを使ったGet、Postと画像送信を簡単に実装できます。  
   
-- <b>[UDPReceiveManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPReceiveManager)</b>  
-  
 - <b>[UDPSendManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPSendManager)</b>  
+  UDPの送信ができます。
+  
+- <b>[UDPReceiveManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPReceiveManager)</b>  
+  UDPの受信ができます。
   
 ### UI
 - <b>[BalloonMessageManager](https://github.com/mizutanikirin/KirinUtil/wiki/BalloonMessageManager)</b>  
