@@ -20,6 +20,7 @@ namespace KirinUtil {
         public bool saveOn = false;
         public bool timeOn = true;
         public bool methodOn = true;
+        private bool textOn = false;
 
         [SerializeField, Tooltip("新しいログがUI範囲内に収まるようにテキストを調整する(Truncate限定)")]
         private bool viewInRect = true;
@@ -59,11 +60,12 @@ namespace KirinUtil {
         }
 
         private void OnEnable() {
-            if(saveOn) Application.logMessageReceived += HandleLog;
+            if (!inited) FileInit();
+            if (saveOn || textOn) Application.logMessageReceived += HandleLog;
         }
 
         private void OnDisable() {
-            if (saveOn) Application.logMessageReceived -= HandleLog;
+            if (saveOn || textOn) Application.logMessageReceived -= HandleLog;
         }
 
         private void HandleLog(string logData, string stackTrace, LogType logType) {
@@ -75,13 +77,15 @@ namespace KirinUtil {
                 time += "[" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + +DateTime.Now.Second + ":" + +DateTime.Now.Millisecond + "] ";
             }
             string thisLog = time + logData + Environment.NewLine + stackTrace + Environment.NewLine;
-            if (logText != null) logText.text += LogColor(thisLog, logType);
+            if (textOn) logText.text += LogColor(thisLog, logType);
 
-            if (!inited) FileInit();
-            string thisHtmlLog = LogHtml(thisLog, logType);
-            File.AppendAllText(saveFilePath, thisHtmlLog);
+            if (saveOn) {
+                if (!inited) FileInit();
+                string thisHtmlLog = LogHtml(thisLog, logType);
+                File.AppendAllText(saveFilePath, thisHtmlLog);
+            }
 
-            if (logText != null) {
+            if (textOn) {
                 if (viewInRect && logText.verticalOverflow == VerticalWrapMode.Truncate)
                     AdjustText();
             }
@@ -103,6 +107,10 @@ namespace KirinUtil {
                 }
                 saveFilePath = saveDir + saveFileName + DateTime.Now.ToString("yyyyMMddHHmmss") + ".html";
                 if (!File.Exists(saveFilePath)) File.AppendAllText(saveFilePath, "<html>" + Environment.NewLine + "<body>" + Environment.NewLine);
+            }
+
+            if (logText != null) {
+                textOn = true;
             }
 
             inited = true;

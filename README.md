@@ -1,20 +1,42 @@
-## 概要
-KirinUtilはインスタレーション、体験型ゲームアプリを作成するときにコードを簡易化できる様々な機能が入ったユーティリティAssetです。
+# 概要
+KirinUtilはインスタレーション、Kinectやwebカメラなどを使用した体験型ゲームアプリを作成するときにコードを簡易化できる様々な機能が入ったユーティリティAssetです。  
+  
+<b>[開発環境]</b>  
+OS: Windows10 Pro  
+Unity: 2019.2.19f1
 
-## 使い方
-1. 様々なスクリプトに[iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)を使っています。プロジェクトにiTweenをインポートください。
-2. QRコードを作るQRManagerは「Zxing」を使用しています。QRManagerを使う場合[ここからDL](https://github.com/micjahn/ZXing.Net/releases)して`zxing.unity.dll、zxing.unity.pdb、zxing.unity.xml`を`Assets/Plugins`に追加してください。QRManagerを使わない場合QRManager.csを消してください。
-3. 動画再生するMovieManagerは[AVProVideo](https://assetstore.unity.com/packages/tools/video/avpro-video-56355)が必要です。MovieManagerを使う場合プロジェクトに「AVProVideo」をインポートください。使わない場合、MovieManager.cs及びMovieManagerに関するコードを消してください。
+# 使い方
+### 導入方法
+1. [KirinUtil Latest](https://github.com/mizutanikirin/KirinUtil/releases/tag/Latest) からunitypackageをダウンロード＆インポートします。
+2. 様々なスクリプトに[iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)を使っています。プロジェクトにiTweenをインポートください。
+3. QRコードを作るQRManagerは「Zxing」を使用しています。QRManagerを使う場合[ここからDL](https://github.com/micjahn/ZXing.Net/releases)して`zxing.unity.dll、zxing.unity.pdb、zxing.unity.xml`を`Assets/Plugins`に追加してください。QRManagerを使わない場合QRManager.csを消してください。
+4. 動画再生するMovieManagerは[AVProVideo](https://assetstore.unity.com/packages/tools/video/avpro-video-56355)が必要です。MovieManagerを使う場合プロジェクトに「AVProVideo」をインポートください。使わない場合、MovieManager.cs及びMovieManagerに関するコードを消してください。
+5. 1～4が終わったらUnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。そうするとUtil、KRNMedia、KRNFileが追加されます。
 
-1～3が終わったら適当なGameObjectを作成して`Inspector > Add Compoment > Util`してください。
-そうするとUtil、KRNMedia、KRNFileが追加されます。
-
-よく使うCompomentは以下のようにUtilのボタンから追加することができます。
+使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
 ![Util](https://user-images.githubusercontent.com/4795806/76829918-93dee500-6867-11ea-9d56-862b18cbe658.png)
 
-※Utilを追加していないと他のKirinUtilのCompomentが使えない場合があります。
+### AppDataについて
+AppDataフォルダにはアプリで読み込む外部ファイルが入っています。  
+アプリのフォルダ構造は以下を想定してScriptのデフォルトのフォルダ位置などは設定しています。  
+```
+- [Release]
+  ├ App ← exeなど実行ファイルを入れる場所
+  │   
+  └ AppData ← 外部ファイルを入れる場所
+    ├ Settings ← xmlなど設定ファイル
+    └ Data
+      ├ Images ← 画像ファイル
+      ├ Movies ← 動画ファイル
+      └ Sounds ← 音ファイル
+```
 
-## 機能一覧
+通常Unityでは外部ファイルはStreamingAssetsフォルダに入れることが多いと思いますが、以下の理由でAppDataフォルダに入れることにしています。
+- exeの下に設定ファイルを置くとアプリ更新時に設定ファイルや画像など上書きされるリスクを回避するため。
+- StreamingAssetsに置くとビルド時に毎回自分でファイルを置かないといけなくなるため。
+- お客様が画像など少しでもわかりやすく変更できるため。
+		
+# 機能一覧
 ### Util
 - <b>[Util](https://github.com/mizutanikirin/KirinUtil/wiki/Util)</b>  
   計算を簡略化や位置の変更などする関数が使えます。  
@@ -104,3 +126,6 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   
 - <b>[ToggleButton](https://github.com/mizutanikirin/KirinUtil/wiki/ToggleButton)</b>  
   ButtonをToggleのようにOn/Offを切り替えられるようになります。
+
+# Lisence
+MIT License
