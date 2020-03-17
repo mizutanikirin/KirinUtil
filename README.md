@@ -8,10 +8,12 @@ Unity: 2019.2.19f1
 # 使い方
 ### 導入方法
 1. [KirinUtil Latest](https://github.com/mizutanikirin/KirinUtil/releases/tag/Latest) からunitypackageをダウンロード＆インポートします。
-2. 様々なスクリプトに[iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)を使っています。プロジェクトにiTweenをインポートください。
-3. QRコードを作るQRManagerは「Zxing」を使用しています。QRManagerを使う場合[ここからDL](https://github.com/micjahn/ZXing.Net/releases)して`zxing.unity.dll、zxing.unity.pdb、zxing.unity.xml`を`Assets/Plugins`に追加してください。QRManagerを使わない場合QRManager.csを消してください。
-4. 動画再生するMovieManagerは[AVProVideo](https://assetstore.unity.com/packages/tools/video/avpro-video-56355)が必要です。MovieManagerを使う場合プロジェクトに「AVProVideo」をインポートください。使わない場合、MovieManager.cs及びMovieManagerに関するコードを消してください。
-5. 1～4が終わったらUnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。そうするとUtil、KRNMedia、KRNFileが追加されます。
+2. `Player Setting > Player > Other Settings > Api Compatibility Level*`を`.Net 4.x`に設定してください。
+3. [iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)をプロジェクトにiTweenをインポートください。
+4. QRコードを作るQRManagerは「Zxing」を使用しています。QRManagerを使う場合[ここからDL](https://github.com/micjahn/ZXing.Net/releases)して`zxing.unity.dll、zxing.unity.pdb、zxing.unity.xml`を`Assets/Plugins`に追加してください。QRManagerを使わない場合QRManager.csを消してください。
+5. 動画再生するMovieManagerは[AVProVideo](https://assetstore.unity.com/packages/tools/video/avpro-video-56355)が必要です。MovieManagerを使う場合プロジェクトに「AVProVideo」をインポートください。使わない場合、MovieManager.cs及びMovieManagerに関するコードを消してください。
+6. 印刷をするPrintManagerでは`System.Drawing.dll`を使用しています。PrintManagerを使う場合は`Assets/KirinUtil/Plugins`に`System.Drawing.dll`を入れてください。印刷機能を使わない場合PrintManager.csを消してください。
+7. UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。そうするとUtil、KRNMedia、KRNFileが追加されます。
 
 使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
 ![Util](https://user-images.githubusercontent.com/4795806/76829918-93dee500-6867-11ea-9d56-862b18cbe658.png)
