@@ -292,6 +292,7 @@ MonoBehaviour:
   countDownText: {fileID: 770315367}
   slide: {fileID: 1456030539}
   dialog: {fileID: 904623037}
+  httpConnect: {fileID: 0}
   fadeObj: {fileID: 1199987079}
   fade2Obj: {fileID: 1536250645}
   brightObj: {fileID: 486932078}

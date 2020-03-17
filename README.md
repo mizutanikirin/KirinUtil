@@ -75,6 +75,7 @@ KirinUtilはインスタレーション、体験型ゲームアプリを作成�
   単純化したOSCの送信/受信やローカルIPアドレス取得などネットワーク系のManagerです。  
   
 - <b>[HttpConnect](https://github.com/mizutanikirin/KirinUtil/wiki/HttpConnect)</b>  
+  UnityWebRequestを使ったGet、Postと画像送信を簡単に実装できます。  
   
 - <b>[UDPReceiveManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPReceiveManager)</b>  
   
