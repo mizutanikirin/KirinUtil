@@ -27,15 +27,15 @@ namespace KirinUtil {
             if (stopTweenNext == null) _nextObj.AddComponent<StopTween>();
         }
 
-        public void FadeIn(GameObject _obj, float _fadeTime, float _delayTime, float toAlpha = 1) {
-            iTween.FadeTo(_obj, iTween.Hash("alpha", toAlpha, "time", _fadeTime, "delay", _delayTime));
+        public void FadeIn(GameObject _obj, float _fadeTime, float _delayTime) {
+            iTween.FadeTo(_obj, iTween.Hash("alpha", 1, "time", _fadeTime, "delay", _delayTime));
 
             StopTween stopTweenNow = _obj.GetComponent<StopTween>();
             if (stopTweenNow == null) _obj.AddComponent<StopTween>();
         }
 
-        public void FadeOut(GameObject _obj, float _fadeTime, float _delayTime, float toAlpha = 0) {
-            iTween.FadeTo(_obj, iTween.Hash("alpha", toAlpha, "time", _fadeTime, "delay", _delayTime));
+        public void FadeOut(GameObject _obj, float _fadeTime, float _delayTime) {
+            iTween.FadeTo(_obj, iTween.Hash("alpha", 0, "time", _fadeTime, "delay", _delayTime));
 
             StopTween stopTweenNow = _obj.GetComponent<StopTween>();
             if (stopTweenNow == null) _obj.AddComponent<StopTween>();
@@ -55,28 +55,28 @@ namespace KirinUtil {
                 outObj.GetComponent<CanvasGroup>().alpha = 1f;
             }
 
-            fadeGuiIn.FadeIn(time, delay, 1, easetype);
-            fadeGuiOut.FadeOut(time, delay, 0, easetype);
+            fadeGuiIn.FadeIn(time, delay, easetype);
+            fadeGuiOut.FadeOut(time, delay, easetype);
         }
 
-        public void FadeInUI(GameObject obj, float time, float delay, float toAlpha = 1, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
+        public void FadeInUI(GameObject obj, float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
             FadeGui fadeGui = obj.GetComponent<FadeGui>();
             if (fadeGui == null) {
                 fadeGui = obj.AddComponent<FadeGui>();
                 obj.GetComponent<CanvasGroup>().alpha = 0f;
             }
 
-            fadeGui.FadeIn(time, delay, toAlpha, easetype);
+            fadeGui.FadeIn(time, delay, easetype);
         }
 
-        public void FadeOutUI(GameObject obj, float time, float delay, float toAlpha = 0, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
+        public void FadeOutUI(GameObject obj, float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
             FadeGui fadeGui = obj.GetComponent<FadeGui>();
             if (fadeGui == null) {
                 fadeGui = obj.AddComponent<FadeGui>();
                 obj.GetComponent<CanvasGroup>().alpha = 1f;
             }
 
-            fadeGui.FadeOut(time, delay, toAlpha, easetype);
+            fadeGui.FadeOut(time, delay, easetype);
         }
         #endregion
 
@@ -369,7 +369,7 @@ namespace KirinUtil {
         #region UIDisplay
         public void UIDisplay(GameObject obj, FadeType fadeType, Direction direction, float animTime = 1f, float movePixel = 10f) {
 
-            if (fadeType == FadeType.FadeIn) FadeInUI(obj, animTime + 0.2f, 0, 1);
+            if (fadeType == FadeType.FadeIn) FadeInUI(obj, animTime + 0.2f, 0);
             else FadeOutUI(obj, animTime + 0.2f, 0, 0);
 
             Vector3 initPos = obj.transform.localPosition;

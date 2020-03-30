@@ -106,7 +106,19 @@ public class SampleManager : MonoBehaviour {
         dialog.Popup("yesNoDialog", Vector2.zero, "abcd", DialogManager.ButtonType.YesNo);
         
         StartCoroutine(DebugWatch());
+
+        // fade gui
+        Util.media.FadeOutUI(fadeObj2, 0.5f, 0);
+        StartCoroutine(Fade());
     }
+
+    private IEnumerator Fade() {
+        yield return new WaitForSeconds(1.0f);
+
+        Util.media.FadeInUI(fadeObj2, 0.5f, 0);
+    }
+
+    public GameObject fadeObj2;
 
     public void UDPReceived(string message) {
         print(message);

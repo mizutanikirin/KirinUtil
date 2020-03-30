@@ -7,19 +7,17 @@ namespace KirinUtil {
     public class FadeGui : MonoBehaviour {
 
         //private FadeType fadeType;
-        private float fadeAlpha;
 
         #region FadeOutGUI
-        public void FadeOut(float time, float delay, float alpha, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
+        public void FadeOut(float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
 
             gameObject.SetActive(true);
             //fadeType = FadeType.FadeOut;
-            fadeAlpha = alpha;
 
             iTween.ValueTo(gameObject,
                 iTween.Hash(
-                    "from", 1,
-                    "to", fadeAlpha,
+                    "from", 1f,
+                    "to", 0f,
                     "time", time,
                     "delay", delay,
                     "easetype", easetype,
@@ -37,22 +35,21 @@ namespace KirinUtil {
         private void FadeOutGUIComplete() {
             iTween.Stop(gameObject);
             gameObject.SetActive(false);
-            gameObject.GetComponent<CanvasGroup>().alpha = fadeAlpha;
+            gameObject.GetComponent<CanvasGroup>().alpha = 1;
         }
         #endregion
 
         #region FadeInGUI
-        public void FadeIn(float time, float delay, float alpha = 1, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
+        public void FadeIn(float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
 
             gameObject.SetActive(true);
             gameObject.GetComponent<CanvasGroup>().alpha = 0.0f;
             //fadeType = FadeType.FadeIn;
-            fadeAlpha = alpha;
 
             iTween.ValueTo(gameObject,
                 iTween.Hash(
                     "from", 0.0f,
-                    "to", fadeAlpha,
+                    "to", 1f,
                     "time", time,
                     "delay", delay,
                     "easetype", "easeOutCubic",
@@ -66,10 +63,10 @@ namespace KirinUtil {
             gameObject.GetComponent<CanvasGroup>().alpha = fade;
         }
 
-        private void FadeInGUIComplete() {
+        /*private void FadeInGUIComplete() {
             iTween.Stop(gameObject);
-            gameObject.GetComponent<CanvasGroup>().alpha = fadeAlpha;
-        }
+            gameObject.GetComponent<CanvasGroup>().alpha = 1;
+        }*/
 
         #endregion
 
