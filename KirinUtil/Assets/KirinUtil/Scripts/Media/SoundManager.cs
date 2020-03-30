@@ -170,18 +170,20 @@ namespace KirinUtil {
             allSoundNum = bgmSound.Length + seSound.Length;
             for (int i = 0; i < bgmSound.Length; i++) {
                 if (bgmSound[i].fileName != "") {
-                    StartCoroutine(LoadSoundFile(rootDataPath + soundPath + bgmSound[i].fileName, "bgm"));
+                    BGM.Add(null);
+                    StartCoroutine(LoadSoundFile(rootDataPath + soundPath + bgmSound[i].fileName, "bgm", i));
                 }
             }
 
             for (int i = 0; i < seSound.Length; i++) {
                 if (seSound[i].fileName != "") {
-                    StartCoroutine(LoadSoundFile(rootDataPath + soundPath + seSound[i].fileName, "se"));
+                    SE.Add(null);
+                    StartCoroutine(LoadSoundFile(rootDataPath + soundPath + seSound[i].fileName, "se", i));
                 }
             }
         }
 
-        IEnumerator LoadSoundFile(string path, string type) {
+        IEnumerator LoadSoundFile(string path, string type, int soundNum) {
             print("LoadSound: " + path);
 
             UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip("file://" + path, AudioType.WAV);
@@ -192,8 +194,8 @@ namespace KirinUtil {
                 Debug.LogError("soundLoadError: " + path);
             } else {
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(request);
-                if (type == "bgm") BGM.Add(clip);
-                else SE.Add(clip);
+                if (type == "bgm") BGM[soundNum] = clip;
+                else SE[soundNum] = clip;
             }
 
             loadedNum++;
