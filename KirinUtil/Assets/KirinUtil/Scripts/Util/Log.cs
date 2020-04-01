@@ -72,20 +72,28 @@ namespace KirinUtil {
             if (string.IsNullOrEmpty(logData))
                 return;
 
+            // time
             string time = "";
             if (timeOn) {
                 time += "[" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + +DateTime.Now.Second + ":" + +DateTime.Now.Millisecond + "] ";
             }
-            string thisLog = time + logData + Environment.NewLine + stackTrace + Environment.NewLine;
-            if (textOn) logText.text += LogColor(thisLog, logType);
 
+            // method
+            string thisLog;
+            if (methodOn) thisLog = time + logData + Environment.NewLine + stackTrace + Environment.NewLine;
+            else thisLog = time + logData + Environment.NewLine;
+
+            // save
             if (saveOn) {
                 if (!inited) FileInit();
                 string thisHtmlLog = LogHtml(thisLog, logType);
                 File.AppendAllText(saveFilePath, thisHtmlLog);
             }
 
+            // text
             if (textOn) {
+                logText.text += LogColor(thisLog, logType);
+
                 if (viewInRect && logText.verticalOverflow == VerticalWrapMode.Truncate)
                     AdjustText();
             }
