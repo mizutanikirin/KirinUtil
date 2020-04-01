@@ -17,7 +17,7 @@ Unity: 2019.2.19f1
 
 KirinUtilで使用できる機能は「機能一覧」を御覧ください。一部動作デモは`Assets/KirinUtil/Demo/`に入っています。  
 使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
-![Util](https://user-images.githubusercontent.com/4795806/76829918-93dee500-6867-11ea-9d56-862b18cbe658.png)
+![Util](https://user-images.githubusercontent.com/4795806/78106744-fff84600-742e-11ea-906d-96da81bdd02a.png)
 
 ### AppDataについて
 AppDataフォルダにはアプリで読み込む外部ファイルが入っています。  
