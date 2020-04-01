@@ -165,11 +165,11 @@ public class KRNUtilEditor : Editor {
                             thisObj.AddComponent<SlideManager>();
                         }
                     }
-                    if (GUILayout.Button("XmlUI", GUILayout.Width(150))) {
-                        GameObject thisObj = ExistComponent("xmlUI");
-                        if (thisObj.GetComponent<XmlUI>() == null) {
-                            Debug.Log("Added XmlUI");
-                            thisObj.AddComponent<XmlUI>();
+                    if (GUILayout.Button("ProcessManager", GUILayout.Width(150))) {
+                        GameObject thisObj = ExistComponent("processManager");
+                        if (thisObj.GetComponent<ProcessManager>() == null) {
+                            Debug.Log("Added ProcessManager");
+                            thisObj.AddComponent<ProcessManager>();
                         }
                     }
                 }
@@ -208,18 +208,6 @@ public class KRNUtilEditor : Editor {
                         if (thisObj.GetComponent<UDPReceiveManager>() == null) {
                             Debug.Log("Added UDPReceiveManager");
                             thisObj.AddComponent<UDPReceiveManager>();
-                        }
-                    }
-                }
-                GUILayout.EndHorizontal();
-
-                GUILayout.BeginHorizontal();
-                {
-                    if (GUILayout.Button("ProcessManager", GUILayout.Width(150))) {
-                        GameObject thisObj = ExistComponent("processManager");
-                        if (thisObj.GetComponent<ProcessManager>() == null) {
-                            Debug.Log("Added ProcessManager");
-                            thisObj.AddComponent<ProcessManager>();
                         }
                     }
                 }
