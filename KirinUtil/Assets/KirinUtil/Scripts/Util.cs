@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 //
 //  MIZUTANI KIRIN
-//  Copyright 2016-2019 MIZUTANI KIRIN All Rights Reserved.
+//  Copyright 2016-2020 MIZUTANI KIRIN All Rights Reserved.
 //
 //  NOTICE: MIZUTANI KIRIN permits you to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
