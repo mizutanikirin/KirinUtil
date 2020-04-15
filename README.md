@@ -1,5 +1,8 @@
 # 概要
 KirinUtilはインスタレーション、Kinectやwebカメラなどを使用した体験型ゲームアプリを作成するときにコードを簡易化できる様々な機能が入ったユーティリティAssetです。  
+
+KirinUtilの機能は今まで作成してきたアプリのよく使う機能をまとめたもので、下に掲載しているアプリのようなアプリを作成していくことができます。　　
+[インタラクティブ開発 | TheDesignium](https://www.thedesignium.com/interactive)　　
 　　
 <b>[開発環境]</b>  
 OS: Windows10 Pro  
