@@ -7,6 +7,8 @@ using System.Xml;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
+using System.IO;
+
 public class SampleManager : MonoBehaviour {
 
     public CountDown countDown;
@@ -104,7 +106,7 @@ public class SampleManager : MonoBehaviour {
         //dialog.Popup("toast", Vector2.zero, "abcd", DialogManager.ButtonType.None);
         //dialog.Popup("okDialog", Vector2.zero, "abcd", DialogManager.ButtonType.OK);
         dialog.Popup("yesNoDialog", Vector2.zero, "abcd", DialogManager.ButtonType.YesNo);
-        
+
         StartCoroutine(DebugWatch());
 
         // fade gui
@@ -345,6 +347,7 @@ public class SampleManager : MonoBehaviour {
     */
 
     // xmlでファイル名指定してからMovieを読み取りたいときの読み込み方例
+    /*
     public void LoadMovie(GameObject movieUIPrefab, GameObject parentObj, List<string> filePath) {
         for (int i = 0; i < filePath.Count; i++) {
             GameObject movieObj = Util.media.CreateUIObj(movieUIPrefab, parentObj, "movieObj" + i, Vector3.zero, Vector3.zero, Vector3.one);
@@ -356,7 +359,7 @@ public class SampleManager : MonoBehaviour {
             Util.movie.uiMovies[Util.movie.uiMovies.Length - 1].obj = movieObj;
             Util.movie.uiMovies[Util.movie.uiMovies.Length - 1].volume = 1;
         }
-    }
+    }*/
 
     // json読み取りサンプル
     #region json sample
@@ -412,4 +415,6 @@ public class SampleManager : MonoBehaviour {
         }
     }
     #endregion
+
+
 }

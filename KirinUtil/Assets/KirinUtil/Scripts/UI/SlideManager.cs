@@ -1,4 +1,6 @@
-﻿using KirinUtil;
+﻿#define MovieEnable
+
+using KirinUtil;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -120,7 +122,9 @@ namespace KirinUtil {
 
                     string type = "";
                     if (extention == ".png" || extention == ".jpg" || extention == ".gif") type = "image";
-                    else if (extention == ".mp4" || extention == ".mov") type = "movie";
+#if MovieEnable
+                    if (extention == ".mp4" || extention == ".mov") type = "movie";
+#endif
 
                     if (type != "") {
                         print("slide set: " + filePath);
@@ -130,6 +134,7 @@ namespace KirinUtil {
                             Util.image.LoadAndSetImage(filePath, imageObj.GetComponent<Image>());
                             thisList.Add(imageObj);
                         } else {
+#if MovieEnable
                             GameObject movieObj = Util.media.CreateUIObj(movieUIPrefab, slideList[i].parentObj, "movieObj" + j, Vector3.zero, Vector3.zero, Vector3.one);
                             Array.Resize(ref Util.movie.uiMovies, Util.movie.uiMovies.Length + 1);
                             Util.movie.uiMovies[Util.movie.uiMovies.Length - 1] = new MovieManager.UIMovies();
@@ -142,6 +147,7 @@ namespace KirinUtil {
                             thisList.Add(movieObj);
 
                             slideList[i].timeList[j] = -1;
+#endif
                         }
 
                         if (i == 0) thisList[0].SetActive(true);
@@ -160,7 +166,7 @@ namespace KirinUtil {
         //----------------------------------
         //  コントロール
         //----------------------------------
-        #region コントロール
+#region コントロール
         public void Play(string id) {
             print("slide Play: " + id);
 
@@ -205,12 +211,13 @@ namespace KirinUtil {
             slideTimer = new Timer();
             slideTimer.LimitTime = slideTimeList[slideNum];
         }
-        #endregion
+#endregion
 
         private void Update() {
             if (!isSlidePlay) return;
 
             if (slideTimeList[slideNum] == -1) {
+#if MovieEnable
                 // 動画の場合
                 float movieNowTime = Util.movie.GetCurrentTimeMs(playingMovieNum) / 1000f;
 
@@ -220,6 +227,7 @@ namespace KirinUtil {
                         NextSlide();
                     }
                 }
+#endif
             } else {
                 // 画像の場合
                 if (slideTimer.Update()) {
@@ -253,20 +261,24 @@ namespace KirinUtil {
         }
 
         private void SlideMoviePlay() {
+#if MovieEnable
             string[] nameStr = slideObjList[slideNum].name.Split("_"[0]);
             playingMovieNum = int.Parse(nameStr[1]);
             Util.movie.Play(playingMovieNum);
             isPlayingMovie = true;
             movieAllTime = Util.movie.mediaPlayer[playingMovieNum].Info.GetDurationMs() / 1000f;
+#endif
         }
 
         private void SlideStopMovie() {
+#if MovieEnable
             if (isPlayingMovie) {
                 string[] nameStr = slideObjList[slideNum].name.Split("_"[0]);
                 playingMovieNum = int.Parse(nameStr[1]);
                 Util.movie.Stop(playingMovieNum);
             }
             isPlayingMovie = false;
+#endif
         }
     }
 }

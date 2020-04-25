@@ -1,5 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#define MovieEnable
+#define QREnable
+#define PrintEnable
+
 using UnityEngine;
 using UnityEditor;
 using KirinUtil;
@@ -9,6 +11,7 @@ public class KRNUtilEditor : Editor {
 
     private bool basicOpen = true;
     private bool optionOpen = true;
+
     private Util util;
     private GUIStyle titleStyle;
     private GameObject utilObj;
@@ -85,6 +88,7 @@ public class KRNUtilEditor : Editor {
                 }
                 GUILayout.EndHorizontal();
 
+#if MovieEnable
                 GUILayout.BeginHorizontal();
                 {
                     if (GUILayout.Button("MovieManager", GUILayout.Width(150))) {
@@ -96,6 +100,7 @@ public class KRNUtilEditor : Editor {
                     }
                 }
                 GUILayout.EndHorizontal();
+#endif
             }
             EditorGUILayout.EndVertical();
             EditorGUI.indentLevel--;
@@ -127,6 +132,7 @@ public class KRNUtilEditor : Editor {
                         }
                     }
 
+#if QREnable
                     if (GUILayout.Button("QRManager", GUILayout.Width(150))) {
                         GameObject thisObj = ExistComponent("qrManager");
                         if (thisObj.GetComponent<QRManager>() == null) {
@@ -134,6 +140,7 @@ public class KRNUtilEditor : Editor {
                             thisObj.AddComponent<QRManager>();
                         }
                     }
+#endif
                 }
                 GUILayout.EndHorizontal();
 
@@ -184,6 +191,7 @@ public class KRNUtilEditor : Editor {
                             thisObj.AddComponent<CountDown>();
                         }
                     }
+#if PrintEnable
                     if (GUILayout.Button("PrintManager", GUILayout.Width(150))) {
                         GameObject thisObj = ExistComponent("printManager");
                         if (thisObj.GetComponent<PrintManager>() == null) {
@@ -191,6 +199,7 @@ public class KRNUtilEditor : Editor {
                             thisObj.AddComponent<PrintManager>();
                         }
                     }
+#endif
                 }
                 GUILayout.EndHorizontal();
 

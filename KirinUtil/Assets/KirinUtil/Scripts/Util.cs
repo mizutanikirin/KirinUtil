@@ -8,6 +8,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#define MovieEnable
+
 using UnityEngine;
 using System;
 using System.Text;
@@ -24,7 +26,7 @@ namespace KirinUtil {
 
     [RequireComponent(typeof(KRNMedia))]
     [RequireComponent(typeof(KRNFile))]
-    public class Util:MonoBehaviour {
+    public class Util : MonoBehaviour {
 
         [NonSerialized] public static KRNMedia media;
         [NonSerialized] public static KRNFile file;
@@ -32,7 +34,9 @@ namespace KirinUtil {
 
         [NonSerialized] public static SoundManager sound;
         [NonSerialized] public static ImageManager image;
+#if MovieEnable
         [NonSerialized] public static MovieManager movie;
+#endif
 
         private void Awake() {
 
@@ -40,16 +44,18 @@ namespace KirinUtil {
             file = gameObject.GetComponent<KRNFile>();
             net = gameObject.GetComponent<NetManager>();
 
-            if(gameObject.transform.Find("soundManager") != null) 
+            if (gameObject.transform.Find("soundManager") != null)
                 sound = gameObject.transform.Find("soundManager").gameObject.GetComponent<SoundManager>();
             if (gameObject.transform.Find("imageManager") != null)
                 image = gameObject.transform.Find("imageManager").gameObject.GetComponent<ImageManager>();
+#if MovieEnable
             if (gameObject.transform.Find("movieManager") != null)
                 movie = gameObject.transform.Find("movieManager").gameObject.GetComponent<MovieManager>();
+#endif
 
         }
 
-		private void Update() {
+        private void Update() {
             BasicSettingUpdate();
         }
 
@@ -61,8 +67,8 @@ namespace KirinUtil {
         private static bool set = false;
         private static Vector3 mousePosPre = Vector3.zero;
         private static float cursorTimer;
-		public static void BasicSetting(bool _cursor) {
-			print("BasicSetting");
+        public static void BasicSetting(bool _cursor) {
+            print("BasicSetting");
 
             set = true;
             cursorVisible = _cursor;
@@ -79,7 +85,7 @@ namespace KirinUtil {
 
         }
 
-        private void BasicSettingUpdate(){
+        private void BasicSettingUpdate() {
             if (!set) return;
 
             if (Input.GetKeyUp(KeyCode.Escape)) {
@@ -90,14 +96,14 @@ namespace KirinUtil {
             if (!cursorVisible) {
                 Vector3 mousePos = Input.mousePosition;
 
-                if (mousePos != mousePosPre){
+                if (mousePos != mousePosPre) {
                     Cursor.visible = true;
                     cursorTimer = 0.0f;
-                }else{
-					if (cursorTimer >= 2.0f) {
-						Cursor.visible = false;
-					} else {
-						cursorTimer += Time.deltaTime;
+                } else {
+                    if (cursorTimer >= 2.0f) {
+                        Cursor.visible = false;
+                    } else {
+                        cursorTimer += Time.deltaTime;
                     }
                 }
 
@@ -483,10 +489,10 @@ namespace KirinUtil {
             bc[1] = p2.y - p1.y;
 
             float babc = ba[0] * bc[0] + ba[1] * bc[1];
-            float ban = ( ba[0] * ba[0] ) + ( ba[1] * ba[1] );
-            float bcn = ( bc[0] * bc[0] ) + ( bc[1] * bc[1] );
-            float radian = Mathf.Acos(babc / ( Mathf.Sqrt(ban * bcn) ));
-            float angle = (float)( radian * 180 / Mathf.PI );  // 結果（ラジアンから角度に変換）
+            float ban = (ba[0] * ba[0]) + (ba[1] * ba[1]);
+            float bcn = (bc[0] * bc[0]) + (bc[1] * bc[1]);
+            float radian = Mathf.Acos(babc / (Mathf.Sqrt(ban * bcn)));
+            float angle = (float)(radian * 180 / Mathf.PI);  // 結果（ラジアンから角度に変換）
 
             return angle;
         }
@@ -777,9 +783,10 @@ namespace KirinUtil {
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
             canvasPos.x += canvasRect.sizeDelta.x * 0.5f;
             canvasPos.y += canvasRect.sizeDelta.y * 0.5f;
+            canvasPos.z = z;
 
             Vector3 pos = camera.ScreenToWorldPoint(canvasPos);
-            pos.z = z;
+            //pos.z = z;
 
             return pos;
         }
@@ -1219,7 +1226,7 @@ namespace KirinUtil {
         public static string GetSeparatedString(List<string> dataList, string separate) {
             string data = "";
 
-            for (int i = 0; i < dataList.Count-1; i++) {
+            for (int i = 0; i < dataList.Count - 1; i++) {
                 data += dataList[i] + separate;
             }
             data += dataList[dataList.Count - 1];
@@ -1265,7 +1272,7 @@ namespace KirinUtil {
                 userDataList.Add(thisData);
             }
 
-            if(direction == Direction.Up) userDataList.Sort((a, b) => Math.Sign(b.value - a.value));
+            if (direction == Direction.Up) userDataList.Sort((a, b) => Math.Sign(b.value - a.value));
             else userDataList.Sort((a, b) => Math.Sign(a.value - b.value));
 
             return userDataList;

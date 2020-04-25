@@ -9,24 +9,32 @@ OS: Windows10 Pro
 Unity: 2019.2.19f1
 
 # 使い方
-### 導入方法
-1. [KirinUtil Latest](https://github.com/mizutanikirin/KirinUtil/releases/tag/Latest) からunitypackageをダウンロード＆インポートします。
+### 1. インストール(基本)
+1. [KirinUtil Latest](https://github.com/mizutanikirin/KirinUtil/releases/tag/Latest) から最新のunitypackageをダウンロード＆インポートします。
 2. `Player Setting > Player > Other Settings > Api Compatibility Level*`を`.Net 4.x`に設定してください。
 3. [iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)をプロジェクトにiTweenをインポートください。
-4. QRコードを作るQRManagerは「Zxing」を使用しています。QRManagerを使う場合[ここからDL](https://github.com/micjahn/ZXing.Net/releases)して`zxing.unity.dll、zxing.unity.pdb、zxing.unity.xml`を`Assets/Plugins`に追加してください。QRManagerを使わない場合QRManager.csを消してください。
-5. 動画再生するMovieManagerは[AVProVideo](https://assetstore.unity.com/packages/tools/video/avpro-video-56355)が必要です。MovieManagerを使う場合プロジェクトに「AVProVideo」をインポートください。使わない場合、MovieManager.cs及びMovieManagerに関するコードを消してください。
-6. 印刷をするPrintManagerでは`System.Drawing.dll`を使用しています。PrintManagerを使う場合は`Assets/KirinUtil/Plugins`に`System.Drawing.dll`を入れてください。印刷機能を使わない場合PrintManager.csを消してください。
-7. UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。そうするとUtil、KRNMedia、KRNFileが追加されます。
 
-KirinUtilで使用できる機能は「機能一覧」を御覧ください。一部動作デモは`Assets/KirinUtil/Demo/`に入っています。  
+### 2. インストール(オプション)
+1. QRコードを作るQRManagerは「Zxing」を使用しています。QRManagerを使う場合[ここからDL](https://github.com/micjahn/ZXing.Net/releases)して`zxing.unity.dll、zxing.unity.pdb、zxing.unity.xml`を`Assets/Plugins`に追加してください。
+2. 動画再生するMovieManagerは[AVProVideo](https://assetstore.unity.com/packages/tools/video/avpro-video-56355)が必要です。MovieManagerを使う場合プロジェクトに「AVProVideo」をインポートしてください。
+3. 印刷をするPrintManagerでは`System.Drawing.dll`を使用しています。PrintManagerを使う場合は`Assets/KirinUtil/Plugins`に`System.Drawing.dll`を入れてください。
+
+※1 上記の機能を使わない場合は`Menu > KirinUtil > Remove Class`から各項目を選択して機能削除し、その後一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。  
+※2 再度、追加したいときは`Menu > KirinUtil > Add Class`から追加したい項目を選択し追加してください。
+
+### 3. Unityでの使い方
+UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。Util、KRNMedia、KRNFileが追加されます。  
+  
+KirinUtilで使用できる機能は下の「機能一覧」を御覧ください。一部動作デモは`Assets/KirinUtil/Demo/`に入っています。  
 使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
-![Util](https://user-images.githubusercontent.com/4795806/78106744-fff84600-742e-11ea-906d-96da81bdd02a.png)
+![Util](https://user-images.githubusercontent.com/4795806/78106744-fff84600-742e-11ea-906d-96da81bdd02a.png)  
 
-### インタラクション・体験型アプリ開発に必要な知識
+
+### 4. インタラクション・体験型アプリ開発に必要な知識
 インタラクション・体験型アプリ開発に必要なことをこちらにまとめました。アプリ初心者の方はこちらも参考になるかと思います。  
 [インタラクション・体験型アプリ開発に必要な知識まとめ](https://note.com/thedesignium/n/n5660ba38dcb6)
 
-### AppDataについて
+### 5. AppDataについて
 AppDataフォルダにはアプリで読み込む外部ファイルが入っています。  
 アプリのフォルダ構造は以下を想定してScriptのデフォルトのフォルダ位置などは設定しています。  
 ```
