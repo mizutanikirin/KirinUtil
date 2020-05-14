@@ -538,12 +538,16 @@ MonoBehaviour:
   rootPath: 0
   movieDirPath: /../../AppData/Data/Movies/
   uiMovies: []
+  rootDataPath: 
   LoadedUIMovieEvent:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   movieFinishEvent:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
+  readyToPlayCount: 0
 --- !u!224 &349909742 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7948513186775375067, guid: 20d50ac721383304f8eed74c3fabf312,
@@ -2140,12 +2144,10 @@ MonoBehaviour:
     folderPath: /../../AppData/Data/Slide/
     fileName:
     - slide0.png
-    - slide1.mp4
     - slide2.png
     timeList:
     - 5
     - 10
-    - 5
   slideEndEvent:
     m_PersistentCalls:
       m_Calls:

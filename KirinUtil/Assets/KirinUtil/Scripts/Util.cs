@@ -8,7 +8,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#define MovieEnable
+//#define MovieEnable
 
 using UnityEngine;
 using System;
@@ -768,7 +768,7 @@ namespace KirinUtil {
         //----------------------------------
         #region Canvas座標をworld座標に変換
         // mouse
-        public static Vector2 GetWorldMousePos(Camera camera, float z) {
+        public static Vector3 GetWorldMousePos(Camera camera, float z) {
 
             Vector3 mousePos = Input.mousePosition;
             Vector3 pos = camera.ScreenToWorldPoint(mousePos);
@@ -850,7 +850,7 @@ namespace KirinUtil {
 
             string lineSt = "";
 
-            print("GetLineText: " + str.IndexOf("<br>"));
+            //print("GetLineText: " + str.IndexOf("<br>"));
             if (str.IndexOf("<br>") != -1) {
                 string[] del = { "<br>" };
                 string[] st = str.Split(del, StringSplitOptions.None);
@@ -1191,6 +1191,8 @@ namespace KirinUtil {
         //----------------------------------
         #region 指定した区切り文字で区切りListで値を返す
         public static List<string> GetSplitStringList(string str, string separate) {
+            if (str == "") return null;
+
             List<string> dataList = new List<string>();
 
             string[] dataArray = str.Split(separate[0]);
@@ -1200,6 +1202,8 @@ namespace KirinUtil {
         }
 
         public static List<int> GetSplitIntList(string str, string separate) {
+            if (str == "") return null;
+
             List<int> dataList = new List<int>();
 
             string[] dataArray = str.Split(separate[0]);
@@ -1211,6 +1215,8 @@ namespace KirinUtil {
         }
 
         public static List<float> GetSplitFloatList(string str, string separate) {
+            if (str == "") return null;
+
             List<float> dataList = new List<float>();
 
             string[] dataArray = str.Split(separate[0]);
@@ -1224,6 +1230,8 @@ namespace KirinUtil {
 
         #region Listを指定した区切り文字で区切ったstringを返す
         public static string GetSeparatedString(List<string> dataList, string separate) {
+            if (dataList == null || dataList.Count == 0) return "";
+
             string data = "";
 
             for (int i = 0; i < dataList.Count - 1; i++) {
@@ -1235,6 +1243,8 @@ namespace KirinUtil {
         }
 
         public static string GetSeparatedString(List<int> dataList, string separate) {
+            if (dataList == null || dataList.Count == 0) return "";
+
             string data = "";
 
             for (int i = 0; i < dataList.Count - 1; i++) {
@@ -1246,6 +1256,8 @@ namespace KirinUtil {
         }
 
         public static string GetSeparatedString(List<float> dataList, string separate) {
+            if (dataList == null || dataList.Count == 0) return "";
+
             string data = "";
 
             for (int i = 0; i < dataList.Count - 1; i++) {
@@ -1256,6 +1268,7 @@ namespace KirinUtil {
             return data;
         }
         #endregion
+
 
         //----------------------------------
         //  オブジェクトのListを小さい順番

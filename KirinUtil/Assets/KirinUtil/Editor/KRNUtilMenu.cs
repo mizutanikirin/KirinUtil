@@ -14,7 +14,7 @@ public class KRNUtilMenu : Editor {
     [MenuItem("KirinUtil/Add Class/MovieManager", false, 1)]
     private static void AddMovieManager() {
 
-        bool isOK = EditorUtility.DisplayDialog("Remove MovieManager", "MovieManagerを追加しますか？", "Yes", "No");
+        bool isOK = EditorUtility.DisplayDialog("Remove MovieManager", "MovieManagerを追加しますか？\n\n※MovieManagerを使うには別途「AVPro Video」が必要になります。", "Yes", "No");
         if (!isOK) return;
 
         string filePath = Application.dataPath + "/KirinUtil/Scripts/Media/MovieManager.cs";
@@ -35,7 +35,7 @@ public class KRNUtilMenu : Editor {
             if (File.Exists(backupPath + ".meta")) File.Delete(backupPath + ".meta");
             File.Move(backupPath, filePath);
 
-            Debug.Log("MovieManagerを追加しました。");
+            Debug.Log("MovieManagerを追加しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。\n別途「AVPro Video」( https://assetstore.unity.com/packages/tools/video/avpro-video-56355 )をインポートしてください。");
         } else {
             Debug.Log(backupPath + "が存在しません。");
         }
@@ -47,7 +47,7 @@ public class KRNUtilMenu : Editor {
     [MenuItem("KirinUtil/Add Class/QRManager", false, 1)]
     private static void AddQRManager() {
 
-        bool isOK = EditorUtility.DisplayDialog("Remove QRManager", "QRManagerを追加しますか？", "Yes", "No");
+        bool isOK = EditorUtility.DisplayDialog("Remove QRManager", "QRManagerを追加しますか？\n\n※QRManagerを使うには別途「Zxing」が必要になります。", "Yes", "No");
         if (!isOK) return;
 
         string filePath = Application.dataPath + "/KirinUtil/Scripts/Media/QRManager.cs";
@@ -58,7 +58,7 @@ public class KRNUtilMenu : Editor {
 
             if (File.Exists(backupPath + ".meta")) File.Delete(backupPath + ".meta");
             File.Move(backupPath, filePath);
-            Debug.Log("QRManagerを追加しました。");
+            Debug.Log("QRManagerを追加しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。\nzing( https://github.com/micjahn/ZXing.Net/releases )をダウンロードしてzxing.unity.dll、zxing.unity.pdb、zxing.unity.xmlをAssets/Plugins/に追加してください。");
         } else {
             Debug.Log(backupPath + "が存在しません。");
         }
@@ -69,7 +69,7 @@ public class KRNUtilMenu : Editor {
     [MenuItem("KirinUtil/Add Class/PrintManager", false, 1)]
     private static void AddPrintManager() {
 
-        bool isOK = EditorUtility.DisplayDialog("Remove PrintManager", "PrintManagerを追加しますか？", "Yes", "No");
+        bool isOK = EditorUtility.DisplayDialog("Remove PrintManager", "PrintManagerを追加しますか？\n\n※PrintManagerを使うには別途「System.Drawing.dll」が必要になります。", "Yes", "No");
         if (!isOK) return;
 
         string filePath = Application.dataPath + "/KirinUtil/Scripts/Util/PrintManager.cs";
@@ -80,7 +80,7 @@ public class KRNUtilMenu : Editor {
 
             if (File.Exists(backupPath + ".meta")) File.Delete(backupPath + ".meta");
             File.Move(backupPath, filePath);
-            Debug.Log("PrintManagerを追加しました。");
+            Debug.Log("PrintManagerを追加しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。\nAssets/KirinUtil/Plugins/にSystem.Drawing.dllを入れてください。");
         } else {
             Debug.Log(backupPath + "が存在しません。");
         }
@@ -114,7 +114,7 @@ public class KRNUtilMenu : Editor {
             if (File.Exists(filePath + ".meta")) File.Delete(filePath + ".meta");
             File.Move(filePath, filePath + ".backup");
 
-            Debug.Log("MovieManagerを削除しました。");
+            Debug.Log("MovieManagerを削除しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。");
         } else {
             Debug.Log("MovieManagerが存在しません。");
         }
@@ -136,7 +136,7 @@ public class KRNUtilMenu : Editor {
 
             if (File.Exists(filePath + ".meta")) File.Delete(filePath + ".meta");
             File.Move(filePath, filePath + ".backup");
-            Debug.Log("QRManagerを削除しました。");
+            Debug.Log("QRManagerを削除しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。");
         } else {
             Debug.Log(filePath + "が存在しません。");
         }
@@ -157,7 +157,7 @@ public class KRNUtilMenu : Editor {
 
             if (File.Exists(filePath + ".meta")) File.Delete(filePath + ".meta");
             File.Move(filePath, filePath + ".backup");
-            Debug.Log("PrintManagerを削除しました。");
+            Debug.Log("PrintManagerを削除しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。");
         } else {
             Debug.Log(filePath + "が存在しません。");
         }

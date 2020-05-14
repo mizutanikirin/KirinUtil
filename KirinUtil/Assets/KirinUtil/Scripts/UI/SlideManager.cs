@@ -1,4 +1,4 @@
-﻿#define MovieEnable
+﻿//#define MovieEnable
 
 using KirinUtil;
 using System;

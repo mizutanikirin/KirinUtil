@@ -1,6 +1,6 @@
-﻿#define MovieEnable
-#define QREnable
-#define PrintEnable
+﻿//#define MovieEnable
+//#define QREnable
+//#define PrintEnable
 
 using UnityEngine;
 using UnityEditor;

@@ -15,12 +15,20 @@ Unity: 2019.2.19f1
 3. [iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)をプロジェクトにiTweenをインポートください。
 
 ### 2. インストール(オプション)
-1. QRコードを作るQRManagerは「Zxing」を使用しています。QRManagerを使う場合[ここからDL](https://github.com/micjahn/ZXing.Net/releases)して`zxing.unity.dll、zxing.unity.pdb、zxing.unity.xml`を`Assets/Plugins`に追加してください。
-2. 動画再生するMovieManagerは[AVProVideo](https://assetstore.unity.com/packages/tools/video/avpro-video-56355)が必要です。MovieManagerを使う場合プロジェクトに「AVProVideo」をインポートしてください。
-3. 印刷をするPrintManagerでは`System.Drawing.dll`を使用しています。PrintManagerを使う場合は`Assets/KirinUtil/Plugins`に`System.Drawing.dll`を入れてください。
+1. 動画再生するMovieManagerを使う場合
+  `Menu > KirinUtil > Add Class > MovieManager`を選択して追加してください。  
+  MovieManagerは[AVProVideo](https://assetstore.unity.com/packages/tools/video/avpro-video-56355)が必要です。プロジェクトに「AVProVideo」をインポートしてください。  
+  
+2. QRコードを作るQRManagerを使う場合
+  `Menu > KirinUtil > Add Class > QRManager`を選択して追加してください。  
+  QRManagerは「Zxing」を使用しています。QRManagerを使う場合[ここからDL](https://github.com/micjahn/ZXing.Net/releases)して`zxing.unity.dll、zxing.unity.pdb、zxing.unity.xml`を`Assets/Plugins`に追加してください。
+  
+3. 印刷をするPrintManagerを使う場合
+  `Menu > KirinUtil > Add Class > PrintManager`を選択して追加してください。  
+  PrintManagerでは`System.Drawing.dll`を使用しています。`Assets/KirinUtil/Plugins`に`System.Drawing.dll`を入れてください。
 
-※1 上記の機能を使わない場合は`Menu > KirinUtil > Remove Class`から各項目を選択して機能削除し、その後一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。  
-※2 再度、追加したいときは`Menu > KirinUtil > Add Class`から追加したい項目を選択し追加してください。
+※1 各機能を追加/削除した後は一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。そうしないとEditorに反映されません。  
+※2 再度、削除したいときは`Menu > KirinUtil > Rmove Class`から追加したい項目を選択し追加してください。 
 
 ### 3. Unityでの使い方
 UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。Util、KRNMedia、KRNFileが追加されます。  

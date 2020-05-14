@@ -98,9 +98,9 @@ public class SampleManager : MonoBehaviour {
         Util.EquidistantX(equidistantObjList, -200, 300, 0);
 
         // スライド
-        slide.Set();
-        Util.movie.LoadUIMovies(); // スライド登録したあとにムービーをロードしないといけない
-        slide.Play("slide1");
+        //slide.Set();
+        //Util.movie.LoadUIMovies(); // スライド登録したあとにムービーをロードしないといけない
+        //slide.Play("slide1");
 
         // dialog
         //dialog.Popup("toast", Vector2.zero, "abcd", DialogManager.ButtonType.None);

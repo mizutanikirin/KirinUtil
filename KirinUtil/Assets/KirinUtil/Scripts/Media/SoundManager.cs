@@ -124,7 +124,7 @@ namespace KirinUtil {
             //LoadSounds();
         }
 
-        private void SEInit() {
+        public void SEInit() {
             SEsources = new AudioSource[seSound.Length];
             for (int i = 0; i < SEsources.Length; i++) {
                 SEsources[i] = gameObject.AddComponent<AudioSource>();
