@@ -37,6 +37,8 @@ KirinUtilで使用できる機能は下の「機能一覧」を御覧くださ�
 使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
 ![Util](https://user-images.githubusercontent.com/4795806/78106744-fff84600-742e-11ea-906d-96da81bdd02a.png)  
 
+以下アプリをKirinUtilサンプルアプリとして公開しています。
+- [tone color](https://github.com/mizutanikirin/ToneColor)
 
 ### 4. インタラクション・体験型アプリ開発に必要な知識
 インタラクション・体験型アプリ開発に必要なことをこちらにまとめました。アプリ初心者の方はこちらも参考になるかと思います。  
