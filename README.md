@@ -39,6 +39,7 @@ KirinUtilで使用できる機能は下の「機能一覧」を御覧くださ�
 
 以下アプリをKirinUtilサンプルアプリとして公開しています。
 - [tone color](https://github.com/mizutanikirin/ToneColor)
+- [タッチゲーム](https://github.com/mizutanikirin/SampleKirinUtil)
 
 ### 4. インタラクション・体験型アプリ開発に必要な知識
 インタラクション・体験型アプリ開発に必要なことをこちらにまとめました。アプリ初心者の方はこちらも参考になるかと思います。  
