@@ -43,20 +43,25 @@ public class WindowSize : MonoBehaviour {
 
     public void SetWindowDirect() {
 
+#if UNITY_STANDALONE_WIN
         SetWindowLong(GetForegroundWindow(), GWL_STYLE, WS_BORDER);
         bool result = SetWindowPos(GetForegroundWindow(), 0, (int)screenPosition.x, (int)screenPosition.y, (int)screenPosition.width, (int)screenPosition.height, SWP_SHOWWINDOW);
-
         print("setWindowDirect: " + result);
+#endif
     }
 
     public void SetScreenMini() {
+#if UNITY_STANDALONE_WIN
         print("SetScreenMini");
         ShowWindow(GetForegroundWindow(), 2);
+#endif
     }
 
     public void SetScreenNormal() {
+#if UNITY_STANDALONE_WIN
         print("SetScreenNormal");
         ShowWindow(GetForegroundWindow(), 9);
+#endif
     }
 
 }

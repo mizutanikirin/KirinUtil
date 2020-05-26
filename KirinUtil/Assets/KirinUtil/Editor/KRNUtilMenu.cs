@@ -35,7 +35,8 @@ public class KRNUtilMenu : Editor {
             if (File.Exists(backupPath + ".meta")) File.Delete(backupPath + ".meta");
             File.Move(backupPath, filePath);
 
-            Debug.Log("MovieManagerを追加しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。\n別途「AVPro Video」( https://assetstore.unity.com/packages/tools/video/avpro-video-56355 )をインポートしてください。");
+            Debug.Log("MovieManagerを追加しました。\n別途「AVPro Video」( https://assetstore.unity.com/packages/tools/video/avpro-video-56355 )をインポートしてください。");
+            AssetDatabase.Refresh();
         } else {
             Debug.Log(backupPath + "が存在しません。");
         }
@@ -58,7 +59,8 @@ public class KRNUtilMenu : Editor {
 
             if (File.Exists(backupPath + ".meta")) File.Delete(backupPath + ".meta");
             File.Move(backupPath, filePath);
-            Debug.Log("QRManagerを追加しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。\nzing( https://github.com/micjahn/ZXing.Net/releases )をダウンロードしてzxing.unity.dll、zxing.unity.pdb、zxing.unity.xmlをAssets/Plugins/に追加してください。");
+            Debug.Log("QRManagerを追加しました。\nzing( https://github.com/micjahn/ZXing.Net/releases )をダウンロードしてzxing.unity.dll、zxing.unity.pdb、zxing.unity.xmlをAssets/Plugins/に追加してください。");
+            AssetDatabase.Refresh();
         } else {
             Debug.Log(backupPath + "が存在しません。");
         }
@@ -80,7 +82,8 @@ public class KRNUtilMenu : Editor {
 
             if (File.Exists(backupPath + ".meta")) File.Delete(backupPath + ".meta");
             File.Move(backupPath, filePath);
-            Debug.Log("PrintManagerを追加しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。\nAssets/KirinUtil/Plugins/にSystem.Drawing.dllを入れてください。");
+            Debug.Log("PrintManagerを追加しました。\nAssets/KirinUtil/Plugins/にSystem.Drawing.dllを入れてください。");
+            AssetDatabase.Refresh();
         } else {
             Debug.Log(backupPath + "が存在しません。");
         }
@@ -114,7 +117,8 @@ public class KRNUtilMenu : Editor {
             if (File.Exists(filePath + ".meta")) File.Delete(filePath + ".meta");
             File.Move(filePath, filePath + ".backup");
 
-            Debug.Log("MovieManagerを削除しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。");
+            Debug.Log("MovieManagerを削除しました。");
+            AssetDatabase.Refresh();
         } else {
             Debug.Log("MovieManagerが存在しません。");
         }
@@ -136,7 +140,8 @@ public class KRNUtilMenu : Editor {
 
             if (File.Exists(filePath + ".meta")) File.Delete(filePath + ".meta");
             File.Move(filePath, filePath + ".backup");
-            Debug.Log("QRManagerを削除しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。");
+            Debug.Log("QRManagerを削除しました。");
+            AssetDatabase.Refresh();
         } else {
             Debug.Log(filePath + "が存在しません。");
         }
@@ -157,7 +162,8 @@ public class KRNUtilMenu : Editor {
 
             if (File.Exists(filePath + ".meta")) File.Delete(filePath + ".meta");
             File.Move(filePath, filePath + ".backup");
-            Debug.Log("PrintManagerを削除しました。一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。");
+            Debug.Log("PrintManagerを削除しました。");
+            AssetDatabase.Refresh();
         } else {
             Debug.Log(filePath + "が存在しません。");
         }
@@ -186,6 +192,14 @@ public class KRNUtilMenu : Editor {
         Debug.Log("ScreenShot: " + filename);
     }
     #endregion
+
+    //----------------------------------
+    //  About
+    //----------------------------------
+    [MenuItem("KirinUtil/About KirinUtil")]
+    private static void About() {
+        bool isOK = EditorUtility.DisplayDialog("About KirinUtil", "KirinUtil " + Util.version + "\n\n" + Util.copylight, "Close");
+    }
 
     //----------------------------------
     //  functions

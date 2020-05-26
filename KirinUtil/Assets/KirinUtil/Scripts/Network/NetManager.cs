@@ -37,6 +37,7 @@ namespace KirinUtil {
         private Dictionary<string, ServerLog> servers = null;
         private bool isRun = false;
         private int oscReceiveLogCount = 0;
+        private long lastTimeStamp;
         public bool receiveOn;
 
         #endregion
@@ -100,41 +101,46 @@ namespace KirinUtil {
                 //print("servers: " + item.Value.log.Count);
                 //print(oscReceiveLogCount + "  " + item.Value.log.Count);
                 //if (item.Value.log.Count > 0) {
-                if (oscReceiveLogCount != item.Value.log.Count) {
-                    int lastPacketIndex = item.Value.packets.Count - 1;
-                    int arrayNum = item.Value.packets[lastPacketIndex].Data.Count;
+                //if (oscReceiveLogCount != item.Value.log.Count) {
+                for (int i = 0; i < item.Value.packets.Count; i++) {
+                    if (lastTimeStamp < item.Value.packets[i].TimeStamp) {
+                        lastTimeStamp = item.Value.packets[i].TimeStamp;
 
-                    if (arrayNum > 0) {
-                        OSCData oscData = new OSCData();
+                        int arrayNum = item.Value.packets[i].Data.Count;
 
-                        // Server name
-                        oscData.Key = item.Key;
+                        if (arrayNum > 0) {
+                            OSCData oscData = new OSCData();
 
-                        // OSC address
-                        oscData.Address = item.Value.packets[lastPacketIndex].Address;
+                            // Server name
+                            oscData.Key = item.Key;
 
-                        // First data value
-                        string dataStr = "";
-                        int dataCount = item.Value.packets[lastPacketIndex].Data.Count;
-                        for (int i = 0; i < dataCount; i++) {
-                            if (i == dataCount - 1)
-                                dataStr += item.Value.packets[lastPacketIndex].Data[i];
-                            else
-                                dataStr += item.Value.packets[lastPacketIndex].Data[i] + ",";
+                            // OSC address
+                            oscData.Address = item.Value.packets[i].Address;
+
+                            // First data value
+                            string dataStr = "";
+                            int dataCount = item.Value.packets[i].Data.Count;
+                            for (int j = 0; j < dataCount; j++) {
+                                if (j == dataCount - 1)
+                                    dataStr += item.Value.packets[i].Data[j];
+                                else
+                                    dataStr += item.Value.packets[i].Data[j] + ",";
+                            }
+                            oscData.Data = dataStr;
+
+                            oscDataList.Add(oscData);
                         }
-                        oscData.Data = dataStr;
 
-                        oscDataList.Add(oscData);
+
                     }
-
                 }
 
-                oscReceiveLogCount = item.Value.log.Count;
+                //oscReceiveLogCount = item.Value.log.Count;
             }
 
             if (oscDataList.Count > 0) {
                 oscReceiveEvent.Invoke(oscDataList);
-                print(oscDataList[0].Data);
+                //print(oscDataList[0].Data);
             }
 
             return oscDataList;

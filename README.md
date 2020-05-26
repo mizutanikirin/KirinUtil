@@ -27,8 +27,7 @@ Unity: 2019.2.19f1
   `Menu > KirinUtil > Add Class > PrintManager`を選択して追加してください。  
   PrintManagerでは`System.Drawing.dll`を使用しています。`Assets/KirinUtil/Plugins`に`System.Drawing.dll`を入れてください。
 
-※1 各機能を追加/削除した後は一旦UnityEditorからフォーカスを外し再度Unityにフォーカスを当ててください。そうしないとEditorに反映されません。  
-※2 再度、削除したいときは`Menu > KirinUtil > Rmove Class`から追加したい項目を選択し追加してください。 
+※ 再度、削除したいときは`Menu > KirinUtil > Rmove Class`から追加したい項目を選択し追加してください。 
 
 ### 3. Unityでの使い方
 UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。Util、KRNMedia、KRNFileが追加されます。  

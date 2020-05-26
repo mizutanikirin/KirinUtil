@@ -39,7 +39,7 @@ public class SampleManager : MonoBehaviour {
         Util.BasicSetting(false);
 
         Util.media.MoveHorizon(fadeObj, 20, 0.5f, 0, 5, true, true);
-        Util.sound.LoadSounds();
+        //Util.sound.LoadSounds();
 
         //ReadJsonSample();
 
@@ -183,8 +183,8 @@ public class SampleManager : MonoBehaviour {
 
 
     public void SoundLoaded() {
-        print("Play");
-        //util.media.sound.PlaySE(0);
+        print("SoundLoaded");
+        //Util.sound.PlaySE(0);
     }
 
     public void ImageLoaded() {
@@ -204,7 +204,6 @@ public class SampleManager : MonoBehaviour {
         }
 
         // osc
-        //OSCReceiveUpdate();
         OSCSendUpdate();
     }
 

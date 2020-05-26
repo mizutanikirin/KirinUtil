@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rootPath: 0
   soundPath: /../../AppData/Data/Sounds/
+  awakeLoad: 0
   LoadedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -492,62 +493,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &338134779
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 338134780}
-  - component: {fileID: 338134781}
-  m_Layer: 0
-  m_Name: movieManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &338134780
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338134779}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 951170096}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &338134781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338134779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98eb3c732258f2a478dfd353c91b719f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rootPath: 0
-  movieDirPath: /../../AppData/Data/Movies/
-  uiMovies: []
-  rootDataPath: 
-  LoadedUIMovieEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  movieFinishEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  readyToPlayCount: 0
 --- !u!224 &349909742 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7948513186775375067, guid: 20d50ac721383304f8eed74c3fabf312,
@@ -1324,7 +1269,7 @@ Transform:
   - {fileID: 904623038}
   - {fileID: 1456030540}
   - {fileID: 1982851711}
-  - {fileID: 338134780}
+  - {fileID: 1825474832}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2586,6 +2531,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1825474831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1825474832}
+  - component: {fileID: 1825474833}
+  m_Layer: 0
+  m_Name: movieManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1825474832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825474831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 951170096}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1825474833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825474831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc73ce95bc5d0a43890ac2389d5b5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootPath: 0
+  movieDirPath: /../../AppData/Data/Movies/
+  uiMovies: []
+  LoadedUIMovieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  movieFinishEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1898580184
 GameObject:
   m_ObjectHideFlags: 0

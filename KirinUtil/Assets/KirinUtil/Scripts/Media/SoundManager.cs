@@ -63,6 +63,7 @@ namespace KirinUtil {
         [SerializeField] RootPath rootPath;
 
         public string soundPath = "/../../AppData/Data/Sounds/";
+        public bool awakeLoad;
         [SerializeField]
         private UnityEngine.Events.UnityEvent LoadedEvent = new UnityEngine.Events.UnityEvent();
 
@@ -121,7 +122,7 @@ namespace KirinUtil {
             // SE AudioSource
             SEInit();
 
-            //LoadSounds();
+            if(awakeLoad) LoadSounds();
         }
 
         public void SEInit() {
