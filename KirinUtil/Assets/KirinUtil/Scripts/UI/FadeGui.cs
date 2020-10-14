@@ -14,7 +14,7 @@ namespace KirinUtil
         public void FadeOut(float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic)
         {
 
-            iTween.Stop(gameObject, "ValueTo");
+            iTween.Stop(gameObject, "value");
             gameObject.SetActive(true);
             //fadeType = FadeType.FadeOut;
 
@@ -49,7 +49,7 @@ namespace KirinUtil
         public void FadeIn(float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic)
         {
 
-            iTween.Stop(gameObject, "ValueTo");
+            iTween.Stop(gameObject, "value");
             gameObject.SetActive(true);
             gameObject.GetComponent<CanvasGroup>().alpha = 0.0f;
             //fadeType = FadeType.FadeIn;
