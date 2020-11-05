@@ -80,7 +80,8 @@ namespace KirinUtil {
         public static void BasicSetting(Vector2 screenSize, bool fullscreen, int targetFps, bool _cursor) {
             print("BasicSetting");
 
-            Screen.SetResolution((int)screenSize.x, (int)screenSize.y, fullscreen, targetFps);
+            Application.targetFrameRate = targetFps;
+            Screen.SetResolution((int)screenSize.x, (int)screenSize.y, fullscreen);
 
             set = true;
             cursorVisible = _cursor;

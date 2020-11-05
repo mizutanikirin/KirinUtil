@@ -227,6 +227,50 @@ public class KRNUtilEditor : Editor {
         }
     }
 
+
+    //----------------------------------
+    //  Hierarchy
+    //----------------------------------
+    [MenuItem("GameObject/KirinUtil/Group Object", false, 0)]
+    public static void CreateGroupObj()
+    {
+        GameObject obj = new GameObject();
+        obj.name = "Group";
+        obj.transform.position = Vector3.zero;
+
+        if (Selection.activeGameObject != null)
+        {
+            if (Selection.activeGameObject.transform.parent != null)
+            {
+                obj.transform.SetParent(Selection.activeGameObject.transform.parent);
+            }
+        }
+
+        Undo.RegisterCreatedObjectUndo(obj, "Create Group");
+    }
+
+    [MenuItem("GameObject/KirinUtil/GroupUI Object", false, 0)]
+    public static void CreateGroupUI()
+    {
+        GameObject obj = new GameObject();
+        obj.name = "GroupUI";
+        RectTransform trf = obj.AddComponent<RectTransform>();
+
+        if (Selection.activeGameObject != null)
+        {
+            if (Selection.activeGameObject.transform.parent != null)
+            {
+                obj.transform.SetParent(Selection.activeGameObject.transform.parent);
+            }
+        }
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.rotation = Quaternion.Euler(Vector3.zero);
+        obj.transform.localScale = Vector3.one;
+        trf.sizeDelta = Vector2.zero;
+
+        Undo.RegisterCreatedObjectUndo(obj, "Create GroupUI");
+    }
+
     //----------------------------------
     //  function
     //----------------------------------

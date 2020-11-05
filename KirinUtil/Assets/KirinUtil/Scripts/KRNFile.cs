@@ -58,14 +58,14 @@ namespace KirinUtil {
         public void AllDelFile(string dirPath) {
             if (!Directory.Exists(dirPath)) return;
 
-            //ディレクトリ以外の全ファイルを削除
+            // ディレクトリ以外の全ファイルを削除
             string[] filePaths = Directory.GetFiles(dirPath);
             foreach (string filePath in filePaths) {
                 File.SetAttributes(filePath, FileAttributes.Normal);
                 File.Delete(filePath);
             }
 
-            //ディレクトリの中のディレクトリも再帰的に削除
+            // ディレクトリの中のディレクトリも再帰的に削除
             string[] directoryPaths = Directory.GetDirectories(dirPath);
             foreach (string directoryPath in directoryPaths) {
                 AllDelFile(directoryPath);
