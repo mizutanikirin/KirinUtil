@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KirinUtil {
+namespace KirinUtil
+{
     [RequireComponent(typeof(CanvasGroup))]
-    public class FadeGui : MonoBehaviour {
+    public class FadeGui : MonoBehaviour
+    {
 
         //private FadeType fadeType;
 
         #region FadeOutGUI
-        public void FadeOut(float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
+        public void FadeOut(float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic)
+        {
 
+            iTween.Stop(gameObject, "value");
             gameObject.SetActive(true);
             //fadeType = FadeType.FadeOut;
 
@@ -28,11 +32,13 @@ namespace KirinUtil {
 
         }
 
-        private void FadeOutGUIUpdate(float fade) {
+        private void FadeOutGUIUpdate(float fade)
+        {
             gameObject.GetComponent<CanvasGroup>().alpha = fade;
         }
 
-        private void FadeOutGUIComplete() {
+        private void FadeOutGUIComplete()
+        {
             iTween.Stop(gameObject);
             gameObject.SetActive(false);
             gameObject.GetComponent<CanvasGroup>().alpha = 1;
@@ -40,8 +46,10 @@ namespace KirinUtil {
         #endregion
 
         #region FadeInGUI
-        public void FadeIn(float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic) {
+        public void FadeIn(float time, float delay, iTween.EaseType easetype = iTween.EaseType.easeOutCubic)
+        {
 
+            iTween.Stop(gameObject, "value");
             gameObject.SetActive(true);
             gameObject.GetComponent<CanvasGroup>().alpha = 0.0f;
             //fadeType = FadeType.FadeIn;
@@ -59,23 +67,22 @@ namespace KirinUtil {
 
         }
 
-        private void FadeInGUIUpdate(float fade) {
+        private void FadeInGUIUpdate(float fade)
+        {
             gameObject.GetComponent<CanvasGroup>().alpha = fade;
         }
 
-        /*private void FadeInGUIComplete() {
-            iTween.Stop(gameObject);
-            gameObject.GetComponent<CanvasGroup>().alpha = 1;
-        }*/
 
         #endregion
 
-        private void OnDisable() {
+        private void OnDisable()
+        {
             iTween.Stop(gameObject);
             gameObject.GetComponent<CanvasGroup>().alpha = 1.0f;
         }
 
-        private void OnDestroy() {
+        private void OnDestroy()
+        {
             iTween.Stop(gameObject);
         }
     }

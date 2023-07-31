@@ -171,6 +171,47 @@ public class KRNUtilMenu : Editor {
     #endregion
 
     //----------------------------------
+    //  初期フォルダ作成
+    //----------------------------------
+    #region Screenshot
+    [MenuItem("KirinUtil/Create initial folder")]
+    private static void CreateInitFolder()
+    {
+        List<string> dirList = new List<string>()
+        {
+            "/Projects",
+            "/Projects/Materials",
+            "/Projects/Prefabs",
+            "/Projects/Scenes",
+            "/Projects/Scripts",
+            "/Projects/Textures",
+            "/Projects/Prefabs"
+        };
+
+        int createdNum = 0;
+        string dirPathList = System.Environment.NewLine;
+        for (int i = 0; i < dirList.Count; i++)
+        {
+            string dirPath = Application.dataPath + dirList[i];
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+                dirPathList += dirPath + System.Environment.NewLine;
+                createdNum++;
+            }
+        }
+
+        if (createdNum > 0)
+        {
+            Debug.Log("初期フォルダの作成を完了しました。" + dirPathList);
+            AssetDatabase.Refresh();
+        }
+        else 
+            Debug.Log("初期フォルダはすでに存在しているため作成できませんでした。");
+    }
+    #endregion
+
+    //----------------------------------
     //  スクリーンショット
     //----------------------------------
     #region Screenshot

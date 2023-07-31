@@ -31,8 +31,16 @@ public class SampleManager : MonoBehaviour {
     public string settingDataDir = "Setting/";
     public string appXmlFileName = "app_setting.xml";
 
+    public Texture texture;
+
+    public GameObject frontObj;
+
     // Use this for initialization
     void Start() {
+
+        Debug.Log((float)Math.Round(0.4, MidpointRounding.AwayFromZero));
+        Debug.Log((float)Math.Round(0.5, MidpointRounding.AwayFromZero));
+        Debug.Log((float)Math.Round(0.6, MidpointRounding.AwayFromZero));
 
         //Screen.SetResolution(screenWidth, screenHeight, false, 60);
 
@@ -112,6 +120,10 @@ public class SampleManager : MonoBehaviour {
         // fade gui
         Util.media.FadeOutUI(fadeObj2, 0.5f, 0);
         StartCoroutine(Fade());
+
+        // カメラの前にObjectを配置する。
+        //frontObj.transform.position = Util.GetPosInFrontOfCamera(Camera.main, 3f, true);
+        Util.SetObjectInFrontOfCamera(Camera.main, frontObj, 3f, false, 0, true, false);
     }
 
     private IEnumerator Fade() {
@@ -205,6 +217,13 @@ public class SampleManager : MonoBehaviour {
 
         // osc
         OSCSendUpdate();
+
+        // test
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            print("test");
+            Util.image.ToTexture2D(texture);
+        }
     }
 
     //----------------------------------

@@ -13,6 +13,7 @@ namespace KirinUtil {
         public class UIMovies {
             public string fileName = "";
             public GameObject obj;
+            public MediaPlayer player;
             public bool visible;
             public bool loop;
             public float volume;
@@ -20,6 +21,7 @@ namespace KirinUtil {
             public void Init() {
                 fileName = "";
                 obj = null;
+                player = null;
                 visible = false;
                 loop = false;
                 volume = 1.0f;
@@ -104,11 +106,19 @@ namespace KirinUtil {
             for (int i = 0; i < uiMovies.Length; i++) {
                 if (uiMovies[i].fileName != "") {
                     // create mediaplayer
-                    GameObject obj = new GameObject("mediaplayer_" + uiMovies[i].fileName);
-                    obj.transform.SetParent(parentObj.transform);
-                    MediaPlayer player = obj.AddComponent<MediaPlayer>();
-                    player.m_Loop = uiMovies[i].loop;
-
+                    MediaPlayer player;
+                    if (uiMovies[i].player == null)
+                    {
+                        GameObject obj = new GameObject("mediaplayer_" + uiMovies[i].fileName);
+                        obj.transform.SetParent(parentObj.transform);
+                        player = obj.AddComponent<MediaPlayer>();
+                        player.m_Loop = uiMovies[i].loop;
+                    }
+                    else
+                    {
+                        player = uiMovies[i].player;
+                        player.m_Loop = uiMovies[i].loop;
+                    }
 
                     player.OpenVideoFromFile(
                         MediaPlayer.FileLocation.AbsolutePathOrURL,
@@ -123,7 +133,7 @@ namespace KirinUtil {
                         movie = uiMovies[i].obj.AddComponent<DisplayUGUI>();
                         movie._noDefaultDisplay = false;
                         movie._displayInEditor = false;
-                        movie.color = new Color(0, 0, 0, 0);
+                        movie.color = new Color(1, 1, 1, 1);
                         movie._mediaPlayer = player;
                     } else {
                         movie._mediaPlayer = player;
