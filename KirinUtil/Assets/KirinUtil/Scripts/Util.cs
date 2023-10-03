@@ -15,6 +15,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 namespace KirinUtil {
 
@@ -27,8 +28,8 @@ namespace KirinUtil {
     [RequireComponent(typeof(KRNMedia))]
     [RequireComponent(typeof(KRNFile))]
     public class Util : MonoBehaviour {
-        [NonSerialized] public static string version = "ver1.0.6";
-        [NonSerialized] public static string copylight = "Copyright 2016-2020 MIZUTANI KIRIN All Rights Reserved.";
+        [NonSerialized] public static string version = "ver1.0.7";
+        [NonSerialized] public static string copylight = "Copyright 2016-2022 MIZUTANI KIRIN All Rights Reserved.";
 
         [NonSerialized] public static KRNMedia media;
         [NonSerialized] public static KRNFile file;
@@ -687,52 +688,6 @@ namespace KirinUtil {
             return count;
         }
 
-        //----------------------------------
-        //  UIScene
-        //----------------------------------
-        /*#region UIScene
-        private static List<GameObject> sceneUI;
-        private static int sceneNum;
-
-        public static void SceneInit(List<GameObject> uis) {
-            sceneUI = new List<GameObject>();
-
-            for (int i = 0; i < uis.Count; i++) {
-                sceneUI.Add(uis[i]);
-                uis[i].SetActive(false);
-            }
-            uis[0].SetActive(true);
-
-            sceneNum = 0;
-        }
-
-        public static void ChangeScene() {
-            int sceneNumPre = sceneNum;
-
-            sceneNum++;
-            if (sceneNum >= sceneUI.Count) sceneNum = 0;
-
-            SceneFade(sceneNumPre, sceneNum);
-        }
-
-        public static void ChangeSceneUI(int num) {
-            SceneFade(sceneNum, num);
-            sceneNum = num;
-        }
-
-        public static int GetSceneNum() {
-            return sceneNum;
-        }
-
-        private static void SceneFade(int numPre, int numNext) {
-            iTween.Stop(sceneUI[numPre]);
-            iTween.Stop(sceneUI[numNext]);
-            media.FadeOutUI(sceneUI[numPre], 0.5f, 0);
-            media.FadeInUI(sceneUI[numNext], 0.5f, 0);
-        }
-
-        #endregion*/
-
 
         //----------------------------------
         //  world座標をCanvas座標に変換
@@ -845,6 +800,43 @@ namespace KirinUtil {
         }
         #endregion
 
+
+        //----------------------------------
+        //  rotation
+        //----------------------------------
+        #region rotation
+
+        public static void RotationX(GameObject obj, float x)
+        {
+            obj.transform.rotation = Quaternion.Euler(x, obj.transform.rotation.eulerAngles.y, obj.transform.rotation.eulerAngles.z);
+        }
+
+        public static void RotationY(GameObject obj, float y)
+        {
+            obj.transform.rotation = Quaternion.Euler(obj.transform.rotation.eulerAngles.x, y, obj.transform.rotation.eulerAngles.z);
+        }
+
+        public static void RotationZ(GameObject obj, float z)
+        {
+            obj.transform.rotation = Quaternion.Euler(obj.transform.rotation.eulerAngles.x, obj.transform.rotation.eulerAngles.y, z);
+        }
+
+        public static void LocalRotationX(GameObject obj, float x)
+        {
+            obj.transform.localRotation = Quaternion.Euler(x, obj.transform.rotation.eulerAngles.y, obj.transform.rotation.eulerAngles.z);
+        }
+
+        public static void LocalRotationY(GameObject obj, float y)
+        {
+            obj.transform.localRotation = Quaternion.Euler(obj.transform.rotation.eulerAngles.x, y, obj.transform.rotation.eulerAngles.z);
+        }
+
+        public static void LocalRotationZ(GameObject obj, float z)
+        {
+            obj.transform.localRotation = Quaternion.Euler(obj.transform.rotation.eulerAngles.x, obj.transform.rotation.eulerAngles.y, z);
+        }
+        #endregion
+
         //----------------------------------
         //  改行処理
         //----------------------------------
@@ -867,7 +859,6 @@ namespace KirinUtil {
             } else {
                 lineSt = str;
             }
-
 
             return lineSt;
         }
@@ -1126,7 +1117,6 @@ namespace KirinUtil {
         #endregion
 
 
-
         //----------------------------------
         //  Splitして指定した配列番号の値を
         //  取得する
@@ -1308,6 +1298,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  検索文字がリストにあるかどうか
         //----------------------------------
@@ -1403,5 +1394,89 @@ namespace KirinUtil {
         }
         #endregion
 
+
+        //----------------------------------
+        //  Cameraの前にObjectを表示させる
+        //----------------------------------
+        #region Cameraの前にObjectを表示させる
+
+        // カメラの前の座標を取得
+        // camera: camera
+        // distance: カメラからの距離
+        // yFix: y軸を固定するかどうか
+        // yPos: 固定するy位置(yFixがTrueのときのみ有効)
+        public static Vector3 GetPosInFrontOfCamera(Camera camera, float distance, bool yFix, float yPos = 0)
+        {
+            var direction = Quaternion.Euler(camera.transform.eulerAngles) * Vector3.forward;
+
+            float y = direction.y;
+            if (yFix) y = yPos;
+
+            return camera.transform.position + new Vector3(direction.x, y, direction.z) * distance;
+        }
+
+        // カメラの前にObjectを配置する
+        // camera: camera
+        // targetObj: 配置するGameObject
+        // distance: カメラからの距離
+        // yFix: y軸を固定するかどうか
+        // yPos: 固定するy位置(yFixがTrueのときのみ有効)
+        // cameraDirectionOn: カメラの方向に回転させるかどうか
+        // cameraDirectionXFixOn: Trueのときxの回転角度は0となる(cameraDirectionOnがTrueのときのみ有効)
+        public static void SetObjectInFrontOfCamera(Camera camera, GameObject targetObj, float distance, bool yFix, float yPos = 0, bool cameraDirectionOn = true, bool cameraDirectionXFixOn = false)
+        {
+            targetObj.transform.position = GetPosInFrontOfCamera(camera, distance, yFix, yPos);
+            if (cameraDirectionOn)
+            {
+                if(cameraDirectionXFixOn) targetObj.transform.rotation = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, camera.transform.rotation.eulerAngles.z);
+                else targetObj.transform.rotation = Quaternion.Euler(camera.transform.rotation.eulerAngles);
+            }
+        }
+        #endregion
+
+        //----------------------------------
+        //  ui(スクロール)でfitさせている
+        //  ときのlayoutGroupの更新 
+        //----------------------------------
+        #region (layoutGroupの更新)
+        public void LayoutChange(VerticalLayoutGroup layoutGroup)
+        {
+            layoutGroup.CalculateLayoutInputHorizontal();
+            layoutGroup.CalculateLayoutInputVertical();
+            layoutGroup.SetLayoutHorizontal();
+            layoutGroup.SetLayoutVertical();
+        }
+        public void LayoutChange(HorizontalLayoutGroup layoutGroup)
+        {
+            layoutGroup.CalculateLayoutInputHorizontal();
+            layoutGroup.CalculateLayoutInputVertical();
+            layoutGroup.SetLayoutHorizontal();
+            layoutGroup.SetLayoutVertical();
+        }
+        #endregion
+
+        //----------------------------------
+        //  日本語関連
+        //----------------------------------
+        // 文字列のカウント(日本語は2, 英数字は1としてカウント)
+        public int TextLengthJPN(string message)
+        {
+            int textLength = 0;
+            for (int i = 0; i < message.Length; i++)
+            {
+                string word = message.Substring(i, 1);
+                if (IsJPN(word)) textLength += 2;
+                else textLength += 1;
+            }
+
+            return textLength;
+        }
+
+        // 文字列に日本語が入っているかどうか
+        public bool IsJPN(string message)
+        {
+            var isJapanese = Regex.IsMatch(message, @"[\p{IsHiragana}\p{IsKatakana}\p{IsCJKUnifiedIdeographs}]+");
+            return isJapanese;
+        }
     }
 }

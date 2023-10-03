@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine.Networking;
 
-namespace KirinUtil {
+namespace KirinUtil
+{
     [Serializable]
-    public class BGMSound {
+    public class BGMSound
+    {
         public string id = "";
         public string fileName = "";
         //public bool loop = true;
         public bool mute = false;
         public float volume = 1.0f;
 
-        public void Init() {
+        public void Init()
+        {
             id = "";
             fileName = "";
             //loop = true;
@@ -24,14 +27,16 @@ namespace KirinUtil {
     }
 
     [Serializable]
-    public class SESound {
+    public class SESound
+    {
         public string id = "";
         public string fileName = "";
         public bool mute = false;
         public float volume = 1.0f;
         public bool loop = false;
 
-        public void Init() {
+        public void Init()
+        {
             id = "";
             fileName = "";
             loop = false;
@@ -41,19 +46,23 @@ namespace KirinUtil {
     }
 
     // 音管理クラス
-    public class SoundManager : MonoBehaviour {
+    public class SoundManager : MonoBehaviour
+    {
 
         //----------------------------------
         //  var
         //----------------------------------
         protected static SoundManager instance;
-        public static SoundManager Instance {
-            get {
+        public static SoundManager Instance
+        {
+            get
+            {
                 return instance;
             }
         }
 
-        public enum RootPath {
+        public enum RootPath
+        {
             dataPath,
             persistentDataPath,
             temporaryCachePath,
@@ -90,19 +99,23 @@ namespace KirinUtil {
         //  init
         //----------------------------------
         #region init
-        void OnEnable() {
+        void OnEnable()
+        {
             LoadedEvent.AddListener(Loaded);
         }
 
-        void OnDisable() {
+        void OnDisable()
+        {
             LoadedEvent.RemoveListener(Loaded);
         }
 
-        void Loaded() {
+        void Loaded()
+        {
             print("Loaded All Sound");
         }
 
-        void Awake() {
+        void Awake()
+        {
 
             instance = this;
             oneShotSoundCount = 0;
@@ -122,30 +135,37 @@ namespace KirinUtil {
             // SE AudioSource
             SEInit();
 
-            if(awakeLoad) LoadSounds();
+            if (awakeLoad) LoadSounds();
         }
 
-        public void SEInit() {
+        public void SEInit()
+        {
             SEsources = new AudioSource[seSound.Length];
-            for (int i = 0; i < SEsources.Length; i++) {
+            for (int i = 0; i < SEsources.Length; i++)
+            {
                 SEsources[i] = gameObject.AddComponent<AudioSource>();
             }
         }
 
-        void Update() {
+        void Update()
+        {
             // ミュート設定
-            for (int i = 0; i < bgmSound.Length; i++) {
+            for (int i = 0; i < bgmSound.Length; i++)
+            {
                 SetBGMMute(i, bgmSound[i].mute);
             }
-            for (int i = 0; i < seSound.Length; i++) {
+            for (int i = 0; i < seSound.Length; i++)
+            {
                 SetSEMute(i, seSound[i].mute);
             }
 
             // ボリューム設定
-            for (int i = 0; i < bgmSound.Length; i++) {
+            for (int i = 0; i < bgmSound.Length; i++)
+            {
                 SetBGMVolume(i, bgmSound[i].volume);
             }
-            for (int i = 0; i < seSound.Length; i++) {
+            for (int i = 0; i < seSound.Length; i++)
+            {
                 SetSEVolume(i, seSound[i].volume);
             }
         }
@@ -155,59 +175,77 @@ namespace KirinUtil {
         //  Common
         //----------------------------------
         #region Load Sound file
-        public void LoadSounds() {
+        public void LoadSounds()
+        {
 
             string rootDataPath;
-            if (rootPath == RootPath.dataPath) {
+            if (rootPath == RootPath.dataPath)
+            {
                 rootDataPath = Application.dataPath;
-            } else if (rootPath == RootPath.persistentDataPath) {
+            }
+            else if (rootPath == RootPath.persistentDataPath)
+            {
                 rootDataPath = Application.persistentDataPath;
-            } else if (rootPath == RootPath.streamingAssetsPath) {
+            }
+            else if (rootPath == RootPath.streamingAssetsPath)
+            {
                 rootDataPath = Application.streamingAssetsPath;
-            } else {
+            }
+            else
+            {
                 rootDataPath = Application.temporaryCachePath;
             }
 
             allSoundNum = bgmSound.Length + seSound.Length;
-            for (int i = 0; i < bgmSound.Length; i++) {
-                if (bgmSound[i].fileName != "") {
+            for (int i = 0; i < bgmSound.Length; i++)
+            {
+                if (bgmSound[i].fileName != "")
+                {
                     BGM.Add(null);
                     StartCoroutine(LoadSoundFile(rootDataPath + soundPath + bgmSound[i].fileName, "bgm", i));
                 }
             }
 
-            for (int i = 0; i < seSound.Length; i++) {
-                if (seSound[i].fileName != "") {
+            for (int i = 0; i < seSound.Length; i++)
+            {
+                if (seSound[i].fileName != "")
+                {
                     SE.Add(null);
                     StartCoroutine(LoadSoundFile(rootDataPath + soundPath + seSound[i].fileName, "se", i));
                 }
             }
         }
 
-        IEnumerator LoadSoundFile(string path, string type, int soundNum) {
+        IEnumerator LoadSoundFile(string path, string type, int soundNum)
+        {
             print("LoadSound: " + path);
 
             UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip("file://" + path, AudioType.WAV);
 
             yield return request.SendWebRequest();
 
-            if (request.isHttpError || request.isNetworkError) {
+            if (request.isHttpError || request.isNetworkError)
+            {
                 Debug.LogError("soundLoadError: " + path);
-            } else {
+            }
+            else
+            {
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(request);
                 if (type == "bgm") BGM[soundNum] = clip;
                 else SE[soundNum] = clip;
             }
 
             loadedNum++;
-            if (allSoundNum == loadedNum) {
+            if (allSoundNum == loadedNum)
+            {
                 LoadedEvent.Invoke();
             }
         }
         #endregion
 
         #region common
-        public void AllStop() {
+        public void AllStop()
+        {
             StopBGM();
             StopSE();
         }
@@ -220,12 +258,15 @@ namespace KirinUtil {
 
         // BGM再生
         private int nowPlayBGMNum = 0;
-        public void PlayBGM(int index) {
-            if (0 > index || BGM.Count <= index) {
+        public void PlayBGM(int index)
+        {
+            if (0 > index || BGM.Count <= index)
+            {
                 return;
             }
             // 同じBGMの場合は何もしない
-            if (BGMsource.clip == BGM[index]) {
+            if (BGMsource.clip == BGM[index])
+            {
                 return;
             }
 
@@ -240,8 +281,10 @@ namespace KirinUtil {
         }
 
         // mute設定
-        public void SetBGMMute(int index, bool mute) {
-            if (0 > index || BGM.Count <= index) {
+        public void SetBGMMute(int index, bool mute)
+        {
+            if (0 > index || BGM.Count <= index)
+            {
                 return;
             }
 
@@ -250,16 +293,20 @@ namespace KirinUtil {
         }
 
         // play中のBGMのmute設定
-        public void SetBGMMute(bool mute) {
-            if (BGMsource.isPlaying) {
+        public void SetBGMMute(bool mute)
+        {
+            if (BGMsource.isPlaying)
+            {
                 BGMsource.mute = mute;
                 bgmSound[nowPlayBGMNum].mute = mute;
             }
         }
 
         // volume設定
-        public void SetBGMVolume(int index, float volume) {
-            if (0 > index || BGM.Count <= index) {
+        public void SetBGMVolume(int index, float volume)
+        {
+            if (0 > index || BGM.Count <= index)
+            {
                 return;
             }
 
@@ -268,30 +315,36 @@ namespace KirinUtil {
         }
 
         // play中のBGMのvolume設定
-        public void SetBGMVolume(float volume) {
-            if (BGMsource.isPlaying) {
+        public void SetBGMVolume(float volume)
+        {
+            if (BGMsource.isPlaying)
+            {
                 BGMsource.volume = volume;
                 bgmSound[nowPlayBGMNum].volume = volume;
             }
         }
 
         // BGM停止
-        public void StopBGM() {
+        public void StopBGM()
+        {
             BGMsource.Stop();
             BGMsource.clip = null;
         }
 
         // ボリュームを絞って停止
-        public void BGMFadeout() {
+        public void BGMFadeout()
+        {
             StopCoroutine("BGMVolumeDown");
             StartCoroutine("BGMVolumeDown");
         }
 
-        private IEnumerator BGMVolumeDown() {
+        private IEnumerator BGMVolumeDown()
+        {
 
             int max = 10;
             float nowVolume = BGMsource.volume;
-            for (int i = 0; i < max; i++) {
+            for (int i = 0; i < max; i++)
+            {
                 BGMsource.volume -= 1 / (float)max;
                 bgmSound[nowPlayBGMNum].volume = BGMsource.volume;
                 yield return new WaitForSeconds(0.1f);
@@ -307,18 +360,22 @@ namespace KirinUtil {
         //----------------------------------
         #region SE
         // SE再生
-        public void PlaySE(int index, bool playingPlay = true ) {
-            if (0 > index || SE.Count <= index) {
+        public void PlaySE(int index, bool playingPlay = true)
+        {
+            if (0 > index || SE.Count <= index)
+            {
                 return;
             }
 
             // 再生中でないAudioSouceで鳴らす
             bool playOk = true;
-            if (!playingPlay) {
+            if (!playingPlay)
+            {
                 if (SEsources[index].isPlaying) playOk = false;
             }
 
-            if (playOk) {
+            if (playOk)
+            {
                 SEsources[index].clip = SE[index];
                 SEsources[index].clip.name = "se" + index;
                 SEsources[index].volume = seSound[index].volume;
@@ -329,8 +386,10 @@ namespace KirinUtil {
         }
 
         // volume設定
-        public void SetSEMute(int index, bool mute) {
-            if (0 > index || SE.Count <= index) {
+        public void SetSEMute(int index, bool mute)
+        {
+            if (0 > index || SE.Count <= index)
+            {
                 return;
             }
 
@@ -339,8 +398,10 @@ namespace KirinUtil {
         }
 
         // volume設定
-        public void SetSEVolume(int index, float volume) {
-            if (0 > index || SE.Count <= index) {
+        public void SetSEVolume(int index, float volume)
+        {
+            if (0 > index || SE.Count <= index)
+            {
                 return;
             }
 
@@ -349,18 +410,22 @@ namespace KirinUtil {
         }
 
         // 全SE停止
-        public void StopSE() {
+        public void StopSE()
+        {
             // 全てのSE用のAudioSouceを停止する
 
-            for (int i = 0; i < SEsources.Length; i++) {
+            for (int i = 0; i < SEsources.Length; i++)
+            {
                 SEsources[i].Stop();
                 SEsources[i].clip = null;
             }
         }
 
         // 指定したSEを停止
-        public void StopSE(int index) {
-            if (0 > index || SE.Count <= index) {
+        public void StopSE(int index)
+        {
+            if (0 > index || SE.Count <= index)
+            {
                 return;
             }
 
@@ -369,8 +434,10 @@ namespace KirinUtil {
         }
 
         // 指定したSEが再生中かどうか
-        public bool IsPlaying(int index) {
-            if (0 > index || SE.Count <= index) {
+        public bool IsPlaying(int index)
+        {
+            if (0 > index || SE.Count <= index)
+            {
                 return false;
             }
 
@@ -379,8 +446,10 @@ namespace KirinUtil {
 
 
         // 指定したSEの現在の再生時間取得
-        public float GetCurrntTime(int index) {
-            if (0 > index || SE.Count <= index) {
+        public float GetCurrntTime(int index)
+        {
+            if (0 > index || SE.Count <= index)
+            {
                 return 0;
             }
 
@@ -396,33 +465,52 @@ namespace KirinUtil {
 
         [NonSerialized] public List<AudioSource> audioSourceLoadAndPlay = new List<AudioSource>();
         private List<bool> loadedLoadAndPlay = new List<bool>();
-        public void LoadAndPlay(string soundPath, float volume, string id) {
+        public void LoadAndPlay(string soundPath, float volume, string id, bool isLocal = true)
+        {
             if (soundPath == "")
                 return;
-            if (!File.Exists(soundPath))
-                return;
-
+            if (isLocal)
+            {
+                if (!File.Exists(soundPath))
+                    return;
+            }
+            print("------ LoadAndPlay: " + soundPath);
             int listNum = GetAudioSourceListNum(id);
-            if (listNum == -1) {
+            if (listNum == -1)
+            {
                 // listになかったら再生する
-                StartCoroutine(LoadOneSoundFile(soundPath, volume, id));
-            } else {
+                loadedLoadAndPlay.Add(false);
+                StartCoroutine(LoadOneSoundFile(soundPath, volume, id, isLocal));
+            }
+            else
+            {
                 // listにidがあったら前のを再生する
                 audioSourceLoadAndPlay[listNum].volume = volume;
                 audioSourceLoadAndPlay[listNum].Play();
             }
-            GameObject preSoundObj = GameObject.Find(gameObject.GetComponent<KRNMedia>().GetGameObjectPath(gameObject) + "/sound" + (oneShotSoundCount - 1));
+
+            GameObject preSoundObj = GameObject.Find(
+                gameObject.transform.parent.GetComponent<KRNMedia>().GetGameObjectPath(gameObject) + "/sound" + (oneShotSoundCount - 1)
+            );
             if (preSoundObj != null) Destroy(preSoundObj);
         }
 
 
-        IEnumerator LoadOneSoundFile(string path, float volume, string id) {
-            using (UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip("file://" + path, AudioType.WAV)) {
+        IEnumerator LoadOneSoundFile(string path, float volume, string id, bool isLocal)
+        {
+            string filePath = "file://" + path;
+            if (!isLocal) filePath = path;
+
+            using (UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(filePath, AudioType.WAV))
+            {
                 yield return request.SendWebRequest();
 
-                if (request.isHttpError || request.isNetworkError) {
+                if (request.isHttpError || request.isNetworkError)
+                {
                     Debug.LogError("Load Error: " + path);
-                } else {
+                }
+                else
+                {
                     DownloadHandlerAudioClip dlHandler = (DownloadHandlerAudioClip)request.downloadHandler;
                     AudioClip clip = dlHandler.audioClip;
 
@@ -435,7 +523,8 @@ namespace KirinUtil {
                     audioSource.clip.name = "oneShotSound_" + id;
                     audioSource.volume = volume;
                     audioSource.Play();
-                    loadedLoadAndPlay.Add(true);
+                    loadedLoadAndPlay[loadedLoadAndPlay.Count - 1] = true;
+                    print("loadedLoadAndPlay: true");
                     audioSourceLoadAndPlay.Add(audioSource);
 
                     oneShotSoundCount++;
@@ -443,15 +532,17 @@ namespace KirinUtil {
             }
         }
 
-        public bool LoadedOneShotSound(string id) {
+        public bool LoadedOneShotSound(string id)
+        {
             int listNum = GetAudioSourceListNum(id);
             if (listNum == -1) return false;
 
-            if (loadedLoadAndPlay.Count <= listNum) return loadedLoadAndPlay[listNum];
+            if (loadedLoadAndPlay.Count > listNum) return loadedLoadAndPlay[listNum];
             else return false;
         }
 
-        public bool IsPlayingOneShotSound(string id) {
+        public bool IsPlayingOneShotSound(string id)
+        {
             int listNum = GetAudioSourceListNum(id);
             if (listNum == -1) return false;
 
@@ -461,15 +552,19 @@ namespace KirinUtil {
             return audioSourceLoadAndPlay[listNum].isPlaying;
         }
 
-        public void StopOneShotSound(string id) {
+        public void StopOneShotSound(string id)
+        {
             int listNum = GetAudioSourceListNum(id);
 
-            if (listNum == -1) return;
+            print(id + "  " + listNum);
 
+            if (listNum == -1) return;
             if (audioSourceLoadAndPlay[listNum] == null) return;
             if (loadedLoadAndPlay.Count <= listNum) return;
 
-            if (audioSourceLoadAndPlay[listNum].isPlaying) {
+            print(audioSourceLoadAndPlay[listNum].isPlaying);
+            if (audioSourceLoadAndPlay[listNum].isPlaying)
+            {
                 audioSourceLoadAndPlay[listNum].Stop();
                 Destroy(audioSourceLoadAndPlay[listNum]);
                 audioSourceLoadAndPlay[listNum] = null;
@@ -479,20 +574,26 @@ namespace KirinUtil {
 
         }
 
-        private void RemovetAudioSource() {
-            for (int i = audioSourceLoadAndPlay.Count - 1; i >= 0; i--) {
-                if (audioSourceLoadAndPlay[i] == null) {
+        private void RemovetAudioSource()
+        {
+            for (int i = audioSourceLoadAndPlay.Count - 1; i >= 0; i--)
+            {
+                if (audioSourceLoadAndPlay[i] == null)
+                {
                     audioSourceLoadAndPlay.RemoveAt(i);
                     loadedLoadAndPlay.RemoveAt(i);
                 }
             }
         }
 
-        private int GetAudioSourceListNum(string id) {
+        private int GetAudioSourceListNum(string id)
+        {
 
             int listNum = -1;
-            for (int i = 0; i < audioSourceLoadAndPlay.Count; i++) {
-                if (audioSourceLoadAndPlay[i].clip.name == "oneShotSound_" + id) {
+            for (int i = 0; i < audioSourceLoadAndPlay.Count; i++)
+            {
+                if (audioSourceLoadAndPlay[i].clip.name == "oneShotSound_" + id)
+                {
                     listNum = i;
                     break;
                 }

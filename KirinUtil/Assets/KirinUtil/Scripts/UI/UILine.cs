@@ -19,7 +19,6 @@ namespace KirinUtil
 
         public void Draw()
         {
-
             // 長さ
             float lineLength = Vector2.Distance(startPos, endPos);
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(thick, lineLength);
