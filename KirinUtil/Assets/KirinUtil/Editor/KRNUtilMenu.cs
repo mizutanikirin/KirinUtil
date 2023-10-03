@@ -90,6 +90,7 @@ public class KRNUtilMenu : Editor {
     }
     #endregion
 
+
     //----------------------------------
     //  Remove Class
     //----------------------------------
@@ -170,6 +171,98 @@ public class KRNUtilMenu : Editor {
     }
     #endregion
 
+
+    //----------------------------------
+    //  初期フォルダ作成
+    //----------------------------------
+    #region Screenshot
+    [MenuItem("KirinUtil/Create initial folder")]
+    private static void CreateInitFolder()
+    {
+        List<string> dirList = new List<string>()
+        {
+            "/Projects",
+            "/Projects/Materials",
+            "/Projects/Prefabs",
+            "/Projects/Scenes",
+            "/Projects/Scripts",
+            "/Projects/Textures",
+            "/Projects/Prefabs"
+        };
+
+        int createdNum = 0;
+        string dirPathList = System.Environment.NewLine;
+        for (int i = 0; i < dirList.Count; i++)
+        {
+            string dirPath = Application.dataPath + dirList[i];
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+                dirPathList += dirPath + System.Environment.NewLine;
+                createdNum++;
+            }
+        }
+
+        if (createdNum > 0)
+        {
+            Debug.Log("初期フォルダの作成を完了しました。" + dirPathList);
+            AssetDatabase.Refresh();
+        }
+        else 
+            Debug.Log("初期フォルダはすでに存在しているため作成できませんでした。");
+    }
+    #endregion
+
+
+    //----------------------------------
+    //  AssetBundle
+    //----------------------------------
+    #region BuildAllAssetBundles
+    [MenuItem("KirinUtil/AssetBundle/Build")]
+    private static void BuildAllAssetBundles()
+    {
+        string assetBundleDirectory = "AssetBundle";
+
+        if (!Directory.Exists(assetBundleDirectory))
+            Directory.CreateDirectory(assetBundleDirectory);
+
+        BuildPipeline.BuildAssetBundles(assetBundleDirectory,
+                                        BuildAssetBundleOptions.None,
+                                        BuildTarget.StandaloneWindows);
+
+        EditorUtility.RevealInFinder(assetBundleDirectory);
+    }
+    #endregion
+
+    #region BuildAllAssetBundles
+    [MenuItem("KirinUtil/AssetBundle/Search Prefab")]
+    public static void SearchPrefabsWithAssetBundleName()
+    {
+        // 全てのPrefabのGUIDを取得
+        string[] allPrefabs = AssetDatabase.FindAssets("t:Prefab");
+
+        List<string> prefabsWithAssetBundleName = new List<string>();
+
+        foreach (string prefabGuid in allPrefabs)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(prefabGuid);
+            string assetBundleName = AssetImporter.GetAtPath(path).assetBundleName;
+
+            if (!string.IsNullOrEmpty(assetBundleName))
+            {
+                prefabsWithAssetBundleName.Add("["+ assetBundleName +"] " + path);
+            }
+        }
+
+        // 結果をコンソールに表示
+        foreach (string result in prefabsWithAssetBundleName)
+        {
+            Debug.Log(result);
+        }
+    }
+    #endregion
+
+
     //----------------------------------
     //  スクリーンショット
     //----------------------------------
@@ -193,6 +286,7 @@ public class KRNUtilMenu : Editor {
     }
     #endregion
 
+
     //----------------------------------
     //  About
     //----------------------------------
@@ -200,6 +294,7 @@ public class KRNUtilMenu : Editor {
     private static void About() {
         bool isOK = EditorUtility.DisplayDialog("About KirinUtil", "KirinUtil " + Util.version + "\n\n" + Util.copylight, "Close");
     }
+
 
     //----------------------------------
     //  functions

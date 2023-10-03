@@ -85,7 +85,7 @@ namespace KirinUtil {
         //  CloneGameObject
         //----------------------------------
         // 指定した親GameObjectに指定したGameObjectをコピーする
-        public void CloneGameObject(GameObject obj, GameObject parentObj, string name = "") {
+        public GameObject CloneGameObject(GameObject obj, GameObject parentObj, string name = "") {
             GameObject clone = GameObject.Instantiate(obj) as GameObject;
             clone.transform.SetParent(parentObj.transform, false);
             if (name == "") clone.name = obj.name;
@@ -94,6 +94,8 @@ namespace KirinUtil {
             clone.transform.localPosition = obj.transform.localPosition;
             clone.transform.localScale = obj.transform.localScale;
             clone.transform.localRotation = obj.transform.localRotation;
+
+            return clone;
         }
 
 
@@ -265,8 +267,9 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
-        //  #ffffからColorに変換
+        //  #ffffffからColorに変換
         //----------------------------------
         #region HexToColor
         public Color HexToColor(string hex) {
@@ -289,6 +292,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  GameObjectのパスを返す
         //----------------------------------
@@ -308,6 +312,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  GameObjectのレイヤをすべて変える
         //----------------------------------
@@ -321,6 +326,7 @@ namespace KirinUtil {
             }
         }
         #endregion
+
 
         //----------------------------------
         //  GameObjectを作る
@@ -349,6 +355,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  縦横比維持(縦を基準)
         //----------------------------------
@@ -357,9 +364,7 @@ namespace KirinUtil {
             float rate = height / originalResolution.y;
             float resolutionX = rate * originalResolution.x;
 
-
             return new Vector2(resolutionX, height);
-
         }
 
         //----------------------------------
@@ -750,26 +755,6 @@ namespace KirinUtil {
         }
         #endregion
 
-        #region MoveShuffle
-        public void MoveShuffle(GameObject obj, float moveValue, float moveTime, float delay, bool islocal = true, bool returnInitPos = false) {
-
-            iTween.ShakePosition(obj,
-                iTween.Hash(
-                    "x", moveValue,
-                    "y", moveValue,
-                    "time", moveTime,
-                    "delay", delay,
-                    "islocal", islocal,
-                    "EaseType", iTween.EaseType.easeInOutQuart
-                )
-            );
-        }
-
-        public void StopMoveShuffle(GameObject obj) {
-            iTween.Stop(obj, "shake");
-        }
-        #endregion
-
         #region MoveRotate
         public void MoveRotate(GameObject obj, float moveAngle, float moveTime, float delay, int times = -1, bool returnInitPos = false) {
 
@@ -913,6 +898,21 @@ namespace KirinUtil {
         }
         #endregion
 
+
+        //----------------------------------
+        //  新しくGameObjectを作成する
+        //----------------------------------
+        private GameObject CreateNewObj(GameObject parentObj, string name, Vector3 pos)
+        {
+            GameObject obj = new GameObject();
+            obj.name = name;
+            obj.transform.SetParent(parentObj.transform);
+            obj.transform.localPosition = pos;
+            obj.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            obj.transform.localScale = Vector3.one;
+
+            return obj;
+        }
     }
 
 }

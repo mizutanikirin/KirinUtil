@@ -196,23 +196,6 @@ namespace KirinUtil {
             LoadedImageEvent.Invoke();
         }
 
-        //----------------------------------
-        //  LoadTexture2DList
-        //----------------------------------
-        public void LoadTexture2DList() {
-
-            print("LoadTexture2DList");
-
-            textures = new List<Texture2D>();
-
-            for (int i = 0; i < textureFileNames.Length; i++) {
-                if (textureFileNames[i] != "") {
-                    Texture2D texture = LoadTexture2D(rootDataPath + imageDirPath + textureFileNames[i]);
-                    //texture.alphaIsTransparency = alphaIsTransparency;
-                    textures.Add(texture);
-                }
-            }
-        }
 
 
         //----------------------------------
@@ -269,17 +252,6 @@ namespace KirinUtil {
             return buf;
         }
         #endregion
-
-
-        //----------------------------------
-        //  UnloadTexture
-        //----------------------------------
-        // Textureをアンロードする
-        public void UnloadTexture(Texture texture) {
-            texture = null;
-            Resources.UnloadAsset(texture);
-            Resources.UnloadUnusedAssets();
-        }
 
 
         //----------------------------------
@@ -463,6 +435,62 @@ namespace KirinUtil {
         }
         #endregion
 
+
+        //----------------------------------
+        //  UnloadTexture
+        //----------------------------------
+        // Textureをアンロードする
+        public void UnloadTexture(Texture texture)
+        {
+            texture = null;
+            Resources.UnloadAsset(texture);
+            Resources.UnloadUnusedAssets();
+        }
+
+
+        //----------------------------------
+        //  LoadTexture2DList
+        //----------------------------------
+        public void LoadTexture2DList()
+        {
+
+            print("LoadTexture2DList");
+
+            textures = new List<Texture2D>();
+
+            for (int i = 0; i < textureFileNames.Length; i++)
+            {
+                if (textureFileNames[i] != "")
+                {
+                    Texture2D texture = LoadTexture2D(rootDataPath + imageDirPath + textureFileNames[i]);
+                    //texture.alphaIsTransparency = alphaIsTransparency;
+                    textures.Add(texture);
+                }
+            }
+        }
+
+        //----------------------------------
+        //  Texture2D -> Texture2D
+        //----------------------------------
+        private Texture2D texture2D = null;
+        public Texture2D ToTexture2D(Texture texture)
+        {
+            int width = texture.width;
+            int height = texture.height;
+
+            texture2D = new Texture2D(width, height, TextureFormat.RGBA32, false);
+            RenderTexture renderTexture = new RenderTexture(width, height, 32);
+
+            Graphics.Blit(texture, renderTexture);
+            RenderTexture.active = renderTexture;
+
+            Rect source = new Rect(0, 0, renderTexture.width, renderTexture.height);
+            texture2D.ReadPixels(source, 0, 0);
+            texture2D.Apply();
+            RenderTexture.active = RenderTexture.active;
+
+            return texture2D;
+        }
 
 
         //----------------------------------

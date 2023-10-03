@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System;
 
 namespace KirinUtil {
 
@@ -155,6 +156,34 @@ namespace KirinUtil {
             RenderTexture.ReleaseTemporary(renderTexture);
 
             return texture2;
+        }
+        
+        // 別方法のキャプチャして保存(Bloomなどカメラに映らないものがあるときはこれを使う)
+        // https://forum.unity.com/threads/taking-screenshot-of-partial-area.54189/
+        public void ScreenCapture(Rect rect, string filePath, bool alpha, Action endAction, ImageFormat format = ImageFormat.PNG)
+        {
+            StartCoroutine(ScreenCaptureWait(rect, filePath, alpha, endAction, format));
+        }
+        private IEnumerator ScreenCaptureWait(Rect rect, string filePath, bool alpha, Action endAction, ImageFormat format)
+        {
+            TextureFormat alphaFormat;
+            if (alpha) alphaFormat = TextureFormat.RGBA32;
+            else alphaFormat = TextureFormat.RGB24;
+
+            Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, alphaFormat, false);
+
+            yield return new WaitForEndOfFrame();
+
+            texture.ReadPixels(rect, 0, 0);
+            texture.Apply();
+
+            if (format == ImageFormat.PNG)
+                File.WriteAllBytes(filePath, texture.EncodeToPNG());
+            else
+                File.WriteAllBytes(filePath, texture.EncodeToJPG());
+            Destroy(texture);
+
+            endAction.Invoke();
         }
 
     }

@@ -13,13 +13,9 @@ namespace KirinUtil
         //----------------------------------
         //  線を引く(gui)
         //----------------------------------
-        public Vector2 startPos;
-        public Vector2 endPos;
-        public float thick;
 
-        public void Draw()
+        public void Draw(Vector2 startPos, Vector2 endPos, float thick)
         {
-
             // 長さ
             float lineLength = Vector2.Distance(startPos, endPos);
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(thick, lineLength);
