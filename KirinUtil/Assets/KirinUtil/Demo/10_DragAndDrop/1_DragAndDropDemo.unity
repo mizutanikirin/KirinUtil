@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -361,111 +361,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157893935}
   m_CullTransparentMesh: 0
---- !u!1 &201770777
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 201770779}
-  - component: {fileID: 201770780}
-  m_Layer: 0
-  m_Name: UIDragManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &201770779
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201770777}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &201770780
+--- !u!114 &201770780 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+  m_PrefabInstance: {fileID: 4616533343661806393}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201770777}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0277359251d1724cb9e98ccd774ca8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCamera: {fileID: 1222456330}
-  uiCanvas: {fileID: 394018640}
-  dragRect:
-    serializedVersion: 2
-    x: -850
-    y: -400
-    width: 1700
-    height: 800
-  nearDistanceThreshold: 200
-  awakeEnable: 0
-  uiDrags:
-  - {fileID: 2018695434}
-  - {fileID: 635020513}
-  adsorptionObjs:
-  - {fileID: 1452067670}
-  - {fileID: 1322076841}
-  dragedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1252079192}
-        m_TargetAssemblyTypeName: KirinUtil.Demo.DragSample, Assembly-CSharp
-        m_MethodName: Draged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  fitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1252079192}
-        m_TargetAssemblyTypeName: KirinUtil.Demo.DragSample, Assembly-CSharp
-        m_MethodName: Fit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  clickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1252079192}
-        m_TargetAssemblyTypeName: KirinUtil.Demo.DragSample, Assembly-CSharp
-        m_MethodName: Clicked
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &330616566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +1887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -2519,3 +2426,96 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
+--- !u!1001 &4616533343661806393
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4616533343594583072, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_Name
+      value: UIDragManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583074, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: uiCamera
+      value: 
+      objectReference: {fileID: 1222456330}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: uiCanvas
+      value: 
+      objectReference: {fileID: 394018640}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: uiDrags.Array.data[0]
+      value: 
+      objectReference: {fileID: 2018695434}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: uiDrags.Array.data[1]
+      value: 
+      objectReference: {fileID: 635020513}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: adsorptionObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1452067670}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: adsorptionObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1322076841}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: fitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1252079192}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1252079192}
+    - target: {fileID: 4616533343594583077, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}
+      propertyPath: dragedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1252079192}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7a14984b9f9ec54b85d65a1c7e3f803, type: 3}

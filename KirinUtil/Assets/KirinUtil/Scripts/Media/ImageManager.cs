@@ -80,6 +80,7 @@ namespace KirinUtil {
             public float scale = 1;
             public GameObject parentObj;
             [NonSerialized] public int loopStartNum = 0;
+            public bool lastVisible = true;
 
             public void Init() {
                 id = "";
@@ -90,6 +91,7 @@ namespace KirinUtil {
                 scale = 1;
                 loopStartNum = 0;
                 parentObj = null;
+                lastVisible = true;
             }
         }
 
@@ -226,8 +228,7 @@ namespace KirinUtil {
         // 指定した画像を読み込みtextureを返す
         public Texture2D LoadTexture2D(string path) {
 
-            if (path == null || path == "")
-                return null;
+            if (!File.Exists(path)) return null;
 
             Texture2D texture = new Texture2D(0, 0);
             texture.LoadImage(LoadByte(path));
@@ -367,7 +368,6 @@ namespace KirinUtil {
 
             if (playImageNum == null || playImageNum.Count == 0) StopPlayImageCoroutine();
 
-
             for (int i = 0; i < playImageNum.Count; i++) {
                 int imageNum = playImageNum[i];
 
@@ -406,13 +406,16 @@ namespace KirinUtil {
                     break;
                 }
             }
-
             if (stopImageNum == -1) return;
 
-            GameObject parentObj = playImageObjList[imageNum][0].transform.parent.gameObject;
-            parentObj.SetActive(false);
-            for (int j = 0; j < playImageObjList[imageNum].Count; j++) {
-                playImageObjList[imageNum][j].SetActive(false);
+            if (!playImages[imageNum].lastVisible)
+            {
+                GameObject parentObj = playImageObjList[imageNum][0].transform.parent.gameObject;
+                parentObj.SetActive(false);
+                for (int j = 0; j < playImageObjList[imageNum].Count; j++)
+                {
+                    playImageObjList[imageNum][j].SetActive(false);
+                }
             }
             playImageNum.RemoveAt(stopImageNum);
             playImageCurrentFrame.RemoveAt(stopImageNum);

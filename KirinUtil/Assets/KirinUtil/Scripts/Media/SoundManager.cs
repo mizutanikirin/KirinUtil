@@ -224,15 +224,23 @@ namespace KirinUtil
 
             yield return request.SendWebRequest();
 
-            if (request.isHttpError || request.isNetworkError)
+            switch (request.result)
             {
-                Debug.LogError("soundLoadError: " + path);
-            }
-            else
-            {
-                AudioClip clip = DownloadHandlerAudioClip.GetContent(request);
-                if (type == "bgm") BGM[soundNum] = clip;
-                else SE[soundNum] = clip;
+                case UnityWebRequest.Result.Success:
+                    AudioClip clip = DownloadHandlerAudioClip.GetContent(request);
+                    if (type == "bgm") BGM[soundNum] = clip;
+                    else SE[soundNum] = clip;
+                    break;
+                case UnityWebRequest.Result.ConnectionError:
+                    Debug.LogError("sound load error [ConnectionError]: " + path);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError("sound load error [ProtocolError]: " + path);
+                    break;
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError("sound load error [DataProcessingError]: " + path);
+                    break;
+                default: throw new ArgumentOutOfRangeException();
             }
 
             loadedNum++;
@@ -251,12 +259,13 @@ namespace KirinUtil
         }
         #endregion
 
+
         //----------------------------------
         //  BGM
         //----------------------------------
         #region BGM
 
-        // BGM再生
+        #region BGM再生
         private int nowPlayBGMNum = 0;
         public void PlayBGM(int index)
         {
@@ -280,7 +289,20 @@ namespace KirinUtil
             nowPlayBGMNum = index;
         }
 
-        // mute設定
+        public void PlayBGM(string id)
+        {
+            int index = GetBGMListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return;
+            }
+
+            PlayBGM(index);
+        }
+        #endregion
+
+        #region mute設定
         public void SetBGMMute(int index, bool mute)
         {
             if (0 > index || BGM.Count <= index)
@@ -292,6 +314,18 @@ namespace KirinUtil
             bgmSound[index].mute = mute;
         }
 
+        public void SetBGMMute(string id, bool mute)
+        {
+            int index = GetBGMListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return;
+            }
+
+            SetBGMMute(index, mute);
+        }
+
         // play中のBGMのmute設定
         public void SetBGMMute(bool mute)
         {
@@ -301,8 +335,9 @@ namespace KirinUtil
                 bgmSound[nowPlayBGMNum].mute = mute;
             }
         }
+        #endregion
 
-        // volume設定
+        #region volume設定
         public void SetBGMVolume(int index, float volume)
         {
             if (0 > index || BGM.Count <= index)
@@ -314,6 +349,18 @@ namespace KirinUtil
             bgmSound[index].volume = volume;
         }
 
+        public void SetBGMVolume(string id, float volume)
+        {
+            int index = GetBGMListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return;
+            }
+
+            SetBGMVolume(index, volume);
+        }
+
         // play中のBGMのvolume設定
         public void SetBGMVolume(float volume)
         {
@@ -323,8 +370,9 @@ namespace KirinUtil
                 bgmSound[nowPlayBGMNum].volume = volume;
             }
         }
+        #endregion
 
-        // BGM停止
+        #region BGM停止
         public void StopBGM()
         {
             BGMsource.Stop();
@@ -355,11 +403,28 @@ namespace KirinUtil
         }
         #endregion
 
+        #region function
+        private int GetBGMListNum(string id)
+        {
+            for (int i = 0; i < bgmSound.Length; i++)
+            {
+                if (bgmSound[i].id == id)
+                    return i;
+            }
+
+            return -1;
+        }
+        #endregion
+
+        #endregion
+
+
         //----------------------------------
         //  SE
         //----------------------------------
         #region SE
-        // SE再生
+
+        #region SE再生
         public void PlaySE(int index, bool playingPlay = true)
         {
             if (0 > index || SE.Count <= index)
@@ -385,7 +450,20 @@ namespace KirinUtil
             }
         }
 
-        // volume設定
+        public void PlaySE(string id, bool playingPlay = true)
+        {
+            int index = GetSEListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return;
+            }
+
+            PlaySE(index, playingPlay);
+        }
+        #endregion
+
+        #region Mute設定
         public void SetSEMute(int index, bool mute)
         {
             if (0 > index || SE.Count <= index)
@@ -397,7 +475,20 @@ namespace KirinUtil
             seSound[index].mute = mute;
         }
 
-        // volume設定
+        public void SetSEMute(string id, bool mute)
+        {
+            int index = GetSEListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return;
+            }
+
+            SetSEMute(index, mute);
+        }
+        #endregion
+
+        #region volume設定
         public void SetSEVolume(int index, float volume)
         {
             if (0 > index || SE.Count <= index)
@@ -409,7 +500,20 @@ namespace KirinUtil
             seSound[index].volume = volume;
         }
 
-        // 全SE停止
+        public void SetSEVolume(string id, float volume)
+        {
+            int index = GetSEListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return;
+            }
+
+            SetSEVolume(index, volume);
+        }
+        #endregion
+
+        #region 全SE停止
         public void StopSE()
         {
             // 全てのSE用のAudioSouceを停止する
@@ -420,8 +524,9 @@ namespace KirinUtil
                 SEsources[i].clip = null;
             }
         }
+        #endregion
 
-        // 指定したSEを停止
+        #region 指定したSEを停止
         public void StopSE(int index)
         {
             if (0 > index || SE.Count <= index)
@@ -433,7 +538,20 @@ namespace KirinUtil
             SEsources[index].clip = null;
         }
 
-        // 指定したSEが再生中かどうか
+        public void StopSE(string id)
+        {
+            int index = GetSEListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return;
+            }
+
+            StopSE(index);
+        }
+        #endregion
+
+        #region 指定したSEが再生中かどうか
         public bool IsPlaying(int index)
         {
             if (0 > index || SE.Count <= index)
@@ -444,8 +562,20 @@ namespace KirinUtil
             return SEsources[index].isPlaying;
         }
 
+        public bool IsPlaying(string id)
+        {
+            int index = GetSEListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return false;
+            }
 
-        // 指定したSEの現在の再生時間取得
+            return IsPlaying(index);
+        }
+        #endregion
+
+        #region 指定したSEの現在の再生時間取得
         public float GetCurrntTime(int index)
         {
             if (0 > index || SE.Count <= index)
@@ -455,6 +585,33 @@ namespace KirinUtil
 
             return SEsources[index].time;
         }
+
+        public float GetCurrntTime(string id)
+        {
+            int index = GetSEListNum(id);
+            if (index == -1)
+            {
+                Debug.LogWarning("Not found sound id");
+                return 0;
+            }
+
+            return GetCurrntTime(index);
+        }
+        #endregion
+
+        #region function
+        private int GetSEListNum(string id)
+        {
+            for (int i = 0; i < seSound.Length; i++)
+            {
+                if (seSound[i].id == id)
+                    return i;
+            }
+
+            return -1;
+        }
+        #endregion
+
         #endregion
 
 
@@ -505,31 +662,44 @@ namespace KirinUtil
             {
                 yield return request.SendWebRequest();
 
-                if (request.isHttpError || request.isNetworkError)
+                switch (request.result)
                 {
-                    Debug.LogError("Load Error: " + path);
-                }
-                else
-                {
-                    DownloadHandlerAudioClip dlHandler = (DownloadHandlerAudioClip)request.downloadHandler;
-                    AudioClip clip = dlHandler.audioClip;
-
-                    /*GameObject soundObj = new GameObject();
-                    soundObj.name = "sound" + oneShotSoundCount;
-                    soundObj.transform.SetParent(gameObject.transform);*/
-
-                    AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-                    audioSource.clip = clip;
-                    audioSource.clip.name = "oneShotSound_" + id;
-                    audioSource.volume = volume;
-                    audioSource.Play();
-                    loadedLoadAndPlay[loadedLoadAndPlay.Count - 1] = true;
-                    print("loadedLoadAndPlay: true");
-                    audioSourceLoadAndPlay.Add(audioSource);
-
-                    oneShotSoundCount++;
+                    case UnityWebRequest.Result.Success:
+                        LoadSuccess(request, id, volume);
+                        break;
+                    case UnityWebRequest.Result.ConnectionError:
+                        Debug.LogError("Load error [ConnectionError]: " + path);
+                        break;
+                    case UnityWebRequest.Result.ProtocolError:
+                        Debug.LogError("Load error [ProtocolError]: " + path);
+                        break;
+                    case UnityWebRequest.Result.DataProcessingError:
+                        Debug.LogError("Load error [DataProcessingError]: " + path);
+                        break;
+                    default: throw new ArgumentOutOfRangeException();
                 }
             }
+        }
+
+        private void LoadSuccess(UnityWebRequest request, string id, float volume)
+        {
+            DownloadHandlerAudioClip dlHandler = (DownloadHandlerAudioClip)request.downloadHandler;
+            AudioClip clip = dlHandler.audioClip;
+
+            /*GameObject soundObj = new GameObject();
+            soundObj.name = "sound" + oneShotSoundCount;
+            soundObj.transform.SetParent(gameObject.transform);*/
+
+            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = clip;
+            audioSource.clip.name = "oneShotSound_" + id;
+            audioSource.volume = volume;
+            audioSource.Play();
+            loadedLoadAndPlay[loadedLoadAndPlay.Count - 1] = true;
+            print("loadedLoadAndPlay: true");
+            audioSourceLoadAndPlay.Add(audioSource);
+
+            oneShotSoundCount++;
         }
 
         public bool LoadedOneShotSound(string id)
