@@ -461,7 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onTexture: {fileID: 2800000, guid: a825bf3fcff71914380126f67856619e, type: 3}
   offTexture: {fileID: 2800000, guid: 462c339f2d93cbb47b1525c874997058, type: 3}
-  initOn: 1
+  initOn: 0
   OnEvent:
     m_PersistentCalls:
       m_Calls:

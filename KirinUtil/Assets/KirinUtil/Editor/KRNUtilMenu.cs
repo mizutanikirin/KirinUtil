@@ -175,8 +175,8 @@ public class KRNUtilMenu : Editor {
     //----------------------------------
     //  初期フォルダ作成
     //----------------------------------
-    #region Screenshot
-    [MenuItem("KirinUtil/Create initial folder")]
+    #region CreateInitFolder
+    /*[MenuItem("KirinUtil/Create initial folder")]
     private static void CreateInitFolder()
     {
         List<string> dirList = new List<string>()
@@ -210,6 +210,31 @@ public class KRNUtilMenu : Editor {
         }
         else 
             Debug.Log("初期フォルダはすでに存在しているため作成できませんでした。");
+    }*/
+    #endregion
+
+
+
+    //----------------------------------
+    //  スクリーンショット
+    //----------------------------------
+    #region Screenshot
+    [MenuItem("KirinUtil/Screenshot")]
+    private static void ScreenShot()
+    {
+        var filename = System.DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".png";
+
+        ScreenCapture.CaptureScreenshot(filename);
+
+        // GameViewを取得してくる
+        var assembly = typeof(EditorWindow).Assembly;
+        var type = assembly.GetType("UnityEditor.GameView");
+        var gameview = EditorWindow.GetWindow(type);
+
+        // GameViewを再描画
+        gameview.Repaint();
+
+        Debug.Log("ScreenShot: " + filename);
     }
     #endregion
 
@@ -264,33 +289,9 @@ public class KRNUtilMenu : Editor {
 
 
     //----------------------------------
-    //  スクリーンショット
-    //----------------------------------
-    #region Screenshot
-    [MenuItem("KirinUtil/Screenshot #%F12")]
-    private static void ScreenShot() {
-
-        var filename = System.DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".png";
-
-        ScreenCapture.CaptureScreenshot(filename);
-
-        // GameViewを取得してくる
-        var assembly = typeof(EditorWindow).Assembly;
-        var type = assembly.GetType("UnityEditor.GameView");
-        var gameview = EditorWindow.GetWindow(type);
-
-        // GameViewを再描画
-        gameview.Repaint();
-
-        Debug.Log("ScreenShot: " + filename);
-    }
-    #endregion
-
-
-    //----------------------------------
     //  About
     //----------------------------------
-    [MenuItem("KirinUtil/About KirinUtil")]
+    [MenuItem("KirinUtil/About KirinUtil", false, 1000)]
     private static void About() {
         bool isOK = EditorUtility.DisplayDialog("About KirinUtil", "KirinUtil " + Util.version + "\n\n" + Util.copylight, "Close");
     }

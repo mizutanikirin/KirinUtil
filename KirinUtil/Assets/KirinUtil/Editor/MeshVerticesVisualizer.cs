@@ -7,14 +7,14 @@ public class MeshFilterEditor : Editor
 {
     private static bool showVertices = false; // 頂点表示の状態をトラックする変数
 
-    [MenuItem("KirinUtil/Vertex/Vertex display")]
+    [MenuItem("KirinUtil/Vertex/Vertex display", false)]
     private static void ShowVertices()
     {
         showVertices = true;
         SceneView.RepaintAll(); // シーンビューを再描画
     }
 
-    [MenuItem("KirinUtil/Vertex/Vertex hidden")]
+    [MenuItem("KirinUtil/Vertex/Vertex hidden", false)]
     private static void HideVertices()
     {
         showVertices = false;
