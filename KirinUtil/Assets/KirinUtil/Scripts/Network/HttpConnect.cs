@@ -147,14 +147,18 @@ namespace KirinUtil
         //  画像送信
         //----------------------------------
         #region SendImage
-        public static void SendImage(string url, Texture2D texture, string varName, string fileName, Action<UnityWebRequest> onSuccess, Action<UnityWebRequest> onError = null)
+        public static void SendImage(
+            string url, Texture2D texture, string varName, string fileName,
+            Action<UnityWebRequest> onSuccess, Action<UnityWebRequest> onError = null)
         {
 
             Instance.StartCoroutine(Instance.WaitSendImage(url, texture, varName, fileName, onSuccess, onError));
 
         }
 
-        private IEnumerator WaitSendImage(string url, Texture2D texture, string varName, string fileName, Action<UnityWebRequest> onSuccess, Action<UnityWebRequest> onError)
+        private IEnumerator WaitSendImage(
+            string url, Texture2D texture, string varName, string fileName, 
+            Action<UnityWebRequest> onSuccess, Action<UnityWebRequest> onError)
         {
 
             byte[] imageData = texture.EncodeToPNG();
@@ -171,17 +175,24 @@ namespace KirinUtil
 
             yield return request.SendWebRequest();
 
-            if (request.isNetworkError)
+            switch (request.result)
             {
-                onError(request);
-            }
-            else
-            {
-
-                if (request.responseCode == 200)
-                {
-                    onSuccess(request);
-                }
+                case UnityWebRequest.Result.Success:
+                    if (request.responseCode == 200)
+                    {
+                        onSuccess(request);
+                    }
+                    break;
+                case UnityWebRequest.Result.ConnectionError:
+                    if (onError != null) onError(request);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    if (onError != null) onError(request);
+                    break;
+                case UnityWebRequest.Result.DataProcessingError:
+                    if (onError != null) onError(request);
+                    break;
+                default: throw new ArgumentOutOfRangeException();
             }
         }
         #endregion

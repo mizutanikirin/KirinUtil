@@ -28,8 +28,8 @@ namespace KirinUtil {
     [RequireComponent(typeof(KRNMedia))]
     [RequireComponent(typeof(KRNFile))]
     public class Util : MonoBehaviour {
-        [NonSerialized] public static string version = "ver1.0.7";
-        [NonSerialized] public static string copylight = "Copyright 2016-2022 MIZUTANI KIRIN All Rights Reserved.";
+        [NonSerialized] public static string version = "ver1.1.0";
+        [NonSerialized] public static string copylight = "Copyright MIZUTANI KIRIN All Rights Reserved.";
 
         [NonSerialized] public static KRNMedia media;
         [NonSerialized] public static KRNFile file;
@@ -115,6 +115,7 @@ namespace KirinUtil {
             }
         }
         #endregion
+
 
         //----------------------------------
         //  ShuffleArray
@@ -285,6 +286,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  TimeArea
         //----------------------------------
@@ -417,6 +419,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  WeekArea
         //----------------------------------
@@ -509,6 +512,7 @@ namespace KirinUtil {
         }*/
 
         #endregion
+
 
         //----------------------------------
         //  0-360度にする
@@ -603,8 +607,6 @@ namespace KirinUtil {
             if (num.ToString().IndexOf(".") == -1) return num;
             if (pointNum <= 0) return num;
 
-            float point = 0;
-
             int scaleUp = 1;
             float scaleDown = 1;
             for (int i = 0; i < pointNum; i++) {
@@ -612,7 +614,7 @@ namespace KirinUtil {
                 scaleDown *= 0.1f;
             }
 
-            point = RoundToInt(num * scaleUp);
+            float point = RoundToInt(num * scaleUp);
             point = point * scaleDown;
 
             if (point.ToString().IndexOf(".") != -1) {
@@ -750,6 +752,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  position
         //----------------------------------
@@ -778,6 +781,7 @@ namespace KirinUtil {
             obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, z);
         }
         #endregion
+
 
         //----------------------------------
         //  scale
@@ -837,9 +841,11 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  改行処理
         //----------------------------------
+        #region 改行処理
         // <br>をEnvironment.NewLineにする
         public static string GetLineText(string str) {
 
@@ -862,6 +868,8 @@ namespace KirinUtil {
 
             return lineSt;
         }
+        #endregion
+
 
         //----------------------------------
         //  デバッグ用StopWatch
@@ -1179,6 +1187,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  区切り文字の処理
         //----------------------------------
@@ -1285,6 +1294,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  四捨五入
         //----------------------------------
@@ -1365,14 +1375,14 @@ namespace KirinUtil {
             }
         }
 
-        public static void EquidistantY(List<GameObject> objList, float startY, float endY, float posX) {
+        public static void EquidistantY(List<GameObject> objList, float startY, float endY, float posY) {
 
             float areaHeight = Mathf.Abs(endY - startY);
             float oneHeight = areaHeight / (float)(objList.Count + 1);
 
             for (int i = 0; i < objList.Count; i++) {
                 objList[i].transform.localPosition = new Vector3(
-                    posX,
+                    posY,
                     startY + oneHeight * (i + 1),
                     0
                 );
@@ -1434,6 +1444,7 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  ui(スクロール)でfitさせている
         //  ときのlayoutGroupの更新 
@@ -1455,11 +1466,13 @@ namespace KirinUtil {
         }
         #endregion
 
+
         //----------------------------------
         //  日本語関連
         //----------------------------------
+        #region 日本語関連
         // 文字列のカウント(日本語は2, 英数字は1としてカウント)
-        public int TextLengthJPN(string message)
+        public static int TextLengthJPN(string message)
         {
             int textLength = 0;
             for (int i = 0; i < message.Length; i++)
@@ -1473,10 +1486,36 @@ namespace KirinUtil {
         }
 
         // 文字列に日本語が入っているかどうか
-        public bool IsJPN(string message)
+        public static bool IsJPN(string message)
         {
             var isJapanese = Regex.IsMatch(message, @"[\p{IsHiragana}\p{IsKatakana}\p{IsCJKUnifiedIdeographs}]+");
             return isJapanese;
         }
+        #endregion
+
+
+        //----------------------------------
+        //  現在の位置から指定した距離だけ
+        //  ターゲットの方向に移動
+        //----------------------------------
+        #region 現在の位置から指定した距離だけターゲットの方向に移動
+        public static Vector3 GetLinePos(Vector3 nowPos, Vector3 targetPos, float distance)
+        {
+            Vector3 direction = (targetPos - nowPos).normalized;
+            Vector3 desiredPosition = nowPos + direction * distance;
+
+            return desiredPosition;
+        }
+
+        public static Vector2 GetLinePos(Vector2 nowPos, Vector2 targetPos, float distance)
+        {
+            Vector2 direction = (targetPos - nowPos).normalized;
+            Vector3 desiredPosition = nowPos + direction * distance;
+
+            return desiredPosition;
+        }
+        #endregion
+
+
     }
 }

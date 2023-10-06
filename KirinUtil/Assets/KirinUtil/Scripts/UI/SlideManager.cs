@@ -79,7 +79,7 @@ namespace KirinUtil {
         }
 
         void SlideEnd(string id) {
-            print("SlideEnd");
+            //print("SlideEnd");
         }
         #endregion
 

@@ -4,11 +4,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /KirinUtil/Assets/AssetStoreTools*
-/KirinUtil/Assets/Alpha Masking/
-/KirinUtil/Assets/AVProVideo/
-/KirinUtil/Assets/StreamingAssets/AVProVideoSamples/
-/KirinUtil/Assets/Plugins/
-/KirinUtil/Assets/UniSimpleProfiler/
+/KirinUtil/Assets/ThirdLib/
 /KirinUtil/Library/
 /KirinUtil/Logs/
 /KirinUtil/Assets/KirinUtil/Fonts/
@@ -17,7 +13,6 @@
 /KirinUtil/obj/
 /AppData/Log/
 /Release/
-/KirinUtil/Assets/KirinUtil/Scenes/
 /KirinUtil/Assets/KirinUtil/Shaders/
 /Wiki/
 
@@ -43,7 +38,8 @@ AVProVideo*
 /KirinUtil/Assets/KirinUtil/Scripts/Media/BlobDetector.cs*
 /KirinUtil/Assets/KirinUtil/Scripts/Media/SavWav.cs*
 /KirinUtil/Assets/KirinUtil/Scripts/Media/SoundRecorder.cs*
-/KirinUtil/Assets/KirinUtil/Plugins/System.Drawing.dll*
+/KirinUtil/Assets/KirinUtil/Scripts/Mobile/DetectSwipe.cs*
+/KirinUtil/Assets/KirinUtil/Scripts/Network/InternetAccessChecker.cs*
 
 
 # Unity3D generated meta files

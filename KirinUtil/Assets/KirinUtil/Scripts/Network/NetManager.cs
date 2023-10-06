@@ -36,7 +36,7 @@ namespace KirinUtil {
         }
         private Dictionary<string, ServerLog> servers = null;
         private bool isRun = false;
-        private int oscReceiveLogCount = 0;
+        //private int oscReceiveLogCount = 0;
         private long lastTimeStamp;
         public bool receiveOn;
 

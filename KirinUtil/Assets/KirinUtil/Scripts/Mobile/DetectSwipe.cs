@@ -1,3 +1,5 @@
+// https://blog.nabehide.com/detect-swipe-gesture-direction-on-unity/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

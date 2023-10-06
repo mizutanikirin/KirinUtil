@@ -9,8 +9,9 @@ namespace KirinUtil {
     [RequireComponent(typeof(Button))]
     public class ToggleButton:MonoBehaviour {
 
-        public Texture2D onTexture;
-        public Texture2D offTexture;
+        [SerializeField] private Texture2D onTexture;
+        [SerializeField] private Texture2D offTexture;
+        [SerializeField] private bool initOn;
         private Sprite onSprite = null;
         private Sprite offSprite = null;
 
@@ -29,6 +30,10 @@ namespace KirinUtil {
             offSprite = Sprite.Create(offTexture, new Rect(0.0f, 0.0f, offTexture.width, offTexture.height), Vector2.zero);
             Util.image.UnloadTexture(offTexture);
 
+            Button btn = gameObject.GetComponent<Button>();
+            btn.onClick.AddListener(Switch);
+
+            isON = initOn;
             SetToggle(isON);
         }
 

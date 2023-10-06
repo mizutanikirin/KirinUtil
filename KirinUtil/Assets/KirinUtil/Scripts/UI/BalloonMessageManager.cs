@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -289,7 +290,8 @@ namespace KirinUtil {
             else direction = "left";
 
             MessageDisplay(balloonObjList[idListNum][balloonNum], direction, idListNum, balloonNum, timeList[idListNum][balloonNum]);
-            Util.sound.LoadAndPlay(soundFileList[idListNum][balloonNum], 1, "balloon_" + idListNum + "_" + balloonNum);
+            if(Util.sound != null && File.Exists(soundFileList[idListNum][balloonNum])) 
+                Util.sound.LoadAndPlay(soundFileList[idListNum][balloonNum], 1, "balloon_" + idListNum + "_" + balloonNum);
         }
 
         private void StopOneBalloon(int idListNum, int balloonNum) {
@@ -308,7 +310,7 @@ namespace KirinUtil {
             //print(idListNum + ": " + messageDisplayCoroutine.Count);
 
             for (int i = 0; i < messageDisplayCoroutine[idListNum].Count; i++) {
-                Util.sound.StopOneShotSound("balloon_" + idListNum + "_" + i);
+                if(Util.sound != null) Util.sound.StopOneShotSound("balloon_" + idListNum + "_" + i);
 
                 if (messageDisplayCoroutine[idListNum][i] != null) StopCoroutine(messageDisplayCoroutine[idListNum][i]);
                 if (flashingMessageCoroutine[idListNum][i] != null) StopCoroutine(flashingMessageCoroutine[idListNum][i]);

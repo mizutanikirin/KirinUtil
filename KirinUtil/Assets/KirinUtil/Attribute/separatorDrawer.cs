@@ -25,7 +25,7 @@ public class separatorDrawer:DecoratorDrawer
 			InitStyles();
 			GUI.Box(new Rect(_position.xMin, _position.yMin, separatorWidth, 1), "", currentStyle);
 			GUI.Label(new Rect(_position.xMin + separatorWidth + 5.0f, _position.yMin - 8.0f, textSize.x, 20), separatorAttribute.title);
-			GUI.Box(new Rect(_position.xMin + separatorWidth + 10.0f + textSize.x, _position.yMin, separatorWidth, 2), "", currentStyle);
+			GUI.Box(new Rect(_position.xMin + separatorWidth + 10.0f + textSize.x, _position.yMin, separatorWidth, 1), "", currentStyle);
 		}
 	}
 
@@ -40,8 +40,9 @@ public class separatorDrawer:DecoratorDrawer
 		if (currentStyle == null)
 		{
 			currentStyle = new GUIStyle(GUI.skin.box);
-			currentStyle.normal.background = MakeTex(2, 2, new Color(1f, 1f, 1f, 1f));
-		}
+			currentStyle.normal.background = MakeTex(2, 2, new Color(0.4f, 0.4f, 0.4f, 1f));
+
+        }
 	}
 
 	private Texture2D MakeTex( int width, int height, Color col )
