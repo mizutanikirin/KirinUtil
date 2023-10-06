@@ -7,8 +7,10 @@ KirinUtilはインスタレーション、Kinectやwebカメラなどを使用�
 
 # 使い方
 ### 1. インストール(基本)
-1. [Relseases](https://github.com/mizutanikirin/KirinUtil/releases/) から最新のunitypackageをダウンロード＆インポートします。
-2. `Player Setting > Player > Other Settings > Api Compatibility Level*`を`.Net 4.x`に設定してください。
+1. [Relseases](https://github.com/mizutanikirin/KirinUtil/releases/) から最新のunitypackageとAppData.zipをダウンロードします。
+2. unitypackageをUnityプロジェクトにインポートします。
+3. AppData.zipは解凍をして、プロジェクトファイルフォルダと同じ位置にフォルダを置いてください。
+2. UnityEditorでの作業です。`Player Setting > Player > Other Settings > Api Compatibility Level*`を`.Net 4.x`に設定してください。
 3. [iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)をプロジェクトにiTweenをインポートください。
 
 ### 2. インストール(オプション)
