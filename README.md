@@ -1,12 +1,9 @@
 # 概要
-KirinUtilはインスタレーション、Kinectやwebカメラなどを使用した体験型ゲームアプリを作成するときにコードを簡易化できる様々な機能が入ったユーティリティAssetです。  
-
-KirinUtilの機能は今まで作成してきたアプリのよく使う機能をまとめたもので、下に掲載しているアプリのようなアプリを作成していくことができます。  
-[インタラクティブ開発 | TheDesignium](https://www.thedesignium.com/interactive)
+KirinUtilはインスタレーション、Kinectやwebカメラなどを使用した体験型ゲームアプリや、ARアプリを作成するときにコードを簡易化できる様々な機能が入ったユーティリティAssetです。  
   
 <b>[開発環境]</b>  
-OS: Windows10 Pro  
-Unity: 2019.2.19f1
+- OS: Windows10 Pro  
+- Unity: 2021.3.17f1
 
 # 使い方
 ### 1. インストール(基本)
@@ -30,11 +27,11 @@ Unity: 2019.2.19f1
 ※ 再度、削除したいときは`Menu > KirinUtil > Rmove Class`から追加したい項目を選択し追加してください。 
 
 ### 3. Unityでの使い方
-UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`してください。Util、KRNMedia、KRNFileが追加されます。  
+UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`をしてアタッチしてください。または`Hierarchy > KirinUtil > Add KirinUtil`からも追加ができます。追加するとUtilと同時にKRNMedia、KRNFileも追加されます。  
   
-KirinUtilで使用できる機能は下の「機能一覧」を御覧ください。一部動作デモは`Assets/KirinUtil/Demo/`に入っています。  
+KirinUtilで使用できる機能は下の「機能一覧」を御覧ください。一部機能はデモシーンを用意しています。`Assets/KirinUtil/Demo/`を御覧ください。  
 使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
-![Util](https://user-images.githubusercontent.com/4795806/78106744-fff84600-742e-11ea-906d-96da81bdd02a.png)  
+![Util](https://github.com/mizutanikirin/KirinUtil/assets/4795806/85e4c045-bd62-4665-811a-6dc8a3844950)  
 
 以下アプリをKirinUtilサンプルアプリとして公開しています。
 - [tone color](https://github.com/mizutanikirin/ToneColor)
@@ -59,10 +56,10 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
       └ Sounds ← 音ファイル
 ```
 
-通常Unityでは外部ファイルはStreamingAssetsフォルダに入れることが多いと思いますが、以下の理由でAppDataフォルダに入れることにしています。
+通常Unityでは外部ファイルはStreamingAssetsフォルダなどに入れることが多いと思いますが、以下の理由でAppDataフォルダに入れることにしています。(iOS, Androidの場合はImageManager, SoundManagerなどはStreamingAssetsから読み込み変更できるようになっています。)
 - exeの下に設定ファイルを置くとアプリ更新時に設定ファイルや画像など上書きされるリスクを回避するため。
 - StreamingAssetsに置くとビルド時に毎回自分でファイルを置かないといけなくなるため。
-- お客様が画像など少しでもわかりやすく変更できるため。
+- お客様が画像や音などをわかりやすく変更できるため。
 		
 # 機能一覧
 ### Util
@@ -100,7 +97,14 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
   アプリのウィンドウを指定した位置、大きさにします。また最小化、最小化前のウィンドウ表示に戻すことができます。  
   
 - <b>[StopTween](https://github.com/mizutanikirin/KirinUtil/wiki/StopTween)</b>  
-  GameObjectがOnDisable()、OnDestroy()したときにiTweenを止めます。
+  GameObjectがOnDisable()、OnDestroy()したときにiTweenを止めます。  
+  
+- <b>[AssetBundleManager](https://github.com/mizutanikirin/KirinUtil/wiki/AssetBundleManager)</b>  
+  簡易的なAssetBundleの読み込みをします。  
+  
+- <b>[FlickManager](https://github.com/mizutanikirin/KirinUtil/wiki/FlickManager)</b>  
+  横方向おFlickの判別が可能になります。 
+
 ### Media
 - <b>[KRNMedia](https://github.com/mizutanikirin/KirinUtil/wiki/KRNMedia)</b>  
   GameObjectの作成、フェードなどGameObjectに関する関数を主にまとめたComponentです。  
@@ -120,6 +124,9 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
 - <b>[QRManager](https://github.com/mizutanikirin/KirinUtil/wiki/QRManager)</b>  
   QRコードの生成/読み取りができます。  
   
+- <b>[PSAdjustments](https://github.com/mizutanikirin/KirinUtil/wiki/PSAdjustments)</b>  
+  Photoshopの色調補正を再現した画像加工ができます。  
+  
 ### Network
 - <b>[NetManager](https://github.com/mizutanikirin/KirinUtil/wiki/NetManager)</b>  
   単純化したOSCの送信/受信やローカルIPアドレス取得などネットワーク系のManagerです。  
@@ -131,8 +138,7 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
   UDPの送信ができます。
   
 - <b>[UDPReceiveManager](https://github.com/mizutanikirin/KirinUtil/wiki/UDPReceiveManager)</b>  
-  UDPの受信ができます。
-  
+  UDPの受信ができます。  
 ### UI
 - <b>[BalloonMessageManager](https://github.com/mizutanikirin/KirinUtil/wiki/BalloonMessageManager)</b>  
   uGUIで吹き出しメッセージを作ることができます。  
@@ -154,6 +160,63 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
   
 - <b>[ToggleButton](https://github.com/mizutanikirin/KirinUtil/wiki/ToggleButton)</b>  
   ButtonをToggleのようにOn/Offを切り替えられるようになります。
+  
+- <b>[UIDragManager](https://github.com/mizutanikirin/KirinUtil/wiki/UIDragManager)</b>  
+  UIのImageをドラッグアンドドロップできるようにした機能です。指定GameObjectに吸着させたりもできます。
+  
+- <b>[VerticalText](https://github.com/mizutanikirin/KirinUtil/wiki/VerticalText)</b>  
+  TextMeshProを縦書きに表示できる機能です。
+
+### Mobile
+- <b>[SafariView](https://github.com/mizutanikirin/KirinUtil/wiki/SafariView)</b>  
+  iOS端末でSafariのWebViewを表示することができます。
+
+# Menu > KirinUtil
+![menu](https://github.com/mizutanikirin/KirinUtil/assets/4795806/b9d9a49a-5d00-4ea5-b3b7-8485f233e933)  
+メニューでは以下のことができます。
+- <b>Add Class</b>  
+  特別なClassの追加ができます。
+- <b>Remove Class</b>  
+  特別なClassの削除ができます。
+- <b>AssetBundle</b>
+  - <b>Build</b>  
+    AssetBundleのBuildができます。
+  - <b>Search Prefab</b>  
+    バンドル名が付けられているPrefabをConsoleに出力します。バンドル名とPrefabのパスが出力されます。
+- <b>Vertex</b>
+  - <b>Vertex display</b>  
+    SceneViewで、選択しているGameObjectに頂点(赤)を追加して表示することができます。(頂点数が多いGameObjectの場合動作が重くなる可能性があります。)
+  - <b>Vertex hidden</b>  
+    表示している頂点を非表示にすることができます。
+- <b>About KirinUtil</b>  
+  KirinUtil
+
+# Hierarchy > KirinUtil
+![Hierarchy](https://github.com/mizutanikirin/KirinUtil/assets/4795806/db74339a-37fb-4bed-b9d6-6ced42af3465)  
+Hierarchyのメニューでは以下のことができます。
+- <b>Add KirinUtil</b>  
+  Util.csをアタッチしたGameObject(KirinUtil)が作成されます。
+- <b>Group Object</b>  
+  空のGameObjectが作成されます。そのGameObjectは現在Hierarchyで選択中のGameObjectと同じ階層にPosition:(0,0,0)、Roatetion(0,0,0)、Scale(1,1,1)で作成されます。(Hierarchyで選択していない場合はRootに作成されます。)
+- <b>GroupUI Object</b>  
+  RectTransformの付いたUI用の空のGameObjectが作成されます。そのGameObjectは現在Hierarchyで選択中のGameObjectと同じ階層にPosition:(0,0,0)、Roatetion(0,0,0)、Scale(1,1,1)で作成されます。(Hierarchyで選択していない場合はRootに作成されます。)
+- <b>Bold Line</b>  
+  Hierarchyを見やすくするための区切りの太いライン(GameObject)が作成されます。  
+  ![HierarchyLine](https://github.com/mizutanikirin/KirinUtil/assets/4795806/0700c51e-dc18-4aee-9de0-11afea823921)
+- <b>Thin Line</b>  
+  Hierarchyを見やすくするための区切りの細いライン(GameObject)が作成されます。(上図参考)
+
+<b>[Note]</b>  
+Bold Line、Thin Lineは手動でも追加できます。
+- GameObject名を3文字以上の「=」にするとBold Lineになります。例：======
+- GameObject名を3文字以上の「-」にするとThin Lineになります。例：-----
+
+# Inspector拡張
+![transform](https://github.com/mizutanikirin/KirinUtil/assets/4795806/770c1235-89cc-4d8f-a62c-41b721e46999)  
+InspectorのTransformのPosition, Rotation, Scaleを初期化できるボタンを作っています。  
+Pボタンを押すとPositionが(0,0,0)に、Rボタンを押すとRotationが(0,0,0)に、Sボタンを押すとSCaleが(1,1,1)になります。初期化はlocalな値になります。  
+  
+※こちら機能が必要ない場合は`/Assets/KirinUti/Editor/TransformInspector.cs`を削除してください。
 
 # Lisence
-MIT License
+[MIT License](https://github.com/mizutanikirin/KirinUtil/blob/master/LICENSE)

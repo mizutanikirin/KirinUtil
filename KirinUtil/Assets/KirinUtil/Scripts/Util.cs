@@ -28,8 +28,8 @@ namespace KirinUtil {
     [RequireComponent(typeof(KRNMedia))]
     [RequireComponent(typeof(KRNFile))]
     public class Util : MonoBehaviour {
-        [NonSerialized] public static string version = "ver1.0.7";
-        [NonSerialized] public static string copylight = "Copyright 2016-2022 MIZUTANI KIRIN All Rights Reserved.";
+        [NonSerialized] public static string version = "ver1.1.0";
+        [NonSerialized] public static string copylight = "Copyright MIZUTANI KIRIN All Rights Reserved.";
 
         [NonSerialized] public static KRNMedia media;
         [NonSerialized] public static KRNFile file;
@@ -607,8 +607,6 @@ namespace KirinUtil {
             if (num.ToString().IndexOf(".") == -1) return num;
             if (pointNum <= 0) return num;
 
-            float point = 0;
-
             int scaleUp = 1;
             float scaleDown = 1;
             for (int i = 0; i < pointNum; i++) {
@@ -616,7 +614,7 @@ namespace KirinUtil {
                 scaleDown *= 0.1f;
             }
 
-            point = RoundToInt(num * scaleUp);
+            float point = RoundToInt(num * scaleUp);
             point = point * scaleDown;
 
             if (point.ToString().IndexOf(".") != -1) {
@@ -1377,14 +1375,14 @@ namespace KirinUtil {
             }
         }
 
-        public static void EquidistantY(List<GameObject> objList, float startY, float endY, float posX) {
+        public static void EquidistantY(List<GameObject> objList, float startY, float endY, float posY) {
 
             float areaHeight = Mathf.Abs(endY - startY);
             float oneHeight = areaHeight / (float)(objList.Count + 1);
 
             for (int i = 0; i < objList.Count; i++) {
                 objList[i].transform.localPosition = new Vector3(
-                    posX,
+                    posY,
                     startY + oneHeight * (i + 1),
                     0
                 );

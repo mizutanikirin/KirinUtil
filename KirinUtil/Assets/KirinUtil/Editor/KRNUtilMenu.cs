@@ -214,7 +214,6 @@ public class KRNUtilMenu : Editor {
     #endregion
 
 
-
     //----------------------------------
     //  スクリーンショット
     //----------------------------------
@@ -293,7 +292,13 @@ public class KRNUtilMenu : Editor {
     //----------------------------------
     [MenuItem("KirinUtil/About KirinUtil", false, 1000)]
     private static void About() {
-        bool isOK = EditorUtility.DisplayDialog("About KirinUtil", "KirinUtil " + Util.version + "\n\n" + Util.copylight, "Close");
+        bool isOK = EditorUtility.DisplayDialog(
+            "About KirinUtil", 
+            "KirinUtil " + Util.version + "\n\n" + 
+            Util.copylight + "\n\n" +
+            "https://github.com/mizutanikirin/KirinUtil",
+            "Close"
+        );
     }
 
 

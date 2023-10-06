@@ -60,7 +60,7 @@ Material:
     m_Floats:
     - _Binarize: 0
     - _BlueTint: 0
-    - _Brightness: 0
+    - _Brightness: 0.03
     - _BumpScale: 1
     - _Contrast: 1.75
     - _Cutoff: 0.5
@@ -70,7 +70,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GreenTint: 0.5
-    - _Hue: 0.701
+    - _Hue: 0
     - _InvertColors: 0
     - _Metallic: 0
     - _Mode: 0
@@ -78,7 +78,7 @@ Material:
     - _Parallax: 0.02
     - _PosterizationLevels: 0
     - _RedTint: 0
-    - _Saturation: 1.95
+    - _Saturation: 1.96
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

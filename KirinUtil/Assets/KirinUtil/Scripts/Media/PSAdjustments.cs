@@ -14,9 +14,9 @@ namespace KirinUtil
         public class Setting
         {
             [Range(0f, 2f)] public float contrast = 1f;
-            [Range(0, 3)] public float saturation = 1f;
-            [Range(-1, 1)] public float brightness = 0;
-            [Range(0, 1)] public float hue = 0;
+            [Range(0f, 3f)] public float saturation = 1f;
+            [Range(-1f, 1f)] public float brightness = 0;
+            [Range(0f, 1f)] public float hue = 0;
             public bool invertColors = false;
             public bool binarize = false;
             [Range(0, 256)] public float posterizationLevels = 0;

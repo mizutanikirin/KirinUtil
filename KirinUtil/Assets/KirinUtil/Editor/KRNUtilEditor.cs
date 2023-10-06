@@ -316,6 +316,7 @@ public class KRNUtilEditor : Editor {
         obj.transform.position = Vector3.zero;
         obj.transform.SetParent(null);
         obj.AddComponent<Util>();
+        Debug.Log("Create KirinUtil");
 
         Undo.RegisterCreatedObjectUndo(obj, "Create KirinUtil");
     }
@@ -323,21 +324,11 @@ public class KRNUtilEditor : Editor {
     [MenuItem("GameObject/KirinUtil/Group Object", false, 20)]
     public static void CreateGroupObj()
     {
-        GameObject obj = new GameObject();
+        GameObject obj = CreateBaseObj();
         obj.name = "Group";
-        obj.transform.position = Vector3.zero;
 
-        if (Selection.activeGameObject != null)
-        {
-            if (Selection.activeGameObject.transform.parent != null)
-                obj.transform.SetParent(Selection.activeGameObject.transform.parent);
-            else
-                obj.transform.SetParent(null);
-        }
-        else
-        {
-            obj.transform.SetParent(null);
-        }
+        Selection.activeGameObject = obj;
+        Debug.Log("Create GroupObj");
 
         Undo.RegisterCreatedObjectUndo(obj, "Create Group");
     }
@@ -345,27 +336,42 @@ public class KRNUtilEditor : Editor {
     [MenuItem("GameObject/KirinUtil/GroupUI Object", false, 21)]
     public static void CreateGroupUI()
     {
-        GameObject obj = new GameObject();
+        GameObject obj = CreateBaseObj();
         obj.name = "GroupUI";
         RectTransform trf = obj.AddComponent<RectTransform>();
 
-        if (Selection.activeGameObject != null)
-        {
-            if (Selection.activeGameObject.transform.parent != null)
-                obj.transform.SetParent(Selection.activeGameObject.transform.parent);
-            else
-                obj.transform.SetParent(null);
-        }
-        else
-        {
-            obj.transform.SetParent(null);
-        }
         obj.transform.localPosition = Vector3.zero;
         obj.transform.rotation = Quaternion.Euler(Vector3.zero);
         obj.transform.localScale = Vector3.one;
         trf.sizeDelta = Vector2.zero;
 
+        Selection.activeGameObject = obj;
+        Debug.Log("Create GroupUI");
+
         Undo.RegisterCreatedObjectUndo(obj, "Create GroupUI");
+    }
+
+
+    [MenuItem("GameObject/KirinUtil/Bold Line", false, 40)]
+    public static void CreateBoldLine()
+    {
+        GameObject obj = CreateBaseObj();
+        obj.name = "=====";
+        obj.transform.position = Vector3.zero;
+
+        Debug.Log("Create Bold Line");
+        Undo.RegisterCreatedObjectUndo(obj, "Create Bold Line");
+    }
+
+    [MenuItem("GameObject/KirinUtil/Thin Line", false, 41)]
+    public static void CreateThinLine()
+    {
+        GameObject obj = CreateBaseObj();
+        obj.name = "-----";
+        obj.transform.position = Vector3.zero;
+
+        Debug.Log("Create Thin Line");
+        Undo.RegisterCreatedObjectUndo(obj, "Create Thin Line");
     }
 
 
@@ -385,4 +391,23 @@ public class KRNUtilEditor : Editor {
         }
     }
 
+    private static GameObject CreateBaseObj()
+    {
+        GameObject obj = new GameObject();
+        obj.transform.position = Vector3.zero;
+
+        if (Selection.activeGameObject != null)
+        {
+            if (Selection.activeGameObject.transform.parent != null)
+                obj.transform.SetParent(Selection.activeGameObject.transform.parent);
+            else
+                obj.transform.SetParent(null);
+        }
+        else
+        {
+            obj.transform.SetParent(null);
+        }
+
+        return obj;
+    }
 }

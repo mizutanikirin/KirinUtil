@@ -9,7 +9,6 @@ namespace KirinUtil
 {
     public class InternetAccessChecker : MonoBehaviour
     {
-
         /// <summary>
         /// インターネットに接続しているか確認
         /// </summary>
@@ -34,10 +33,12 @@ namespace KirinUtil
 
                 if (request.result != UnityWebRequest.Result.Success)
                 {
+                    print("test1");
                     callback(true);
                 }
                 else
                 {
+                    print("test2");
                     callback(false);
                 }
             }
