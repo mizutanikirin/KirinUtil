@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,22 +16,22 @@ namespace KirinUtil.Demo
         // Start is called before the first frame update
         void Start()
         {
-            // ’¼‰º‚ÌGameObject‚Ì‚İæ“¾
+            // ç›´ä¸‹ã®GameObjectã®ã¿å–å¾—
             GetChildGameObject();
 
-            // eGameObject‚Ì‰º‚É‚ ‚éGameObject‚ğList‚Å•Ô‚·
+            // è¦ªGameObjectã®ä¸‹ã«ã‚ã‚‹GameObjectã‚’Listã§è¿”ã™
             GetAllGameObject();
 
-            // ƒtƒF[ƒh
+            // ãƒ•ã‚§ãƒ¼ãƒ‰
             FadeStart();
 
-            // #ffffff‚©‚çColor‚É•ÏŠ·
+            // #ffffffã‹ã‚‰Colorã«å¤‰æ›
             colorImage.color = Util.media.HexToColor("#ffcc00");
 
-            // GameObject‚ÌƒpƒX‚ğ•Ô‚·
+            // GameObjectã®ãƒ‘ã‚¹ã‚’è¿”ã™
             Debug.Log("Path: " + Util.media.GetGameObjectPath(pathObj));
 
-            // ˆÚ“®‚µ‚È‚ª‚çUI‚ğ•\¦ / ”ñ•\¦
+            // ç§»å‹•ã—ãªãŒã‚‰UIã‚’è¡¨ç¤º / éè¡¨ç¤º
             Util.media.UIDisplay(messageObj, FadeType.FadeIn, Direction.Up, 1f, 50f);
         }
 
@@ -42,9 +42,9 @@ namespace KirinUtil.Demo
         }
 
         //----------------------------------
-        //  ’¼‰º‚ÌGameObject‚Ì‚İæ“¾
+        //  ç›´ä¸‹ã®GameObjectã®ã¿å–å¾—
         //----------------------------------
-        #region ’¼‰º‚ÌGameObject‚Ì‚İæ“¾
+        #region ç›´ä¸‹ã®GameObjectã®ã¿å–å¾—
         private void GetChildGameObject()
         {
             List<GameObject> childrenObj = Util.media.GetChildGameObject(parentObj, "child");
@@ -60,9 +60,9 @@ namespace KirinUtil.Demo
 
 
         //----------------------------------
-        //  eGameObject‚Ì‰º‚É‚ ‚éGameObject‚ğList‚Å•Ô‚·
+        //  è¦ªGameObjectã®ä¸‹ã«ã‚ã‚‹GameObjectã‚’Listã§è¿”ã™
         //----------------------------------
-        #region ’¼‰º‚ÌGameObject‚Ì‚İæ“¾
+        #region ç›´ä¸‹ã®GameObjectã®ã¿å–å¾—
         private void GetAllGameObject()
         {
             List<GameObject> childrenObj = Util.media.GetAllGameObject(parentObj);
@@ -78,9 +78,9 @@ namespace KirinUtil.Demo
 
 
         //----------------------------------
-        //  ƒtƒF[ƒh
+        //  ãƒ•ã‚§ãƒ¼ãƒ‰
         //----------------------------------
-        #region ƒtƒF[ƒh
+        #region ãƒ•ã‚§ãƒ¼ãƒ‰
         private void FadeStart()
         {
             // fade gui

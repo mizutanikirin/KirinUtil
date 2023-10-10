@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +12,11 @@ namespace KirinUtil.Demo
         // Start is called before the first frame update
         void Start()
         {
-            // ¦ image‚ÍImageManager‚ğg—p‚µ‚Äƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ñ‚Å‚¢‚Ü‚·B
+            // â€» imageã¯ImageManagerã‚’ä½¿ç”¨ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§ã„ã¾ã™ã€‚
             slide.Set();
 
-            // ƒ€[ƒr[‚ª•K—v‚Èê‡(ƒXƒ‰ƒCƒh“o˜^‚µ‚½‚ ‚Æ‚Éƒ€[ƒr[‚ğƒ[ƒh‚µ‚È‚¢‚Æ‚¢‚¯‚È‚¢)
-            // ¦ Util.movie‚ğg—p‚·‚éê‡‚ÍMovieManager‚ğg—p‚Å‚«‚éó‘Ô‚É‚È‚Á‚Ä‚¢‚È‚¢‚Æ‚¢‚¯‚Ü‚¹‚ñB
+            // ãƒ ãƒ¼ãƒ“ãƒ¼ãŒå¿…è¦ãªå ´åˆ(ã‚¹ãƒ©ã‚¤ãƒ‰ç™»éŒ²ã—ãŸã‚ã¨ã«ãƒ ãƒ¼ãƒ“ãƒ¼ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãªã„ã¨ã„ã‘ãªã„)
+            // â€» Util.movieã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯MovieManagerã‚’ä½¿ç”¨ã§ãã‚‹çŠ¶æ…‹ã«ãªã£ã¦ã„ãªã„ã¨ã„ã‘ã¾ã›ã‚“ã€‚
             //Util.movie.LoadUIMovies();
 
             slide.Play(slideId);

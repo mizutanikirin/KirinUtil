@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,26 +21,26 @@ namespace KirinUtil.Demo
         // Start is called before the first frame update
         void Start()
         {
-            // ƒ‰ƒ“ƒLƒ“ƒO
+            // ãƒ©ãƒ³ã‚­ãƒ³ã‚°
             RankingDemo();
 
-            // ƒfƒoƒbƒO—p‚ÌŠÔŒv‘ª
+            // ãƒ‡ãƒãƒƒã‚°ç”¨ã®æ™‚é–“è¨ˆæ¸¬
             StartCoroutine(DebugWatch());
 
-            // “™ŠÔŠu‚É®—ñ
+            // ç­‰é–“éš”ã«æ•´åˆ—
             Util.EquidistantX(equidistantObjList, -200, 300, 0);
 
-            // ƒJƒƒ‰‚Ì‘O‚ÉObject‚ğ”z’u‚·‚éB
+            // ã‚«ãƒ¡ãƒ©ã®å‰ã«Objectã‚’é…ç½®ã™ã‚‹ã€‚
             //frontObj.transform.position = Util.GetPosInFrontOfCamera(Camera.main, 3f, true);
             Util.SetObjectInFrontOfCamera(Camera.main, frontObj, 3f, false, 0, true, false);
 
-            // w’è‚µ‚½‹æØ‚è•¶š‚Å‹æØ‚èList‚Å’l‚ğ•Ô‚·
+            // æŒ‡å®šã—ãŸåŒºåˆ‡ã‚Šæ–‡å­—ã§åŒºåˆ‡ã‚ŠListã§å€¤ã‚’è¿”ã™
             GetSplitStringList();
 
-            // •¶š—ñ‚ÌƒJƒEƒ“ƒg(“ú–{Œê‚Í2, ‰p”š‚Í1‚Æ‚µ‚ÄƒJƒEƒ“ƒg)
-            Debug.Log("TextLengthJPN: " + Util.TextLengthJPN("abcdef") + ", " + Util.TextLengthJPN("abcd‚ ef"));
+            // æ–‡å­—åˆ—ã®ã‚«ã‚¦ãƒ³ãƒˆ(æ—¥æœ¬èªã¯2, è‹±æ•°å­—ã¯1ã¨ã—ã¦ã‚«ã‚¦ãƒ³ãƒˆ)
+            Debug.Log("TextLengthJPN: " + Util.TextLengthJPN("abcdef") + ", " + Util.TextLengthJPN("abcdã‚ef"));
 
-            // Œ»İ‚ÌˆÊ’u‚©‚çw’è‚µ‚½‹——£‚¾‚¯ƒ^[ƒQƒbƒg‚Ì•ûŒü‚ÉˆÚ“®
+            // ç¾åœ¨ã®ä½ç½®ã‹ã‚‰æŒ‡å®šã—ãŸè·é›¢ã ã‘ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®æ–¹å‘ã«ç§»å‹•
             resultPosObj.transform.localPosition = Util.GetLinePos(
                 nowPosObj.transform.localPosition, 
                 targetPosObj.transform.localPosition, 
@@ -55,12 +55,12 @@ namespace KirinUtil.Demo
         }
 
         //----------------------------------
-        //  ƒ‰ƒ“ƒLƒ“ƒO ƒfƒ‚
+        //  ãƒ©ãƒ³ã‚­ãƒ³ã‚° ãƒ‡ãƒ¢
         //----------------------------------
         #region RankingDemo
         private void RankingDemo()
         {
-            // ƒ‰ƒ“ƒLƒ“ƒO
+            // ãƒ©ãƒ³ã‚­ãƒ³ã‚°
             List<string> id = new List<string>
             {
                 "aaa",
@@ -89,7 +89,7 @@ namespace KirinUtil.Demo
 
 
         //----------------------------------
-        //  ƒfƒoƒbƒO—p‚ÌŠÔŒv‘ª
+        //  ãƒ‡ãƒãƒƒã‚°ç”¨ã®æ™‚é–“è¨ˆæ¸¬
         //----------------------------------
         #region DebugWatch
         private IEnumerator DebugWatch()
@@ -102,10 +102,10 @@ namespace KirinUtil.Demo
 
 
         //----------------------------------
-        //  w’è‚µ‚½‹æØ‚è•¶š‚Å‹æØ‚èList‚Å
-        //  ’l‚ğ•Ô‚·
+        //  æŒ‡å®šã—ãŸåŒºåˆ‡ã‚Šæ–‡å­—ã§åŒºåˆ‡ã‚ŠListã§
+        //  å€¤ã‚’è¿”ã™
         //----------------------------------
-        #region w’è‚µ‚½‹æØ‚è•¶š‚Å‹æØ‚èList‚Å’l‚ğ•Ô‚·
+        #region æŒ‡å®šã—ãŸåŒºåˆ‡ã‚Šæ–‡å­—ã§åŒºåˆ‡ã‚ŠListã§å€¤ã‚’è¿”ã™
         private void GetSplitStringList()
         {
             string rawData = "a,b,c,d,e";

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,26 +15,26 @@ namespace KirinUtil.Demo
         // Start is called before the first frame update
         void Start()
         {
-            // ŠÈ’P‚È“®‚«
+            // ç°¡å˜ãªå‹•ã
             EasyMoveStart();
         }
 
 
         private void EasyMoveStart()
         {
-            // ‰¡ˆÚ“®
+            // æ¨ªç§»å‹•
             Util.media.MoveHorizon(horizonObj, 20, 0.5f, 0, 10, true, true);
 
-            // cˆÚ“®
+            // ç¸¦ç§»å‹•
             Util.media.MoveVertical(verticalObj, 20, 0.5f, 0, 10, true, true);
 
-            // ƒ‰ƒ“ƒ_ƒ€ˆÚ“®
+            // ãƒ©ãƒ³ãƒ€ãƒ ç§»å‹•
             Util.media.MoveRandom(randomObj, 20, 0.5f, 0, 10, true, true);
 
-            // ¶‰E‚Ì‰ñ“]
+            // å·¦å³ã®å›è»¢
             Util.media.MoveRotate(rotateObj, 10, 0.5f, 0, 10, true);
 
-            // slcale‚ÌƒAƒjƒ
+            // slcaleã®ã‚¢ãƒ‹ãƒ¡
             Util.media.MoveScale(scaleObj, 1.1f, 0.5f, 0, 10, true);
 
             //StartCoroutine(StopWait());
@@ -44,7 +44,7 @@ namespace KirinUtil.Demo
         {
             yield return new WaitForSeconds(2.5f);
 
-            // “r’†‚Å~‚ß‚é‚Æ‚«
+            // é€”ä¸­ã§æ­¢ã‚ã‚‹ã¨ã
             Util.media.StopMoveHorizon(horizonObj);
             Util.media.StopMoveVertical(verticalObj);
             Util.media.StopMoveHorizon(randomObj);

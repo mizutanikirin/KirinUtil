@@ -1,4 +1,4 @@
-//
+﻿//
 //	  UnityOSC - Open Sound Control interface for the Unity3d game engine
 //
 //	  Copyright (c) 2012 Jorge Garcia Martin

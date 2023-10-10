@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEditor;
 
 [InitializeOnLoad]
@@ -40,11 +40,11 @@ public class KRNUtilHierarchy
         }
         else return;
 
-        // ƒLƒ…[ƒuƒAƒCƒRƒ“‚ğ‰B‚·‚½‚ß‚É”wŒiF‚Åã‘‚«‚·‚é
+        // ã‚­ãƒ¥ãƒ¼ãƒ–ã‚¢ã‚¤ã‚³ãƒ³ã‚’éš ã™ãŸã‚ã«èƒŒæ™¯è‰²ã§ä¸Šæ›¸ãã™ã‚‹
         Color hierarchyBGColor = EditorGUIUtility.isProSkin ? new Color(0.22f, 0.22f, 0.22f) : Color.white;
         GUI.DrawTexture(new Rect(selectionRect.x, selectionRect.y, 16, 16), GetTextureWithColor(hierarchyBGColor));
 
-        // –¼‘O‚Ì•”•ª‚¾‚¯‚Éƒ‰ƒCƒ“‚ğ•`‰æ‚·‚é‚½‚ß‚ÉRect‚ğ’²®
+        // åå‰ã®éƒ¨åˆ†ã ã‘ã«ãƒ©ã‚¤ãƒ³ã‚’æç”»ã™ã‚‹ãŸã‚ã«Rectã‚’èª¿æ•´
         Rect lineRect = new Rect(selectionRect.x, selectionRect.y + linePosY, selectionRect.width, lineHeight);
         EditorGUI.DrawRect(lineRect, Color.gray);
 

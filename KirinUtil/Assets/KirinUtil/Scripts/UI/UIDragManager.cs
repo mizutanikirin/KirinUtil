@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +11,11 @@ namespace KirinUtil
         [Header("Setting")]
         [SerializeField] private Camera uiCamera;
         [SerializeField] private Canvas uiCanvas;
-        [Tooltip("ƒhƒ‰ƒbƒO‰Â”\‚ÈƒGƒŠƒA")]
+        [Tooltip("ãƒ‰ãƒ©ãƒƒã‚°å¯èƒ½ãªã‚¨ãƒªã‚¢")]
         [SerializeField] private Rect dragRect;
-        [Tooltip("‹z’…‘ÎÛ•¨(adsorptionObjs)‚ªw’è‹——£[pixel]ˆÈ“à‚É‚ ‚é‚Æ‹z’…‚·‚é")]
+        [Tooltip("å¸ç€å¯¾è±¡ç‰©(adsorptionObjs)ãŒæŒ‡å®šè·é›¢[pixel]ä»¥å†…ã«ã‚ã‚‹ã¨å¸ç€ã™ã‚‹")]
         [SerializeField] private float nearDistanceThreshold;
-        [Tooltip("Start()‚ÉDrag‚ª—LŒø‚É‚È‚é")]
+        [Tooltip("Start()æ™‚ã«DragãŒæœ‰åŠ¹ã«ãªã‚‹")]
         [SerializeField] private bool awakeEnable;
 
         [Tooltip("Specify the GameObject to drag")]
@@ -81,8 +81,8 @@ namespace KirinUtil
         //  Public
         //----------------------------------
         #region Drag
-        // ‚Ü‚Æ‚ß‚ÄSet‚·‚é
-        // (¦ ‚Í‚¶‚ß‚ÉSetDrag()‚à‚µ‚­‚ÍAddDragObj()‚ğ‚µ‚È‚¢‚ÆDrag‚Å‚«‚È‚¢)
+        // ã¾ã¨ã‚ã¦Setã™ã‚‹
+        // (â€» ã¯ã˜ã‚ã«SetDrag()ã‚‚ã—ãã¯AddDragObj()ã‚’ã—ãªã„ã¨Dragã§ããªã„)
         public void StartDrag()
         {
             for (int i = 0; i < uiDrags.Count; i++)
@@ -91,8 +91,8 @@ namespace KirinUtil
             }
         }
 
-        // ƒhƒ‰ƒbƒOObj‚ğ’Ç‰Á‚·‚é
-        // (¦ ‚Í‚¶‚ß‚ÉSetDrag()‚à‚µ‚­‚ÍAddDragObj()‚ğ‚µ‚È‚¢‚ÆDrag‚Å‚«‚È‚¢)
+        // ãƒ‰ãƒ©ãƒƒã‚°Objã‚’è¿½åŠ ã™ã‚‹
+        // (â€» ã¯ã˜ã‚ã«SetDrag()ã‚‚ã—ãã¯AddDragObj()ã‚’ã—ãªã„ã¨Dragã§ããªã„)
         public void AddDrag(GameObject dragObj)
         {
             UIDrag uiDrag = dragObj.GetComponent<UIDrag>();
@@ -107,8 +107,8 @@ namespace KirinUtil
             if (GetDragListNum(dragObj) == -1) uiDrags.Add(uiDrag);
         }
 
-        // w’è‚µ‚½ƒhƒ‰ƒbƒOObj‚Ìƒhƒ‰ƒbƒO‹@”\‚ğíœ‚·‚é or w’è‚µ‚½ƒhƒ‰ƒbƒOObj©‘Ì‚ğíœ‚·‚é
-        // íœ‚·‚é‚ÆuiDrags‚©‚ç‚àíœ‚³‚ê‚é
+        // æŒ‡å®šã—ãŸãƒ‰ãƒ©ãƒƒã‚°Objã®ãƒ‰ãƒ©ãƒƒã‚°æ©Ÿèƒ½ã‚’å‰Šé™¤ã™ã‚‹ or æŒ‡å®šã—ãŸãƒ‰ãƒ©ãƒƒã‚°Objè‡ªä½“ã‚’å‰Šé™¤ã™ã‚‹
+        // å‰Šé™¤ã™ã‚‹ã¨uiDragsã‹ã‚‰ã‚‚å‰Šé™¤ã•ã‚Œã‚‹
         public void RemoveDrag(GameObject dragObj, bool destroySelf = false)
         {
             int listNum = GetDragListNum(dragObj);
@@ -148,8 +148,8 @@ namespace KirinUtil
             if (awakeEnable) StartDrag();
         }
 
-        // w’è‚µ‚½Obj‚ÌuiDrags‚ÌList”Ô†‚ğ•Ô‚·
-        // ‚È‚¢ê‡‚Í-1‚ğ•Ô‚·
+        // æŒ‡å®šã—ãŸObjã®uiDragsã®Listç•ªå·ã‚’è¿”ã™
+        // ãªã„å ´åˆã¯-1ã‚’è¿”ã™
         private int GetDragListNum(GameObject dragObj)
         {
             if (dragObj == null) return -1;
@@ -162,8 +162,8 @@ namespace KirinUtil
             return -1;
         }
 
-        // w’è‚µ‚½Obj‚ÌuiDrags‚ÌList”Ô†‚ğ•Ô‚·
-        // ‚È‚¢ê‡‚Í-1‚ğ•Ô‚·
+        // æŒ‡å®šã—ãŸObjã®uiDragsã®Listç•ªå·ã‚’è¿”ã™
+        // ãªã„å ´åˆã¯-1ã‚’è¿”ã™
         private int GetAdsorptionListNum(GameObject adsorptionObj)
         {
             if (adsorptionObj == null) return -1;

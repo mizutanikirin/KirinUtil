@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ namespace KirinUtil.Demo
         // Start is called before the first frame update
         void Start()
         {
-            // ‚«o‚µ
+            // å¹ãå‡ºã—
             balloonMessage.Create(balloonParentObj, 0);
             balloonMessage.PlayAll(0);
             StartCoroutine(BalloonWait());

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -62,13 +62,13 @@ namespace KirinUtil
 
             Object[] objects = assetBundle.LoadAllAssets();
 
-            // AssetBundle‚Ìƒƒ^î•ñ‚ğƒAƒ“ƒ[ƒh
+            // AssetBundleã®ãƒ¡ã‚¿æƒ…å ±ã‚’ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰
             assetBundle.Unload(false);
 
             return objects;
         }
 
-        // object‚Ì“Ç‚İ‚İ
+        // objectã®èª­ã¿è¾¼ã¿
         public List<Object> LoadObjects(string assetName)
         {
             Object[] objects = LoadAssetBundle(assetName);
@@ -80,7 +80,7 @@ namespace KirinUtil
             return objList;
         }
 
-        // GameObject‚Ì“Ç‚İ‚İ
+        // GameObjectã®èª­ã¿è¾¼ã¿
         public List<GameObject> LoadGameObjects(string assetName, GameObject parentObj, bool initVisible = false)
         {
             Object[] objects = LoadAssetBundle(assetName);

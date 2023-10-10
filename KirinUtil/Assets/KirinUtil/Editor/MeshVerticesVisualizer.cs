@@ -1,24 +1,24 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(MeshFilter))]
 [CanEditMultipleObjects]
 public class MeshFilterEditor : Editor
 {
-    private static bool showVertices = false; // ’¸“_•\¦‚Ìó‘Ô‚ğƒgƒ‰ƒbƒN‚·‚é•Ï”
+    private static bool showVertices = false; // é ‚ç‚¹è¡¨ç¤ºã®çŠ¶æ…‹ã‚’ãƒˆãƒ©ãƒƒã‚¯ã™ã‚‹å¤‰æ•°
 
     [MenuItem("KirinUtil/Vertex/Vertex display", false)]
     private static void ShowVertices()
     {
         showVertices = true;
-        SceneView.RepaintAll(); // ƒV[ƒ“ƒrƒ…[‚ğÄ•`‰æ
+        SceneView.RepaintAll(); // ã‚·ãƒ¼ãƒ³ãƒ“ãƒ¥ãƒ¼ã‚’å†æç”»
     }
 
     [MenuItem("KirinUtil/Vertex/Vertex hidden", false)]
     private static void HideVertices()
     {
         showVertices = false;
-        SceneView.RepaintAll(); // ƒV[ƒ“ƒrƒ…[‚ğÄ•`‰æ
+        SceneView.RepaintAll(); // ã‚·ãƒ¼ãƒ³ãƒ“ãƒ¥ãƒ¼ã‚’å†æç”»
     }
 
     [MenuItem("KirinUtil/Vertex/Vertex display", true)]
@@ -35,7 +35,7 @@ public class MeshFilterEditor : Editor
 
     void OnSceneGUI()
     {
-        if (!showVertices) return; // ’¸“_‚ğ•\¦‚µ‚È‚¢ê‡A‰½‚à‚µ‚È‚¢
+        if (!showVertices) return; // é ‚ç‚¹ã‚’è¡¨ç¤ºã—ãªã„å ´åˆã€ä½•ã‚‚ã—ãªã„
 
         MeshFilter meshFilter = target as MeshFilter;
         if (meshFilter == null || meshFilter.sharedMesh == null) return;

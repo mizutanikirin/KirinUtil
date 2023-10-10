@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace KirinUtil
 {
-    // ImageƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ•K—v‚Æ‚·‚é
+    // Imageã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å¿…è¦ã¨ã™ã‚‹
     [RequireComponent(typeof(Image))]
 
     public class UIDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerDownHandler
@@ -22,7 +22,7 @@ namespace KirinUtil
         private bool isDowned;
         private Vector3 prevPos;
 
-        // Šî€“_iƒ}ƒEƒX‚ÌŠî€‚Í¶‰º‚¾‚ªAƒIƒuƒWƒFƒNƒg‚ÌŠî€‚Í‰æ–Ê’†‰›‚É‚È‚é‚Ì‚Å•â³‚·‚éBj
+        // åŸºæº–ç‚¹ï¼ˆãƒã‚¦ã‚¹ã®åŸºæº–ã¯å·¦ä¸‹ã ãŒã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åŸºæº–ã¯ç”»é¢ä¸­å¤®ã«ãªã‚‹ã®ã§è£œæ­£ã™ã‚‹ã€‚ï¼‰
         private Vector2 rootPos;
 
         private Vector2 startTouchLocalPos;
@@ -75,12 +75,12 @@ namespace KirinUtil
 
 
         //----------------------------------
-        //  ƒhƒ‰ƒbƒO•ƒhƒƒbƒv
+        //  ãƒ‰ãƒ©ãƒƒã‚°ï¼†ãƒ‰ãƒ­ãƒƒãƒ—
         //----------------------------------
-        #region ƒhƒ‰ƒbƒO•ƒhƒƒbƒv
+        #region ãƒ‰ãƒ©ãƒƒã‚°ï¼†ãƒ‰ãƒ­ãƒƒãƒ—
         public void OnBeginDrag(PointerEventData eventData)
         {
-            // ƒhƒ‰ƒbƒO‘O‚ÌˆÊ’u‚ğ‹L‰¯‚µ‚Ä‚¨‚­
+            // ãƒ‰ãƒ©ãƒƒã‚°å‰ã®ä½ç½®ã‚’è¨˜æ†¶ã—ã¦ãŠã
             prevPos = transform.localPosition;
             isDragging = true;
             startTouchLocalPos = GetStartTouchLocalPos();
@@ -89,7 +89,7 @@ namespace KirinUtil
 
         public void OnDrag(PointerEventData eventData)
         {
-            // ƒhƒ‰ƒbƒO’†‚ÍˆÊ’u‚ğXV‚·‚é
+            // ãƒ‰ãƒ©ãƒƒã‚°ä¸­ã¯ä½ç½®ã‚’æ›´æ–°ã™ã‚‹
             if (isDragging) 
                 transform.localPosition = GetDragPosition(eventData.position) + startTouchLocalPos;
             else 
@@ -108,20 +108,20 @@ namespace KirinUtil
 
             isDragging = false;
 
-            // DragI—¹Œã‚ÌˆÊ’u’²®
+            // Dragçµ‚äº†å¾Œã®ä½ç½®èª¿æ•´
             AdjustPosition();
         }
 
         public void OnDrop(PointerEventData eventData)
         {
-            //g‚Á‚Ä‚Ü‚¹‚ñB
+            //ä½¿ã£ã¦ã¾ã›ã‚“ã€‚
             /*var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventData, raycastResults);
 
 
             foreach (var hit in raycastResults)
             {
-                // ‚à‚µ DroppableField ‚Ìã‚È‚çA‚»‚ÌˆÊ’u‚ÉŒÅ’è‚·‚é
+                // ã‚‚ã— DroppableField ã®ä¸Šãªã‚‰ã€ãã®ä½ç½®ã«å›ºå®šã™ã‚‹
                 if (hit.gameObject.CompareTag("DroppableField"))
                 {
                     transform.position = hit.gameObject.transform.position;
@@ -130,7 +130,7 @@ namespace KirinUtil
             }*/
         }
 
-        // ‹­§“I‚Éƒhƒ‰ƒbƒO‚ğ‰ğœ
+        // å¼·åˆ¶çš„ã«ãƒ‰ãƒ©ãƒƒã‚°ã‚’è§£é™¤
         public void ForceEndDrag()
         {
             if (isDragging)
@@ -159,7 +159,7 @@ namespace KirinUtil
             //if (Screen.width == 3840) adjustVar = 2;
             float adjustVar = Screen.width / 1920f;
 
-            // ƒ}ƒEƒX‚Ìê‡‚Ìˆ—
+            // ãƒã‚¦ã‚¹ã®å ´åˆã®å‡¦ç†
             if (Input.touchCount == 0)
             {
                 return new Vector2(
@@ -168,7 +168,7 @@ namespace KirinUtil
                 );
             }
 
-            // ƒ^ƒbƒ`ƒpƒlƒ‹‚Ìê‡‚Ìˆ—
+            // ã‚¿ãƒƒãƒãƒ‘ãƒãƒ«ã®å ´åˆã®å‡¦ç†
             float minDist = 10000;
             int touchNum = -1;
             for (int i = 0; i < Input.touchCount; i++)
@@ -202,28 +202,28 @@ namespace KirinUtil
         }
         #endregion
 
-        #region DragI—¹Œã‚ÌˆÊ’u’²®
+        #region Dragçµ‚äº†å¾Œã®ä½ç½®èª¿æ•´
         private void AdjustPosition()
         {
-            // ƒGƒŠƒAŠO‚¾‚Á‚½ê‡ƒGƒŠƒA“à‚ÉˆÚ“®‚³‚¹‚é
+            // ã‚¨ãƒªã‚¢å¤–ã ã£ãŸå ´åˆã‚¨ãƒªã‚¢å†…ã«ç§»å‹•ã•ã›ã‚‹
             MoveToSafeArea();
 
-            // Map‚ÌƒuƒƒbƒN‚É‹z’…
+            // Mapã®ãƒ–ãƒ­ãƒƒã‚¯ã«å¸ç€
             GameObject fitObj = MoveNearBlock();
 
             if (fitObj != null)
             {
-                // fit‚µ‚½‚Æ‚«
+                // fitã—ãŸã¨ã
                 FitAction.Invoke(gameObject, fitObj);
             }
             else
             {
-                // fit‚µ‚È‚©‚Á‚½‚Æ‚«(’Êí‚Ìƒhƒ‰ƒbƒOI—¹)
+                // fitã—ãªã‹ã£ãŸã¨ã(é€šå¸¸ã®ãƒ‰ãƒ©ãƒƒã‚°çµ‚äº†)
                 DragAction.Invoke(gameObject);
             }
         }
 
-        // ƒGƒŠƒAŠO‚¾‚Á‚½ê‡ƒGƒŠƒA“à‚ÉˆÚ“®‚³‚¹‚é
+        // ã‚¨ãƒªã‚¢å¤–ã ã£ãŸå ´åˆã‚¨ãƒªã‚¢å†…ã«ç§»å‹•ã•ã›ã‚‹
         private void MoveToSafeArea()
         {
             Vector2 safePos = Vector2.zero;
@@ -241,7 +241,7 @@ namespace KirinUtil
         }
 
 
-        // Map‚ÌƒuƒƒbƒN‚É‹z’…
+        // Mapã®ãƒ–ãƒ­ãƒƒã‚¯ã«å¸ç€
         private GameObject MoveNearBlock()
         {
             // init
@@ -249,10 +249,10 @@ namespace KirinUtil
             Vector2 moveValue = Vector2.zero;
             GameObject nearestObj = null;
 
-            // userBlock‚ÌˆÊ’u
+            // userBlockã®ä½ç½®
             Vector3 userBlockPos = GetBlockPos(gameObject);
 
-            // ‹——£‚ğŒ©‚é
+            // è·é›¢ã‚’è¦‹ã‚‹
             if (adsorptionObjs == null) return null;
             for (int j = 0; j < adsorptionObjs.Count; j++)
             {
@@ -303,12 +303,12 @@ namespace KirinUtil
 
 
         //----------------------------------
-        //  ƒ^ƒbƒv
+        //  ã‚¿ãƒƒãƒ—
         //----------------------------------
-        #region ƒ^ƒbƒv
+        #region ã‚¿ãƒƒãƒ—
         public void OnPointerClick(PointerEventData eventData)
         {
-            // ƒNƒŠƒbƒN”»’è‚ªƒhƒ‰ƒbƒO’†‚É‹N‚±‚ç‚È‚¢‚æ‚¤‚É‚µ‚Ü‚·B
+            // ã‚¯ãƒªãƒƒã‚¯åˆ¤å®šãŒãƒ‰ãƒ©ãƒƒã‚°ä¸­ã«èµ·ã“ã‚‰ãªã„ã‚ˆã†ã«ã—ã¾ã™ã€‚
             if (!isDragging && !isDowned)
             {
                 ClickAction.Invoke(gameObject);

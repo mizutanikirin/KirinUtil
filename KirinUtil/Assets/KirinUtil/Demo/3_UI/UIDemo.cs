@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ namespace KirinUtil.Demo
         // Start is called before the first frame update
         void Start()
         {
-            // ü‚ğˆø‚­
+            // ç·šã‚’å¼•ã
             line.Draw(lineStartPosObj.transform.localPosition, lineEndPosObj.transform.localPosition, 5);
         }
 

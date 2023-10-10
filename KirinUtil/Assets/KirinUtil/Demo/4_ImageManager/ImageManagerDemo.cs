@@ -1,4 +1,4 @@
-using KirinUtil;
+ï»¿using KirinUtil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +11,14 @@ public class ImageManagerDemo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Inspector > UI Image ‚É“o˜^‚³‚ê‚Ä‚¢‚é‰æ‘œ‚ğ“Ç‚İ‚ñ‚Å•\¦‚³‚¹‚é
+        // Inspector > UI Image ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ç”»åƒã‚’èª­ã¿è¾¼ã‚“ã§è¡¨ç¤ºã•ã›ã‚‹
         Util.image.LoadImages();
 
-        // Inspector > Only Texture ‚É“o˜^‚³‚ê‚Ä‚¢‚é‰æ‘œ‚ğ“Ç‚İ‚Ş
+        // Inspector > Only Texture ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ç”»åƒã‚’èª­ã¿è¾¼ã‚€
         Util.image.LoadTexture2DList();
         b1Image.texture = Util.image.textures[0];
 
-        // ˜A”Ô‰æ‘œ‚Ì“Ç‚İ‚İ+Ä¶
+        // é€£ç•ªç”»åƒã®èª­ã¿è¾¼ã¿+å†ç”Ÿ
         Util.image.LoadPlayImages();
         Util.image.PlayImage("playTest");
     }
@@ -29,15 +29,15 @@ public class ImageManagerDemo : MonoBehaviour
         
     }
 
-    // Util.image.LoadImages()‚ªI—¹‚µ‚½‚çŒÄ‚Ño‚³‚ê‚é
-    // ‚±‚ÌŠÖ”‚ÍInspector > ImageManager > Loaded Image Event ‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·B
+    // Util.image.LoadImages()ãŒçµ‚äº†ã—ãŸã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹
+    // ã“ã®é–¢æ•°ã¯Inspector > ImageManager > Loaded Image Event ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™ã€‚
     public void LoadedImages()
     {
         Debug.Log("LoadedImages");
     }
 
-    // ˜A”Ô‰æ‘œ‚ÌÄ¶(Util.image.PlayImage("playTest"))‚ªI—¹‚µ‚½‚çŒÄ‚Ño‚³‚ê‚é
-    // ‚±‚ÌŠÖ”‚ÍInspector > ImageManager > Play Image End Event ‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·B
+    // é€£ç•ªç”»åƒã®å†ç”Ÿ(Util.image.PlayImage("playTest"))ãŒçµ‚äº†ã—ãŸã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹
+    // ã“ã®é–¢æ•°ã¯Inspector > ImageManager > Play Image End Event ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™ã€‚
     public void PlayImageEnd()
     {
         Debug.Log("PlayImageEnd");

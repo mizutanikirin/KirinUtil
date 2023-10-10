@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ namespace KirinUtil.Demo
             count++;
         }
 
-        // Inspector‚ÌKRNNetwork‚ÌƒCƒxƒ“ƒg‚©‚çŒÄ‚Ño‚³‚ê‚é
+        // Inspectorã®KRNNetworkã®ã‚¤ãƒ™ãƒ³ãƒˆã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹
         public void OSCReceived(List<NetManager.OSCData> oscData)
         {
             for (int i = 0; i < oscData.Count; i++)

@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ namespace KirinUtil.Demo
         // Start is called before the first frame update
         void Start()
         {
-            // É{É^Éì1Ç¬ÇÃÉ_ÉCÉAÉçÉO
+            // „Éú„Çø„É≥1„Å§„ÅÆ„ÉÄ„Ç§„Ç¢„É≠„Ç∞
             dialog.Popup("okDialog", Vector2.zero, "abcd", DialogManager.ButtonType.OK);
 
         }
@@ -20,7 +20,7 @@ namespace KirinUtil.Demo
         {
             print("DialogOkBtnClick: " + id);
 
-            // É{É^Éì2Ç¬ÇÃÉ_ÉCÉAÉçÉO
+            // „Éú„Çø„É≥2„Å§„ÅÆ„ÉÄ„Ç§„Ç¢„É≠„Ç∞
             dialog.Popup("yesNoDialog", Vector2.zero, "abcd", DialogManager.ButtonType.YesNo);
         }
 

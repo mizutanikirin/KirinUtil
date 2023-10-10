@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,10 +8,10 @@ namespace KirinUtil
     {
         [SerializeField] private RectTransform targetCanvasRT;
 
-        //ƒtƒŠƒbƒN”»’è—p ŠÔ‚µ‚«‚¢’l
+        //ãƒ•ãƒªãƒƒã‚¯åˆ¤å®šç”¨ æ™‚é–“ã—ãã„å€¤
         [SerializeField] private float flickTime = 0.15f;
 
-        //ƒtƒŠƒbƒN”»’è—p ˆÚ“®‹——£
+        //ãƒ•ãƒªãƒƒã‚¯åˆ¤å®šç”¨ ç§»å‹•è·é›¢
         [SerializeField] private float flickMagnitude = 200;
         [SerializeField] private float flickHeightMagnitude = 100;
 
@@ -26,7 +26,7 @@ namespace KirinUtil
 
         private void Start()
         {
-            // w10–{•ª
+            // æŒ‡10æœ¬åˆ†
             startPosition = new Vector2[10];
             endPosition = new Vector2[10];
             timer = new float[10];
@@ -56,38 +56,38 @@ namespace KirinUtil
 
         private void FlickUpdate(int num)
         {
-            //ƒ^ƒbƒvŠJn
+            //ã‚¿ãƒƒãƒ—é–‹å§‹æ™‚
             if (Input.GetTouch(num).phase == TouchPhase.Began)
             {
-                //ƒ^ƒbƒvŠJnƒ|ƒCƒ“ƒg‚ğæ“¾
+                //ã‚¿ãƒƒãƒ—é–‹å§‹ãƒã‚¤ãƒ³ãƒˆã‚’å–å¾—
                 startPosition[num] = GetCanvasPos(Input.GetTouch(num).position);
             }
 
-            //ƒ^ƒbƒv’†
+            //ã‚¿ãƒƒãƒ—ä¸­
             if (Input.GetTouch(num).phase == TouchPhase.Moved)
             {
-                //ƒ^ƒbƒvŠÔ‚ª‚µ‚«‚¢’l‚ğ‰z‚¦‚½ê‡AƒXƒƒCƒv‚Æ”»’è
+                //ã‚¿ãƒƒãƒ—æ™‚é–“ãŒã—ãã„å€¤ã‚’è¶ŠãˆãŸå ´åˆã€ã‚¹ãƒ¯ã‚¤ãƒ—ã¨åˆ¤å®š
                 if (timer[num] >= flickTime)
                 {
                     //Swipe
                 }
-                //‰Ÿ‰º‚µ‚Ä‚¢‚éŠÔAƒ^ƒCƒ}[‚ğ‰ÁZ
+                //æŠ¼ä¸‹ã—ã¦ã„ã‚‹é–“ã€ã‚¿ã‚¤ãƒãƒ¼ã‚’åŠ ç®—
                 timer[num] += Time.deltaTime;
             }
 
-            //ƒ^ƒbƒvI—¹
+            //ã‚¿ãƒƒãƒ—çµ‚äº†æ™‚
             if (Input.GetTouch(num).phase == TouchPhase.Ended)
             {
-                //ƒ^ƒbƒvI—¹ƒ|ƒCƒ“ƒg‚ğæ“¾
+                //ã‚¿ãƒƒãƒ—çµ‚äº†ãƒã‚¤ãƒ³ãƒˆã‚’å–å¾—
                 endPosition[num] = GetCanvasPos(Input.GetTouch(num).position);
 
-                //ƒ^ƒbƒvŠJn`I—¹ƒ|ƒCƒ“ƒg‚Ì‹——£
+                //ã‚¿ãƒƒãƒ—é–‹å§‹ï½çµ‚äº†ãƒã‚¤ãƒ³ãƒˆã®è·é›¢
                 Vector2 direction = endPosition[num] - startPosition[num];
 
-                //‹——£‚ªw’èˆÈãAƒ^ƒbƒvŠÔ‚ªw’èˆÈ‰º‚Ìê‡AƒtƒŠƒbƒN‚Æ”»’è
+                //è·é›¢ãŒæŒ‡å®šä»¥ä¸Šã€ã‚¿ãƒƒãƒ—æ™‚é–“ãŒæŒ‡å®šä»¥ä¸‹ã®å ´åˆã€ãƒ•ãƒªãƒƒã‚¯ã¨åˆ¤å®š
                 if (direction.magnitude >= flickMagnitude && timer[num] <= flickTime)
                 {
-                    //x²‚Ì‹——£‚ª‘å‚«‚¢ê‡‚Í¶‰E‚Ö‚ÌƒtƒŠƒbƒN
+                    //xè»¸ã®è·é›¢ãŒå¤§ãã„å ´åˆã¯å·¦å³ã¸ã®ãƒ•ãƒªãƒƒã‚¯
                     if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
                     {
                         Vector2 centerPos = direction / 2.0f + startPosition[num];
@@ -106,7 +106,7 @@ namespace KirinUtil
                         }*/
                     }
                 }
-                //ƒ^ƒCƒ}[‚ğ‰Šú‰»
+                //ã‚¿ã‚¤ãƒãƒ¼ã‚’åˆæœŸåŒ–
                 timer[num] = 0.0f;
             }
         }
@@ -130,7 +130,7 @@ namespace KirinUtil
 
                 if (abs_x > flickMagnitude && abs_y < flickHeightMagnitude)
                 {
-                    // ‰¡•ûŒü
+                    // æ¨ªæ–¹å‘
                     Vector2 centerPos = dif / 2.0f + startPosition2;
                     float harfWidth = targetCanvasRT.rect.width / 2.0f;
                     centerPos.x -= harfWidth;
