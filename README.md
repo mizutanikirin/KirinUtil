@@ -102,10 +102,10 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
   GameObjectがOnDisable()、OnDestroy()したときにiTweenを止めます。  
   
 - <b>[AssetBundleManager](https://github.com/mizutanikirin/KirinUtil/wiki/AssetBundleManager)</b>  
-  簡易的なAssetBundleの読み込みをします。  
+  LocalにあるAssetBundleの簡易的な読み込みをします。  
   
 - <b>[FlickManager](https://github.com/mizutanikirin/KirinUtil/wiki/FlickManager)</b>  
-  横方向おFlickの判別が可能になります。 
+  横方向のFlickの判別が可能になります。 
 
 ### Media
 - <b>[KRNMedia](https://github.com/mizutanikirin/KirinUtil/wiki/KRNMedia)</b>  
