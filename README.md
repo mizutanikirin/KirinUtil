@@ -214,11 +214,32 @@ Bold Line、Thin Lineは手動でも追加できます。
 - GameObject名を3文字以上の「-」にするとThin Lineになります。例：-----
 
 # Inspector拡張
+## Transform拡張
 ![transform](https://github.com/mizutanikirin/KirinUtil/assets/4795806/770c1235-89cc-4d8f-a62c-41b721e46999)  
 InspectorのTransformのPosition, Rotation, Scaleを初期化できるボタンを作っています。  
 Pボタンを押すとPositionが(0,0,0)に、Rボタンを押すとRotationが(0,0,0)に、Sボタンを押すとSCaleが(1,1,1)になります。初期化はlocalな値になります。  
   
 ※こちら機能が必要ない場合は`/Assets/KirinUti/Editor/TransformInspector.cs`を削除してください。
+
+## Separator
+[Header("")]と同様の使い方ができます。以下のように変数宣言すると
+```
+[Separator("MinMaxの使い方")]
+```
+インスペクターで以下のようにHeaderを使ったときよりも目立ったsubjectを表示をすることができます。  
+![Separator](https://github.com/mizutanikirin/KirinUtil/assets/4795806/742cfedc-079e-4396-b9ea-9f9d82c7b932)
+
+## MinMax
+以下のように変数宣言すると
+```
+// private変数の場合
+[SerializeField, MinMaxSlider(0, 1)] private MinMax minMax;
+
+// public変数の場合
+[MinMaxSlider(0, 1)] public MinMax minMax;
+```
+インスペクターで以下のような表示をすることができます。  
+![MinMax](https://github.com/mizutanikirin/KirinUtil/assets/4795806/3116108f-df80-495a-a2f1-6d67cea63c5b)
 
 # Lisence
 [MIT License](https://github.com/mizutanikirin/KirinUtil/blob/master/LICENSE)

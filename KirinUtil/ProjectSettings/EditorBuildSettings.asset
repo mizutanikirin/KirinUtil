@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/KirinUtil/Demo/1_Util/UtilDemo.unity
+    guid: f76a55d0f6f53b840ade7161c9ffb18c
   m_configObjects: {}

@@ -561,6 +561,12 @@ MonoBehaviour:
   nowPosObj: {fileID: 948618003}
   targetPosObj: {fileID: 105054281}
   resultPosObj: {fileID: 995120329}
+  minMax:
+    min: -550.4437
+    max: 409.55627
+  size:
+    width: 0
+    height: 0
 --- !u!4 &641613143
 Transform:
   m_ObjectHideFlags: 0
