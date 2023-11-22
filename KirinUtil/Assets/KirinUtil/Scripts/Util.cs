@@ -23,7 +23,7 @@ namespace KirinUtil {
     [RequireComponent(typeof(KRNMedia))]
     [RequireComponent(typeof(KRNFile))]
     public class Util : MonoBehaviour {
-        [NonSerialized] public static string version = "ver1.1.1";
+        [NonSerialized] public static string version = "ver1.1.2";
         [NonSerialized] public static string copylight = "Copyright MIZUTANI KIRIN All Rights Reserved.";
 
         [NonSerialized] public static KRNMedia media;
