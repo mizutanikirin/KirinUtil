@@ -17,10 +17,6 @@ public class ImageManagerDemo : MonoBehaviour
         // Inspector > Only Texture に登録されている画像を読み込む
         Util.image.LoadTexture2DList();
         b1Image.texture = Util.image.textures[0];
-
-        // 連番画像の読み込み+再生
-        Util.image.LoadPlayImages();
-        Util.image.PlayImage("playTest");
     }
 
     // Update is called once per frame

@@ -18,9 +18,13 @@ namespace KirinUtil.Demo
         [SerializeField] private GameObject targetPosObj;
         [SerializeField] private GameObject resultPosObj;
 
+        [Separator("MinMaxの使い方")]
+        [SerializeField, MinMaxSlider(0, 1)] private MinMax minMax;
+
         // Start is called before the first frame update
         void Start()
         {
+
             // ランキング
             RankingDemo();
 

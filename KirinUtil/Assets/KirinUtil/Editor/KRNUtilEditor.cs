@@ -5,6 +5,7 @@
 using UnityEngine;
 using UnityEditor;
 using KirinUtil;
+using UnityEngine.UI;
 
 [CustomEditor(typeof(Util))]
 public class KRNUtilEditor : Editor {
@@ -95,9 +96,22 @@ public class KRNUtilEditor : Editor {
                 }
                 GUILayout.EndHorizontal();
 
-#if MovieEnable
                 GUILayout.BeginHorizontal();
                 {
+                    if (GUILayout.Button("AlphaMediaManager", GUILayout.Width(buttonWidth)))
+                    {
+                        GameObject thisObj = ExistComponent("alphaMediaManager");
+                        if (thisObj.GetComponent<AlphaMediaManager>() == null)
+                        {
+                            Debug.Log("Add AlphaMediaManager");
+                            thisObj.AddComponent<AlphaMediaManager>();
+                        }
+                        Undo.RegisterCreatedObjectUndo(thisObj, "Add AlphaMediaManager");
+                    }
+
+                    GUILayout.Space(2);
+
+#if MovieEnable
                     if (GUILayout.Button("MovieManager", GUILayout.Width(buttonWidth))) {
                         GameObject thisObj = ExistComponent("movieManager");
                         if (thisObj.GetComponent<MovieManager>() == null) {
@@ -106,9 +120,10 @@ public class KRNUtilEditor : Editor {
                         }
                         Undo.RegisterCreatedObjectUndo(thisObj, "Add MovieManager");
                     }
+#endif
                 }
                 GUILayout.EndHorizontal();
-#endif
+
             }
             EditorGUILayout.EndVertical();
             EditorGUI.indentLevel--;
@@ -351,6 +366,27 @@ public class KRNUtilEditor : Editor {
         Undo.RegisterCreatedObjectUndo(obj, "Create GroupUI");
     }
 
+    [MenuItem("GameObject/KirinUtil/Button - NoText", false, 22)]
+    public static void CreateButton()
+    {
+        GameObject obj = CreateBaseObj();
+        obj.name = "Btn";
+        RectTransform trf = obj.AddComponent<RectTransform>();
+
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.rotation = Quaternion.Euler(Vector3.zero);
+        obj.transform.localScale = Vector3.one;
+        trf.sizeDelta = new Vector2(100, 100);
+
+        obj.AddComponent<Image>();
+        obj.AddComponent<Button>();
+
+        Selection.activeGameObject = obj;
+        Debug.Log("Create NoTextButton");
+
+        Undo.RegisterCreatedObjectUndo(obj, "Create NoTextButton");
+    }
+
 
     [MenuItem("GameObject/KirinUtil/Bold Line", false, 40)]
     public static void CreateBoldLine()
@@ -398,8 +434,8 @@ public class KRNUtilEditor : Editor {
 
         if (Selection.activeGameObject != null)
         {
-            if (Selection.activeGameObject.transform.parent != null)
-                obj.transform.SetParent(Selection.activeGameObject.transform.parent);
+            if (Selection.activeGameObject.transform != null)
+                obj.transform.SetParent(Selection.activeGameObject.transform);
             else
                 obj.transform.SetParent(null);
         }

@@ -10,8 +10,7 @@ KirinUtilはインスタレーション、Kinectやwebカメラなどを使用�
 1. [Relseases](https://github.com/mizutanikirin/KirinUtil/releases/) から最新のunitypackageとAppData.zipをダウンロードします。
 2. unitypackageをUnityプロジェクトにインポートします。
 3. AppData.zipは解凍をして、プロジェクトファイルフォルダと同じ位置にフォルダを置いてください。
-2. UnityEditorでの作業です。`Player Setting > Player > Other Settings > Api Compatibility Level*`を`.Net 4.x`に設定してください。
-3. [iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)をプロジェクトにiTweenをインポートください。
+4. [iTween](https://assetstore.unity.com/packages/tools/animation/itween-84)をプロジェクトにiTweenをインポートください。
 
 ### 2. インストール(オプション)
 1. 動画再生するMovieManagerを使う場合
@@ -33,7 +32,7 @@ UnityEditorで適当なGameObjectを作成し`Inspector > Add Compoment > Util`�
   
 KirinUtilで使用できる機能は下の「機能一覧」を御覧ください。一部機能はデモシーンを用意しています。`Assets/KirinUtil/Demo/`を御覧ください。  
 使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
-![Util](https://github.com/mizutanikirin/KirinUtil/assets/4795806/85e4c045-bd62-4665-811a-6dc8a3844950)  
+![Util](https://github.com/mizutanikirin/KirinUtil/assets/4795806/687cdf2d-3d4a-42fd-9ce4-d7ae4b534eec)
 
 以下アプリをKirinUtilサンプルアプリとして公開しています。
 - [tone color](https://github.com/mizutanikirin/ToneColor)
@@ -112,7 +111,10 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
   GameObjectの作成、フェードなどGameObjectに関する関数を主にまとめたComponentです。  
   
 - <b>[ImageManager](https://github.com/mizutanikirin/KirinUtil/wiki/ImageManager)</b>  
-  外部Textureの読み込み＋Image,RawImageへの割当の自動化、シーケンス画像の再生など画像に関する関数をまとめたManagerです。
+  外部Textureの読み込み＋Image,RawImageへの割当の自動化など画像に関する関数をまとめたManagerです。
+
+- <b>[AlphaMediaManager](https://github.com/mizutanikirin/KirinUtil/wiki/AlphaMediaManager)</b>  
+  アルファ付きのシーケンス画像再生/動画の読み込み・制御などが行えるManagerです。
   
 - <b>[MovieManager](https://github.com/mizutanikirin/KirinUtil/wiki/MovieManager)</b>  
   外部動画の読み込み、動画の再生/停止などの関数をまとめたManagerです。
@@ -194,14 +196,16 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
   KirinUtil
 
 # Hierarchy > KirinUtil
-![Hierarchy](https://github.com/mizutanikirin/KirinUtil/assets/4795806/db74339a-37fb-4bed-b9d6-6ced42af3465)  
+![Hierarchy](https://github.com/mizutanikirin/KirinUtil/assets/4795806/ecbf0a04-d7fb-4529-9438-fe0a3b6dd66d)  
 Hierarchyのメニューでは以下のことができます。
 - <b>Add KirinUtil</b>  
   Util.csをアタッチしたGameObject(KirinUtil)が作成されます。
 - <b>Group Object</b>  
-  空のGameObjectが作成されます。そのGameObjectは現在Hierarchyで選択中のGameObjectと同じ階層にPosition:(0,0,0)、Roatetion(0,0,0)、Scale(1,1,1)で作成されます。(Hierarchyで選択していない場合はRootに作成されます。)
+  空のGameObjectが作成されます。そのGameObjectは現在Hierarchyで選択中のGameObjectの下部階層にPosition:(0,0,0)、Roatetion(0,0,0)、Scale(1,1,1)で作成されます。(Hierarchyで選択していない場合はRootに作成されます。)
 - <b>GroupUI Object</b>  
-  RectTransformの付いたUI用の空のGameObjectが作成されます。そのGameObjectは現在Hierarchyで選択中のGameObjectと同じ階層にPosition:(0,0,0)、Roatetion(0,0,0)、Scale(1,1,1)で作成されます。(Hierarchyで選択していない場合はRootに作成されます。)
+  RectTransformの付いたUI用の空のGameObjectが作成されます。そのGameObjectは現在Hierarchyで選択中のGameObjectの下部階層にPosition:(0,0,0)、Roatetion(0,0,0)、Scale(1,1,1)で作成されます。(Hierarchyで選択していない場合はRootに作成されます。)
+- <b>Button - NoText</b>  
+  Button内部にText/TextMeshProがない純粋なButtonを作成します。
 - <b>Bold Line</b>  
   Hierarchyを見やすくするための区切りの太いライン(GameObject)が作成されます。  
   ![HierarchyLine](https://github.com/mizutanikirin/KirinUtil/assets/4795806/0700c51e-dc18-4aee-9de0-11afea823921)
@@ -214,11 +218,32 @@ Bold Line、Thin Lineは手動でも追加できます。
 - GameObject名を3文字以上の「-」にするとThin Lineになります。例：-----
 
 # Inspector拡張
+## Transform拡張
 ![transform](https://github.com/mizutanikirin/KirinUtil/assets/4795806/770c1235-89cc-4d8f-a62c-41b721e46999)  
 InspectorのTransformのPosition, Rotation, Scaleを初期化できるボタンを作っています。  
 Pボタンを押すとPositionが(0,0,0)に、Rボタンを押すとRotationが(0,0,0)に、Sボタンを押すとSCaleが(1,1,1)になります。初期化はlocalな値になります。  
   
 ※こちら機能が必要ない場合は`/Assets/KirinUti/Editor/TransformInspector.cs`を削除してください。
+
+## Separator
+[Header("")]と同様の使い方ができます。以下のように変数宣言すると
+```
+[Separator("MinMaxの使い方")]
+```
+インスペクターで以下のようにHeaderを使ったときよりも目立ったsubjectを表示をすることができます。  
+![Separator](https://github.com/mizutanikirin/KirinUtil/assets/4795806/742cfedc-079e-4396-b9ea-9f9d82c7b932)
+
+## MinMax
+以下のように変数宣言すると
+```
+// private変数の場合
+[SerializeField, MinMaxSlider(0, 1)] private MinMax minMax;
+
+// public変数の場合
+[MinMaxSlider(0, 1)] public MinMax minMax;
+```
+インスペクターで以下のような表示をすることができます。  
+![MinMax](https://github.com/mizutanikirin/KirinUtil/assets/4795806/3116108f-df80-495a-a2f1-6d67cea63c5b)
 
 # Lisence
 [MIT License](https://github.com/mizutanikirin/KirinUtil/blob/master/LICENSE)

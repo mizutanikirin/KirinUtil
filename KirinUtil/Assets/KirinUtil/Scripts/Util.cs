@@ -16,19 +16,14 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using Random = UnityEngine.Random;
 
 namespace KirinUtil {
-
-    [Serializable]
-    public class OrderData {
-        public string id;
-        public float value;
-    }
 
     [RequireComponent(typeof(KRNMedia))]
     [RequireComponent(typeof(KRNFile))]
     public class Util : MonoBehaviour {
-        [NonSerialized] public static string version = "ver1.1.1";
+        [NonSerialized] public static string version = "ver1.1.2";
         [NonSerialized] public static string copylight = "Copyright MIZUTANI KIRIN All Rights Reserved.";
 
         [NonSerialized] public static KRNMedia media;
@@ -1517,5 +1512,17 @@ namespace KirinUtil {
         #endregion
 
 
+        //----------------------------------
+        //  指定した確率内かどうか
+        //----------------------------------
+        #region 指定した確率内かどうか
+        // rate: 確率を指定する(0~100)
+        public static bool RateEnable(float rate)
+        {
+            int rnd = Random.Range(0, 101);
+            if (rate > rnd) return true;
+            else return false;
+        }
+        #endregion
     }
 }
