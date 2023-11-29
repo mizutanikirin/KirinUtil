@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor;
 using KirinUtil;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 [CustomEditor(typeof(Util))]
 public class KRNUtilEditor : Editor {
@@ -380,6 +381,28 @@ public class KRNUtilEditor : Editor {
 
         obj.AddComponent<Image>();
         obj.AddComponent<Button>();
+
+        Selection.activeGameObject = obj;
+        Debug.Log("Create NoTextButton");
+
+        Undo.RegisterCreatedObjectUndo(obj, "Create NoTextButton");
+    }
+
+    [MenuItem("GameObject/KirinUtil/Video UI", false, 23)]
+    public static void CreateVideoUI()
+    {
+        GameObject obj = CreateBaseObj();
+        obj.name = "Video";
+        RectTransform trf = obj.AddComponent<RectTransform>();
+
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.rotation = Quaternion.Euler(Vector3.zero);
+        obj.transform.localScale = Vector3.one;
+        trf.sizeDelta = new Vector2(100, 100);
+
+        obj.AddComponent<RawImage>();
+        VideoPlayer player = obj.AddComponent<VideoPlayer>();
+        player.renderMode = VideoRenderMode.APIOnly;
 
         Selection.activeGameObject = obj;
         Debug.Log("Create NoTextButton");

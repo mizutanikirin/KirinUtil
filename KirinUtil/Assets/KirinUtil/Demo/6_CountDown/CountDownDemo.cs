@@ -15,8 +15,26 @@ namespace KirinUtil.Demo
         void Start()
         {
             isFinish = false;
-            countDown.SetCountDown(10, countDownText, false, 0, 3);
-            //countDown.SetCountDown(10, util.media.sound, 0);
+
+            // Demo1
+            // カウントダウン + text
+            // カウント数字前後に追加のstring表示あり
+            //countDown.Set(3);
+
+            // Demo2
+            // カウントダウン + text
+            // カウント数字前後に追加のstring表示あり
+            countDown.Set(10, countDownText, "あと", "秒");
+
+            // Demo3
+            // カウントダウン + text + 音
+            // カウント10秒で3秒前からSE音を鳴らす(Text)
+            //countDown.Set(10, countDownText, false, 0, 3);
+
+            // Demo4
+            // カウントダウン + 音
+            // カウント10秒でカウントのたびに音を鳴らす(Text)
+            //countDown.Set(10, true, 0);
         }
 
         // Update is called once per frame

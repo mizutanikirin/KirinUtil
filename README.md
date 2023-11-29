@@ -34,15 +34,7 @@ KirinUtilで使用できる機能は下の「機能一覧」を御覧くださ�
 使用頻度の高いCompomentは以下のようにUtilのボタンから追加することができます。  
 ![Util](https://github.com/mizutanikirin/KirinUtil/assets/4795806/687cdf2d-3d4a-42fd-9ce4-d7ae4b534eec)
 
-以下アプリをKirinUtilサンプルアプリとして公開しています。
-- [tone color](https://github.com/mizutanikirin/ToneColor)
-- [タッチゲーム](https://github.com/mizutanikirin/SampleKirinUtil)
-
-### 4. インタラクション・体験型アプリ開発に必要な知識
-インタラクション・体験型アプリ開発に必要なことをこちらにまとめました。アプリ初心者の方はこちらも参考になるかと思います。  
-[インタラクション・体験型アプリ開発に必要な知識まとめ](https://note.com/thedesignium/n/n5660ba38dcb6)
-
-### 5. AppDataについて
+### 4. AppDataについて
 AppDataフォルダにはアプリで読み込む外部ファイルが入っています。  
 アプリのフォルダ構造は以下を想定してScriptのデフォルトのフォルダ位置などは設定しています。  
 ```
@@ -170,6 +162,9 @@ AppDataフォルダにはアプリで読み込む外部ファイルが入って�
   
 - <b>[VerticalText](https://github.com/mizutanikirin/KirinUtil/wiki/VerticalText)</b>  
   TextMeshProを縦書きに表示できる機能です。
+  
+- <b>[SetTMP](https://github.com/mizutanikirin/KirinUtil/wiki/SetTMP)</b>  
+  xmlなどで設定したTextの色、アウトラインなどを、指定したTextMeshProに簡単に適用するClassです。
 
 ### Mobile
 - <b>[SafariView](https://github.com/mizutanikirin/KirinUtil/wiki/SafariView)</b>  

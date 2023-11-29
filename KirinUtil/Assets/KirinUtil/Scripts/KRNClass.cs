@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace KirinUtil
@@ -18,7 +16,7 @@ namespace KirinUtil
         public float min;
         public float max;
 
-        public MinMax(float minValue, float maxValue)
+        public MinMax(float minValue=0, float maxValue=0)
         {
             min = minValue;
             max = maxValue;
@@ -36,5 +34,28 @@ namespace KirinUtil
             width = widthValue;
             height = heightValue;
         }
+    }
+
+
+    [Serializable]
+    public class TMPData
+    {
+        public string message;
+
+        public Vector3 textPos;
+        public float width;
+        public MinMax fontSize;
+        public Color fontColor;
+
+        public bool outlineEnable;
+        public Color outlineColor;
+        public float outlineThikness;
+        
+        public Align align;
+    }
+
+    public enum Align
+    {
+        Left, Center, Right
     }
 }
