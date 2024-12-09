@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using TMPro;
@@ -8,7 +8,7 @@ namespace KirinUtil
 {
     public class SetTMP : MonoBehaviour
     {
-        // xml‚ğTMPDataŒ^‚É•ÏŠ·
+        // xmlã‚’TMPDataå‹ã«å¤‰æ›
         public TMPData Xml2TMPData(XmlNodeList nodeList)
         {
             TMPData textData = new TMPData();
@@ -57,7 +57,7 @@ namespace KirinUtil
             return textData;
         }
 
-        // targetText‚ÉtextDataİ’è‚ğ“K—p
+        // targetTextã«textDataè¨­å®šã‚’é©ç”¨
         public void Custum(TextMeshProUGUI targetText, TMPData textData)
         {
             // message

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using TMPro;
@@ -17,7 +17,7 @@ namespace KirinUtil.Demo
             ReadXmlData();
         }
 
-        // xml‚©‚çİ’è‚ğ“Ç‚İæ‚èxmlText‚ÉƒZƒbƒg‚·‚é‚Ü‚Å‚Ì—¬‚ê
+        // xmlã‹ã‚‰è¨­å®šã‚’èª­ã¿å–ã‚ŠxmlTextã«ã‚»ãƒƒãƒˆã™ã‚‹ã¾ã§ã®æµã‚Œ
         private void ReadXmlData()
         {
             string xmlData =
@@ -28,10 +28,10 @@ namespace KirinUtil.Demo
             xmlDoc.LoadXml(xmlData);
             XmlNodeList nodes = xmlDoc.GetElementsByTagName("text");
 
-            // xml‚ğTMPDataŒ^‚É•ÏŠ·
+            // xmlã‚’TMPDataå‹ã«å¤‰æ›
             TMPData textData = setTMP.Xml2TMPData(nodes);
 
-            // xmlText‚ÉtextDataİ’è‚ğ“K—p
+            // xmlTextã«textDataè¨­å®šã‚’é©ç”¨
             setTMP.Custum(xmlText, textData);
         }
     }
