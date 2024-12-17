@@ -425,7 +425,7 @@ namespace KirinUtil
         #region SE
 
         #region SE再生
-        public void PlaySE(int index, bool playingPlay = true)
+        public void PlaySE(int index, bool playingPlay = true, bool oneShot = false)
         {
             if (0 > index || SE.Count <= index)
             {
@@ -441,16 +441,23 @@ namespace KirinUtil
 
             if (playOk)
             {
-                SEsources[index].clip = SE[index];
-                SEsources[index].clip.name = "se" + index;
-                SEsources[index].volume = seSound[index].volume;
-                SEsources[index].loop = seSound[index].loop;
-                SEsources[index].mute = seSound[index].mute;
-                SEsources[index].Play();
+                if (oneShot)
+                {
+                    SEsources[index].PlayOneShot(SE[index], seSound[index].volume);
+                }
+                else
+                {
+                    SEsources[index].clip = SE[index];
+                    SEsources[index].clip.name = "se" + index;
+                    SEsources[index].volume = seSound[index].volume;
+                    SEsources[index].loop = seSound[index].loop;
+                    SEsources[index].mute = seSound[index].mute;
+                    SEsources[index].Play();
+                }
             }
         }
 
-        public void PlaySE(string id, bool playingPlay = true)
+        public void PlaySE(string id, bool playingPlay = true, bool oneShot = false)
         {
             int index = GetSEListNum(id);
             if (index == -1)
@@ -459,7 +466,7 @@ namespace KirinUtil
                 return;
             }
 
-            PlaySE(index, playingPlay);
+            PlaySE(index, playingPlay, oneShot);
         }
         #endregion
 
